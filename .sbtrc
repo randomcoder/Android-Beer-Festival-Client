@@ -1,0 +1,5 @@
+alias Android-23 = ;project client;android:emulator-start Android_2.3
+alias Android-42 = ;project client;android:emulator-start Android-4.2
+alias launch-client = ;project client;android:start-emulator
+alias test-client = ;project client;test
+alias package-client = ;project client;android:package-debug

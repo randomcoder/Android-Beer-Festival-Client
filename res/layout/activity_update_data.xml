@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/LinearLayout1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+
+	<TextView
+		android:id="@+id/update_view_selected_festival"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/temp_wbf_festival_name"
+		android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	<Button
+		android:id="@+id/update_view_update_data_button"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:onClick="updateData"
+		android:text="@string/update_data_button_text" />
+
+</LinearLayout>
