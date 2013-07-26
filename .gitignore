@@ -15,3 +15,9 @@ keystore.properties
 android-support-*.jar
 
 .idea*/
+
+# backup files
+*.swp
+*.bak
+*~
+
