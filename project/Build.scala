@@ -1,9 +1,11 @@
 import sbt._
 
 import Keys._
-import sbtandroid._
-import sbtandroid.AndroidKeys._
-import sbtandroid.AndroidNdkKeys._
+//import sbtandroid._
+//import sbtandroid.AndroidKeys._
+//import sbtandroid.AndroidNdkKeys._
+import AndroidKeys._
+import AndroidNdkKeys._
 
 object General {
   // Some basic configuration
