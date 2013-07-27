@@ -26,11 +26,19 @@ import uk.co.randomcoding.android.beerfestival.util.Convertors._
 /**
  * Describes a drink
  *
+ * @constructor Create a new instance of a drink
+ * @param uid The unique Id of this drink
+ * @param drinkType The type of drink
+ * @param description The drink's description
+ * @param abv The drink's abv
+ * @param brewer The name of the drink's brewer
+ * @param features The features of the drink
+ *
  * @author RandomCoder <randomcoder@randomcoding.co.uk>
  *
  * Created On: 5 Aug 2012
  */
-case class Drink(uid: String, drinkType: DrinkType.drinkType, name: String, description: String, abv: Double, price: Double, remaining: String, brewer: String, features: List[String])
+case class Drink(uid: String, drinkType: DrinkType.drinkType, name: String, description: String, abv: Double, brewer: String, features: List[String])
 
 /**
  * Provides parsing of drink JSON data into a `List[Drink]`
@@ -62,12 +70,10 @@ object Drink {
     val drinkName = drinkJsonMap("name").toString
     val description = drinkJsonMap("description").toString
     val abv = drinkJsonMap("abv").toString.toDouble
-    val price = drinkJsonMap("price").toString.drop(1).toDouble
-    val remaining = drinkJsonMap("remaining").toString
     val brewer = drinkJsonMap("brewer").toString
     val features = drinkJsonMap("features").asInstanceOf[List[String]]
 
-    Drink(drinkUid, drinkType, drinkName, description, abv, price, remaining, brewer, features)
+    Drink(drinkUid, drinkType, drinkName, description, abv, brewer, features)
   }
 
   private implicit def stringToDrinkType(in: String): DrinkType.drinkType = DrinkType(in)
