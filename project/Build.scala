@@ -13,7 +13,7 @@ object General {
     versionCode := 0,
     scalaVersion := "2.10.1",
     platformName in Android := "android-8",
-    scalacOptions := Seq("-unchecked", "-deprecation", "-feature", "-language:implicitConversions", "-source", "1.6", "-target", "1.6")
+    scalacOptions := Seq("-unchecked", "-deprecation", "-feature", "-language:implicitConversions", "source", "1.6", "target", "1.6")
   )
 
   val keptClasses = Seq("scala.Function1", "scala.Tuple2", "scala.collection.Seq", "scala.Option", "scala.Function2", "scala.collection.immutable.Map",
