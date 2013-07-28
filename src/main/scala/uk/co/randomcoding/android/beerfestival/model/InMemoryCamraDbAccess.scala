@@ -20,6 +20,7 @@
 package uk.co.randomcoding.android.beerfestival.model
 
 import scala.io.Source
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 
 /**
  * Provides access to an in memory copy of the [[uk.co.randomcoding.android.beerfestival.model.CamraDb]]
@@ -28,13 +29,19 @@ import scala.io.Source
  *
  */
 object InMemoryCamraDbAccess extends CamraDbAccess {
-  private[this] var db: CamraDb = _
+  private[this] var db: InMemoryCamraDb = _
 
   def init(drinksData: Source, brewersData: Source) {
-    db = new CamraDb(drinksData, brewersData)
+    db = new InMemoryCamraDb(drinksData, brewersData)
   }
 
   override def drinks = db.drinks
 
   override def brewers = db.brewers
+
+  override def drinkNameContains(s: String): Seq[Drink] = s.toLowerCase.trim match {
+    case "" => db.drinks
+    case subString => drinks.filter(_.name.toLowerCase.contains(subString))
+  }
+
 }
