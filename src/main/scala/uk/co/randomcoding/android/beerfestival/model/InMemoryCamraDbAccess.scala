@@ -31,6 +31,14 @@ import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 object InMemoryCamraDbAccess extends CamraDbAccess {
   private[this] var db: InMemoryCamraDb = _
 
+  /**
+   * Initialises the database.
+   *
+   * If invoked multiple times this will reinitialise the database on each invocation after the first
+   *
+   * @param drinksData The [[scala.io.Source]] that contains the drink data in JSON format
+   * @param brewersData The [[scala.io.Source]] that contains the brewers data in JSON format
+   */
   def init(drinksData: Source, brewersData: Source) {
     db = new InMemoryCamraDb(drinksData, brewersData)
   }

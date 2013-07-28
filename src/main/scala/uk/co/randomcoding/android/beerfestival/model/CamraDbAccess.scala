@@ -41,6 +41,10 @@ trait CamraDbAccess {
 
   /**
    * Find drinks who's name contains a certain string (case insensitive)
+   *
+   * @param subString The string to find somewhere in the name of a drink
+   *
+   * @return All the drinks that contain the input string in their name
    */
-  def drinkNameContains(s: String): Seq[Drink]
+  def drinkNameContains(subString: String): Seq[Drink]
 }
