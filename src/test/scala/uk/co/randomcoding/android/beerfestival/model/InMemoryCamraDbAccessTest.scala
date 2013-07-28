@@ -21,6 +21,7 @@ package uk.co.randomcoding.android.beerfestival.model
 
 import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 import scala.io.Source
+import org.scalatest.BeforeAndAfterAll
 
 /**
  * Tests for the use of the In memory database access class used in the initial implementation of the android client.
@@ -48,5 +49,76 @@ class InMemoryCamraDbAccessTest extends SimpleTestBase with DbAccessTestData {
       contain(wyeValley) and
       contain(wylam) and
       contain(abc))
+  }
+
+  // TODO: extract these tests into a common trait when using a different db implementation
+  // Drink Search tests
+  test("Database Access can find all drinks by a brewer") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access can find all drinks that contain a substring in their name") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database access will return empty results for a drink name search that matches no drinks") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access can find all drinks that have a specific abv") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access can find all drinks that have an abv less than a given value") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access can find all drinks that have an abv greater than a given value") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database access will return empty results for a drink abv search that matches no drinks") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access can fins all drinks that have a substring in their description") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database access will return empty results for a drink description search that matches no drinks") {
+    fail("Not Implemented Yet")
+  }
+
+  // Brewer Search tests
+  test("Database Access can find brewer record from drink data") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access can find all bewers who's names contain a string") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access can find all brewers from the same location") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access will return an empty result for a brewer name search than matches no brewers") {
+    fail("Not Implemented Yet")
+  }
+
+  test("Database Access will return an empty result for a brewer location search than matches no brewers") {
+    fail("Not Implemented Yet")
+  }
+
+  /**
+   * (Re)initialise the database access.
+   *
+   * This can be used to load different data into the db access for each test
+   */
+  private[this] def initialiseDbAccess(drinkDbFileLoc: String, brewerDbFileLoc: String) {
+    val drinkSource = Source.fromInputStream(drinkDbFileLoc)
+    val brewerSource = Source.fromInputStream(brewerDbFileLoc)
+
+    InMemoryCamraDbAccess.init(drinkSource, brewerSource)
   }
 }
