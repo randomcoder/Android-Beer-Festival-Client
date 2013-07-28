@@ -1,0 +1,88 @@
+/**
+ * Copyright (C) 2013 - RandomCoder <randomcoder@randomcoding.co.uk>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contributors:
+ *    RandomCoder <randomcoder@randomcoding.co.uk> - initial API and implementation and/or initial documentation
+ */
+package uk.co.randomcoding.android.beerfestival.model
+
+import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
+import scala.io.Source
+import java.io.InputStream
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
+import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
+import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
+
+/**
+ * Tests for the loading of the main database from the drink and brewer db files
+ *
+ * @author RandomCoder
+ *
+ */
+class CamraDbJsonTest extends SimpleTestBase {
+
+  test("The Camra Database can be loaded from valid drink and brewer db files") {
+    Given("valid input file data for drinks and brewers")
+    val drinkSource = Source.fromInputStream(smallDrinkDbFileLoc)
+    val brewerSource = Source.fromInputStream(smallBrewerDbFileLoc)
+
+    When("the database is initialised from the inputs")
+    CamraDb.init(drinkSource, brewerSource)
+    Then("the database contains the expected drinks")
+    CamraDb.drinks should (have size (4) and
+      contain(dorothyGoodbodies) and
+      contain(bohemiaPilsner) and
+      contain(astonDark) and
+      contain(rotundaRed))
+    And("it contains the expected brewers")
+    CamraDb.brewers should (have size (3) and
+      contain(wyeValley) and
+      contain(wylam) and
+      contain(abc))
+  }
+
+  // Test data and helpers
+  val smallDrinkDbFileLoc = "/drinksdb_small.json"
+  val smallBrewerDbFileLoc = "/brewersdb_small.json"
+
+  val dorothyGoodbodies = Drink("10001", DrinkType.BEER, "Dorothy Goodbody's Country Ale",
+    "Strong, full-bodied ruby ale. A 2011 Suggestabeer from Nick Bracey of Walsall.", 6.0, "Wye Valley",
+    List("Dark", "Strong"))
+
+  val bohemiaPilsner = Drink("10002", DrinkType.BEER, "Bohemia Pilsner",
+    "Deep golden lager made to a typical Czech recipe with Pilsner yeast. Rich hop character.",
+    4.8, "Wylam", List("Lager", "Golden"))
+
+  val astonDark = Drink("10003", DrinkType.BEER, "Aston Dark",
+    "Dark tanned and complex ale lightly hopped with Fuggles. Underlying malt gives way to hints of dark chocolate and coffee.",
+    3.6, "ABC", List("Mild"))
+
+  val rotundaRed = Drink("10009", DrinkType.BEER, "Rotunda Red",
+    "Traditional ruby coloured ale of distinct character.  Lightly hopped with English Fuggles, finished with the distinct aroma of Liberty hops and a toffee aftertaste.",
+    4.8, "ABC", List("Brown", "Strong"))
+
+  val wyeValley = Brewer("Wye Valley", "Herefordshire", Set("10001"))
+
+  val wylam = Brewer("Wylam", "Place 1", Set("10002"))
+
+  val abc = Brewer("ABC", "Place 2", Set("10003", "10009"))
+
+  private implicit def stringToClassInputStream(in: String): InputStream = {
+    val stream = getClass.getResourceAsStream(in)
+    stream should not be (null)
+    stream
+  }
+}
