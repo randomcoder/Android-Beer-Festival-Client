@@ -32,7 +32,7 @@ import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
  * @author RandomCoder
  *
  */
-class FestivalModelJsonTest extends SimpleTestBase with DbAccessTestData {
+class FestivalModelTest extends SimpleTestBase with DbAccessTestData {
   val smallFestivalJson = """{
     | "festivalName": "A Festival",
     | "availableDrinks": [{"drinkUid": "10001", "price": 2.2, "status": "Plenty"},
