@@ -52,17 +52,55 @@ class InMemoryCamraDbAccessTest extends SimpleTestBase with DbAccessTestData {
   }
 
   // TODO: extract these tests into a common trait when using a different db implementation
-  // Drink Search tests
-  test("Database Access can find all drinks by a brewer") {
-    fail("Not Implemented Yet")
+  // Drink Search tests (single term)
+  test("Database Access can find a single drink by name if there is only one match") {
+    Given("Database access initialised with valid data")
+    initialiseDbAccess(smallDrinkDbFileLoc, smallBrewerDbFileLoc)
+
+    When("A drink name contains search is done with a value that should match a single drink")
+    val drinks = InMemoryCamraDbAccess.drinkNameContains("aston")
+    Then("only the expected drink are found")
+    drinks should be(Seq(astonDark))
   }
 
-  test("Database Access can find all drinks that contain a substring in their name") {
-    fail("Not Implemented Yet")
+  test("Database Access can match multiple drinks that all contain a substring in their name") {
+    Given("Database access initialised with valid data")
+    initialiseDbAccess(smallDrinkDbFileLoc, smallBrewerDbFileLoc)
+
+    When("A drink name contains search is done with a value that should match multiple drinks")
+    val drinks = InMemoryCamraDbAccess.drinkNameContains("ot")
+
+    Then("the expected drinks are found")
+    drinks should (have size (2) and
+      contain(dorothyGoodbodies) and
+      contain(rotundaRed))
+  }
+
+  test("Database Access will find all drinks by name if the search term is empty") {
+    Given("Database access initialised with valid data")
+    initialiseDbAccess(smallDrinkDbFileLoc, smallBrewerDbFileLoc)
+
+    When("A 'drink name contains' search is done with an empty search term")
+    val drinks1 = InMemoryCamraDbAccess.drinkNameContains("")
+    val drinks2 = InMemoryCamraDbAccess.drinkNameContains("  ")
+    Then("all drinks are found")
+    drinks1 should (have size (4) and
+      contain(dorothyGoodbodies) and
+      contain(bohemiaPilsner) and
+      contain(astonDark) and
+      contain(rotundaRed))
+
+    drinks2 should equal(drinks1)
   }
 
   test("Database access will return empty results for a drink name search that matches no drinks") {
-    fail("Not Implemented Yet")
+    Given("Database access initialised with valid data")
+    initialiseDbAccess(smallDrinkDbFileLoc, smallBrewerDbFileLoc)
+
+    When("A 'drink name contains' search is done with a value that matches no drink names")
+    val drinks = InMemoryCamraDbAccess.drinkNameContains("Unknown")
+    Then("the results are empty")
+    drinks should be('empty)
   }
 
   test("Database Access can find all drinks that have a specific abv") {
@@ -88,6 +126,13 @@ class InMemoryCamraDbAccessTest extends SimpleTestBase with DbAccessTestData {
   test("Database access will return empty results for a drink description search that matches no drinks") {
     fail("Not Implemented Yet")
   }
+
+  test("Database Access can find all drinks by a brewer") {
+    fail("Not Implemented Yet")
+  }
+
+  // Drink Search tests using multiple search terms
+  // TBD - initial capability is for single term search only
 
   // Brewer Search tests
   test("Database Access can find brewer record from drink data") {
