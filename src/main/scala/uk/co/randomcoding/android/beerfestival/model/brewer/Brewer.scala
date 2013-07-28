@@ -36,6 +36,15 @@ case class Brewer(name: String, location: String, drinkUids: Set[String])
 object Brewer {
   private[this] val TAG = "Brewer Parser"
 
+  /**
+   * Read brewers from a JSON input string.
+   *
+   * This can read a multiple or a single brewer entity from the input
+   *
+   * @param jsonData The input brewer data in JSON format
+   *
+   * @return all the brewers that were successfully parsed from the input data
+   */
   def fromJson(jsonData: String): Seq[Brewer] = JSON.parseFull(jsonData) match {
     case Some(data) => data match {
       case brewersData: List[_] => convertBrewers(brewersData).distinct

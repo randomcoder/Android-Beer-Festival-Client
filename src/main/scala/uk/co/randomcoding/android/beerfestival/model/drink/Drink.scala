@@ -44,8 +44,15 @@ case class Drink(uid: String, drinkType: DrinkType.drinkType, name: String, desc
  * Provides parsing of drink JSON data into a `List[Drink]`
  */
 object Drink {
-  private[this] val TAG = "Drink Parser"
-
+  /**
+   * Read drinks from a JSON input string.
+   *
+   * This can read a multiple or a single drink entity from the input
+   *
+   * @param jsonData The input drink data in JSON format
+   *
+   * @return all the drinks that were successfully parsed from the input data
+   */
   def fromJson(jsonData: String): Seq[Drink] = JSON.parseFull(jsonData) match {
     case Some(data) => data match {
       case jsonDrinks: List[_] => parseDrinks(jsonDrinks).distinct
