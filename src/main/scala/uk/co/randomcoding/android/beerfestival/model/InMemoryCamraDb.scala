@@ -24,12 +24,14 @@ import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 
 /**
- * Main database used to store the drink & brewer data together
+ * Main database used to store the drink & brewer data together.
+ *
+ * This is an in memory store used for initial release.
  *
  * @author RandomCoder
  *
  */
-class CamraDb(drinksData: Source, brewersData: Source) {
+class InMemoryCamraDb(drinksData: Source, brewersData: Source) {
   val drinks = Drink.fromJson(drinksData)
   val brewers = Brewer.fromJson(brewersData)
 

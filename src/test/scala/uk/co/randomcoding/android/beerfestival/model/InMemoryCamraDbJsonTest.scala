@@ -32,7 +32,7 @@ import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
  * @author RandomCoder
  *
  */
-class CamraDbJsonTest extends SimpleTestBase with DbAccessTestData {
+class InMemoryCamraDbJsonTest extends SimpleTestBase with DbAccessTestData {
 
   test("The Camra Database can be loaded from valid drink and brewer json files") {
     Given("valid input file data for drinks and brewers")
@@ -40,7 +40,7 @@ class CamraDbJsonTest extends SimpleTestBase with DbAccessTestData {
     val brewerSource = Source.fromInputStream(smallBrewerDbFileLoc)
 
     When("the database is initialised from the inputs")
-    val db = new CamraDb(drinkSource, brewerSource)
+    val db = new InMemoryCamraDb(drinkSource, brewerSource)
     Then("the database contains the expected drinks")
     db.drinks should (have size (4) and
       contain(dorothyGoodbodies) and
