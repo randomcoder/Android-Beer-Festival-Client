@@ -24,6 +24,7 @@ import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 import java.io.InputStream
 import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
+import scala.io.Source
 
 /**
  * Common data for using with the database access tests
@@ -35,6 +36,8 @@ trait DbAccessTestData extends ShouldMatchers {
   // Test data and helpers
   val smallDrinkDbFileLoc = "/drinksdb_small.json"
   val smallBrewerDbFileLoc = "/brewersdb_small.json"
+  val largeDrinkDbFileLoc = "/drinksdb.json"
+  val largeBrewerDbFileLoc = "/brewersdb.json"
 
   val dorothyGoodbodies = Drink("10001", DrinkType.BEER, "Dorothy Goodbody's Country Ale",
     "Strong, full-bodied ruby ale. A 2011 Suggestabeer from Nick Bracey of Walsall.", 6.0, "Wye Valley",
@@ -62,5 +65,17 @@ trait DbAccessTestData extends ShouldMatchers {
     val stream = getClass.getResourceAsStream(in)
     stream should not be (null)
     stream
+  }
+
+  /**
+   * (Re)initialise the database access.
+   *
+   * This can be used to load different data into the db access for each test
+   */
+  def initialiseDbAccess(drinkDbFileLoc: String, brewerDbFileLoc: String) {
+    val drinkSource = Source.fromInputStream(drinkDbFileLoc)
+    val brewerSource = Source.fromInputStream(brewerDbFileLoc)
+
+    InMemoryCamraDbAccess.init(drinkSource, brewerSource)
   }
 }

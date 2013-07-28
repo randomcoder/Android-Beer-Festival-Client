@@ -154,16 +154,4 @@ class InMemoryCamraDbAccessTest extends SimpleTestBase with DbAccessTestData {
   test("Database Access will return an empty result for a brewer location search than matches no brewers") {
     fail("Not Implemented Yet")
   }
-
-  /**
-   * (Re)initialise the database access.
-   *
-   * This can be used to load different data into the db access for each test
-   */
-  private[this] def initialiseDbAccess(drinkDbFileLoc: String, brewerDbFileLoc: String) {
-    val drinkSource = Source.fromInputStream(drinkDbFileLoc)
-    val brewerSource = Source.fromInputStream(brewerDbFileLoc)
-
-    InMemoryCamraDbAccess.init(drinkSource, brewerSource)
-  }
 }
