@@ -1,0 +1,81 @@
+[{
+  "drinkUid": "10001"
+  "drinkType":"Beer",
+  "name":"Dorothy Goodbody's Country Ale",
+  "description":"Strong, full-bodied ruby ale. A 2011 Suggestabeer from Nick Bracey of Walsall.",
+  "abv":"6.0",
+  "brewer":"Wye Valley",
+  "features":["Dark","Strong"]
+},{
+  "drinkUid": "10002"
+  "drinkType":"Beer",
+  "name":"Bohemia Pilsner",
+  "description":"Deep golden lager made to a typical Czech recipe with Pilsner yeast. Rich hop character.",
+  "abv":"4.8",
+  "brewer":"Wylam",
+  "features":["Lager","Golden"]
+},{
+  "drinkUid": "10003"
+  "drinkType":"Beer",
+  "name":"Aston Dark",
+  "description":"Dark tanned and complex ale lightly hopped with Fuggles. Underlying malt gives way to hints of dark chocolate and coffee.",
+  "abv":"3.6",
+  "brewer":"ABC",
+  "features":["Mild"]
+},{
+  "drinkUid": "10004"
+  "drinkType":"Beer",
+  "name":"Tangerine Duck",
+  "description":"Copper coloured beer with a hint of tangerine from the late addition of crystal hops. Named after the Atomic Boys famous duck Puskas at Blackpool FC in the 50s.",
+  "abv":"4.4",
+  "brewer":"Fuzzy Duck",
+  "features":["Brown","Best Bitter"]
+},{
+  "drinkUid": "10005"
+  "drinkType":"Beer",
+  "name":"Seville",
+  "description":"Dark Star's first fruit beer. Made with malted wheat as well as barley and Eldorado hops, matured with a hint of Spanish bitter oranges.",
+  "abv":"4.0",
+  "brewer":"Dark Star",
+  "features":["Stout / Porter","Speciality"]
+},{
+  "drinkUid": "10006"
+  "drinkType":"Beer",
+  "name":"Silent Slasher",
+  "description":"Blonde, lager style beer crafted with the finest extra pale malt and wheat. Deceivingly light, with hops chosen for their floral aroma and flavour. At 5.1% Silent Slasher is sweet with a refreshing, dry bitter finish.",
+  "abv":"5.1",
+  "brewer":"Dorset Piddle",
+  "features":["Lager","Golden"]
+},{
+  "drinkUid": "10007"
+  "drinkType":"Beer",
+  "name":"Noble 600",
+  "description":"Light and bitter, picking up the distinctive grapefruit/citrus aroma and taste from Citra hops.",
+  "abv":"4.5",
+  "brewer":"Kinver",
+  "features":["Golden"]
+},{
+  "drinkUid": "10008"
+  "drinkType":"Beer",
+  "name":"Stingray",
+  "description":"Strong and malty - yet extremely hoppy which gives a rich fruitiness.",
+  "abv":"5.5",
+  "brewer":"Devilfish",
+  "features":["Strong"]
+},{
+  "drinkUid": "10009"
+  "drinkType":"Beer",
+  "name":"Rotunda Red",
+  "description":"Traditional ruby coloured ale of distinct character.  Lightly hopped with English Fuggles, finished with the distinct aroma of Liberty hops and a toffee aftertaste.",
+  "abv":"4.8",
+  "brewer":"ABC",
+  "features":["Brown","Strong"]
+},{
+  "drinkUid": "10010"
+  "drinkType":"Beer",
+  "name":"Buttermere Beauty",
+  "description":"Golden pilsner style, made from lager malt, Saaz hops and a lager yeast fermented at cool temperature.",
+  "abv":"4.8",
+  "brewer":"Cumbrian Legendary Ales",
+  "features":["Lager","Golden"]
+}]
