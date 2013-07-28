@@ -19,6 +19,8 @@
  */
 package uk.co.randomcoding.android.beerfestival.util
 
+import scala.io.Source
+
 /**
  * Brief description of Convertors
  *
@@ -30,4 +32,6 @@ object Convertors {
   implicit def anyAnyMapToStringAny(in: Map[_, _]): Map[String, _] = in map { case (k, v) => (k.toString, v) }
 
   implicit def optionListToDefinedList[A](in: List[Option[A]]): List[A] = in.filter(_.isDefined).map(_.get)
+
+  implicit def sourceToString(in: Source): String = in.getLines.mkString("\n")
 }
