@@ -20,8 +20,11 @@
 package uk.co.randomcoding.android.beerfestival.model.drink
 
 import scala.util.parsing.json.JSON
-
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
+import scala.xml.Elem
+import scala.xml.NodeSeq
+import scala.xml.Node
+import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
 
 /**
  * Describes a drink
@@ -60,6 +63,48 @@ object Drink {
       case _ => Nil
     }
     case failedParse => Nil
+  }
+
+  def fromXml(xml: Elem): Seq[Drink] = {
+    val nodes = drinkNodes(xml)
+    nodes.map(drinkFromXml)
+  }
+
+  private[this] def drinkNodes(xml: Elem): NodeSeq = (xml \\ "element" \ "item").filter(isDrinkNode)
+
+  private[this] val drinkNameElemNames = Seq("Beer", "Cider", "Perry")
+
+  private[this] def isDrinkNode(node: Node): Boolean = {
+    (node \\ "element").exists(elem => {
+      val elemName = (elem \ "@name").text
+      drinkNameElemNames.contains(elemName)
+    })
+  }
+
+  private[this] def drinkFromXml(drinkNode: Node): Drink = {
+    val drinkName = elementValue(drinkNode, drinkNameElemNames: _*)
+    val drinkDescription = elementValue(drinkNode, "Description")
+    val abv = elementValue(drinkNode, "ABV").toDouble
+    val brewer = elementValue(drinkNode, "BreweryName")
+    val drinkType = (drinkNode \ "element").find(node => drinkNameElemNames.contains((node \ "@name").text)) match {
+      case Some(elem) => (elem \ "@name").text
+      case _ => "" // Should cause a match error
+    }
+    val features = {
+      val isUnusual = elementValue(drinkNode, "Unusual").toLowerCase() == "yes"
+      val style = elementValue(drinkNode, "Style")
+
+      List(style) ++ (if (isUnusual) Seq("Unusual") else Nil)
+    }
+
+    Drink(drinkName, drinkType, drinkName, drinkDescription, abv, brewer, features)
+  }
+
+  def elementValue(node: Node, elementNameAttrValue: String*) = {
+    (node \ "element").find(node => elementNameAttrValue.contains((node \ "@name").text)) match {
+      case Some(elem) => (elem \ "@value").text
+      case _ => ""
+    }
   }
 
   private[this] def parseDrinks(drinksJsonData: List[_]): Seq[Drink] = {
