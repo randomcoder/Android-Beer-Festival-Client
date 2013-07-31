@@ -23,6 +23,7 @@ import scala.util.parsing.json.JSON
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
 import uk.co.randomcoding.android.beerfestival.util.XmlHelpers._
 import scala.xml.Node
+import scala.xml.NodeSeq
 
 /**
  * @constructor Create a new instance of a Brewer
@@ -35,7 +36,17 @@ import scala.xml.Node
 case class Brewer(name: String, location: String, description: String = "")
 
 object Brewer {
-  def fromXml(brewersXml: Node): Seq[Brewer] = Nil
+  def fromXml(brewersXml: Node): Seq[Brewer] = brewerNodes(brewersXml).map(brewerFromNode).distinct
+
+  private[this] def brewerNodes(brewersXml: Node): NodeSeq = (brewersXml \\ "element" \ "item")
+
+  private[this] def brewerFromNode(brewerNode: Node): Brewer = {
+    val brewerName = elementValue(brewerNode, "Name")
+    val brewerDescription = elementValue(brewerNode, "Description")
+    val brewerLocation = Seq("Location", "County", "Postcode").map(elementValue(brewerNode, _)).filterNot(_.isEmpty).mkString(", ")
+
+    Brewer(brewerName, brewerLocation, brewerDescription)
+  }
 
   /**
    * Read brewers from a JSON input string.

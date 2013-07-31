@@ -43,7 +43,7 @@ class BrewerLoadXmlTest extends SimpleTestBase {
 
     When("the Xml is parsed")
     Then("the expected Brewer object is created")
-    Brewer.fromXml(surround(producerBulmersXml)) should be(producerBulmers)
+    Brewer.fromXml(surround(producerBulmersXml)) should be(Seq(producerBulmers))
   }
 
   test("Multiple Brewers can be successfully created from a xml with three Brewer elements") {
@@ -62,7 +62,7 @@ class BrewerLoadXmlTest extends SimpleTestBase {
     val xml = surround(brewer4TsXml ++ brewer4TsXml)
     When("the Xml is parsed")
     Then("only the one expected Brewer is generated")
-    Brewer.fromXml(xml) should be(Seq(brewerAbbeydale))
+    Brewer.fromXml(xml) should be(Seq(brewer4Ts))
   }
 
   test("Brewers can be loaded from a Brewers input xml source") {
@@ -72,7 +72,7 @@ class BrewerLoadXmlTest extends SimpleTestBase {
     When("the Xml is parsed")
     val brewers = Brewer.fromXml(xml)
     Then("it contains the expected number of brewers")
-    brewers should have size (133)
+    brewers should have size (134)
     And("at least three of the brewers is correctly loaded")
     brewers should (contain(brewer4Ts) and
       contain(brewerAbbeydale) and
