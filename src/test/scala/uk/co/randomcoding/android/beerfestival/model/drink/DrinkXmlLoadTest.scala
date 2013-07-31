@@ -31,8 +31,6 @@ import scala.xml.XML
  *
  */
 class DrinkXmlLoadTest extends SimpleTestBase {
-  val beersXmlStream = getClass.getResourceAsStream("/beers_small.xml")
-
   test("A Drink can be successfully created from Xml with one drink element (beer)") {
     Given("Xml than contains a single beer element")
 
@@ -66,5 +64,30 @@ class DrinkXmlLoadTest extends SimpleTestBase {
     When("the Xml is parsed")
     Then("only the one expected Drink is generated")
     Drink.fromXml(duplicateAlederflowerXml) should be(Seq(alederflower))
+  }
+
+  test("Beers can be loaded from an input xml source") {
+    Given("Xml created from an externaal input (sample file)")
+    val xml = XML.load(getClass.getResourceAsStream("/beers_small.xml"))
+
+    When("the Xml is parsed")
+    val beers = Drink.fromXml(xml)
+    Then("it contains the expected number of drinks")
+    beers should have size (4)
+    And("at least one of the ciders is correctly loaded")
+    beers should (contain(porter1872) and
+      contain(alederflower))
+  }
+
+  test("Ciders can be loaded from an input xml source") {
+    Given("Xml created from an externaal input (sample file)")
+    val xml = XML.load(getClass.getResourceAsStream("/ciders.xml"))
+
+    When("the Xml is parsed")
+    val ciders = Drink.fromXml(xml)
+    Then("it contains the expected number of drinks")
+    ciders should have size (2)
+    And("at least one of the ciders is correctly loaded")
+    ciders should contain(deadDog)
   }
 }

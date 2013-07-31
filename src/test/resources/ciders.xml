@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<object>
+
+	<element name="outcome" type="string" value="success" />
+
+	<element name="result" type="array">
+
+		<item index="0" type="object">
+
+			<element name="Producer" type="string" value="BULMER" />
+
+			<element name="Cider" type="string" value="Dead Dog" />
+
+			<element name="ABV" type="number" value="7" />
+
+			<element name="Style" type="string" value="DP" />
+
+			<element name="Description" type="string" value="Paint stripper" />
+
+			<element name="State" type="string" value="Ready" />
+
+			<element name="ProducerName" type="string" value="Bulmer&apos;s" />
+		</item>
+
+		<item index="1" type="object">
+
+			<element name="Producer" type="string" value="BULMER" />
+
+			<element name="Cider" type="string" value="Traditional" />
+
+			<element name="ABV" type="number" value="5.5" />
+
+			<element name="Style" type="string" value="MC" />
+
+			<element name="Description" type="string" value="Cloudy medium cider" />
+
+			<element name="State" type="string" value="Ready" />
+
+			<element name="ProducerName" type="string" value="Bulmer&apos;s" />
+		</item>
+	</element>
+
+	<element name="time" type="number" value="0.023554086685181" />
+
+</object>
