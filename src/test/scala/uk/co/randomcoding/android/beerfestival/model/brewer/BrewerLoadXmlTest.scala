@@ -20,6 +20,7 @@
 package uk.co.randomcoding.android.beerfestival.model.brewer
 
 import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
+import uk.co.randomcoding.android.beerfestival.model.brewer.TestBrewers._
 import scala.xml.XML
 
 /**
@@ -34,7 +35,7 @@ class BrewerLoadXmlTest extends SimpleTestBase {
 
     When("the Xml is parsed")
     Then("the expected Brewer object is created")
-    fail("Not Implemented Yet")
+    Brewer.fromXml(surround(brewerAdnamsXml)) should be(Seq(brewerAdnams))
   }
 
   test("A Brewer can be successfully created from Xml with one producer element") {
@@ -42,35 +43,40 @@ class BrewerLoadXmlTest extends SimpleTestBase {
 
     When("the Xml is parsed")
     Then("the expected Brewer object is created")
-    fail("Not Implemented Yet")
+    Brewer.fromXml(surround(producerBulmersXml)) should be(producerBulmers)
   }
 
   test("Multiple Brewers can be successfully created from a xml with three Brewer elements") {
     Given("Xml than contains three single brewer elements")
-
+    val xml = surround(brewer4TsXml ++ brewerAbbeydaleXml ++ brewerAdnamsXml)
     When("the Xml is parsed")
     Then("the expected Brewer objects are created")
-    fail("Not Implemented Yet")
+    Brewer.fromXml(xml) should (have size (3) and
+      contain(brewer4Ts) and
+      contain(brewerAbbeydale) and
+      contain(brewerAdnams))
   }
 
   test("Duplicate Brewers are not parsed from the Xml") {
     Given("Xml that contains two identical Brewer elements")
-
+    val xml = surround(brewer4TsXml ++ brewer4TsXml)
     When("the Xml is parsed")
     Then("only the one expected Brewer is generated")
-    fail("Not Implemented Yet")
+    Brewer.fromXml(xml) should be(Seq(brewerAbbeydale))
   }
 
   test("Brewers can be loaded from a Brewers input xml source") {
     Given("Brewers Xml created from an external input (sample file)")
-    val xml = XML.load(getClass.getResourceAsStream("/brewers.xml"))
+    val xml = XML.load(getClass.getResourceAsStream("/breweries.xml"))
 
     When("the Xml is parsed")
     val brewers = Brewer.fromXml(xml)
     Then("it contains the expected number of brewers")
-    //brewers should have size (4)
-    And("at least one of the brewers is correctly loaded")
-    fail("Not Implemented Yet")
+    brewers should have size (133)
+    And("at least three of the brewers is correctly loaded")
+    brewers should (contain(brewer4Ts) and
+      contain(brewerAbbeydale) and
+      contain(brewerAdnams))
   }
 
   test("Brewers can be loaded from a Producers input xml source") {
@@ -80,8 +86,8 @@ class BrewerLoadXmlTest extends SimpleTestBase {
     When("the Xml is parsed")
     val brewers = Brewer.fromXml(xml)
     Then("it contains the expected number of drinks")
-    //brewers should have size (2)
+    brewers should have size (1)
     And("at least one of the Brewers is correctly loaded")
-    fail("Not Implemented Yet")
+    brewers should be(Seq(producerBulmers))
   }
 }
