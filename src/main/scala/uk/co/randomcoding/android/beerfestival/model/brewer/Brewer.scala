@@ -32,7 +32,7 @@ import scala.xml.Node
  *
  * @author RandomCoder
  */
-case class Brewer(name: String, location: String, drinkUids: Set[String])
+case class Brewer(name: String, location: String, description: String = "")
 
 object Brewer {
   def fromXml(brewersXml: Node): Seq[Brewer] = Nil
@@ -58,12 +58,8 @@ object Brewer {
   private[this] def brewerFromJson(brewerJson: Map[String, Any]): Brewer = {
     val name = brewerJson("name").toString
     val location = brewerJson("location").toString
-    val drinkUids = brewerJson("drinkUids") match {
-      case uids: List[_] => uids.map(_.toString).toSet
-      case _ => Set.empty[String]
-    }
 
-    Brewer(name, location, drinkUids)
+    Brewer(name, location)
   }
 
   private[this] def convertBrewers(brewerJsonData: List[_]): List[Brewer] = {

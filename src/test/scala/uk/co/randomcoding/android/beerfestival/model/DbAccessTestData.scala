@@ -55,11 +55,11 @@ trait DbAccessTestData extends ShouldMatchers {
     "Traditional ruby coloured ale of distinct character.  Lightly hopped with English Fuggles, finished with the distinct aroma of Liberty hops and a toffee aftertaste.",
     4.8, "ABC", List("Brown", "Strong"))
 
-  val wyeValley = Brewer("Wye Valley", "Herefordshire", Set("10001"))
+  val wyeValley = Brewer("Wye Valley", "Herefordshire")
 
-  val wylam = Brewer("Wylam", "Place 1", Set("10002"))
+  val wylam = Brewer("Wylam", "Place 1")
 
-  val abc = Brewer("ABC", "Place 2", Set("10003", "10009"))
+  val abc = Brewer("ABC", "Place 2")
 
   implicit def stringToClassInputStream(in: String): InputStream = {
     val stream = getClass.getResourceAsStream(in)
