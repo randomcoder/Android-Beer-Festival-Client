@@ -21,6 +21,8 @@ package uk.co.randomcoding.android.beerfestival.model.festival
 
 import scala.util.parsing.json.JSON
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
+import uk.co.randomcoding.android.beerfestival.util.XmlHelpers._
+import scala.xml.{ Node, NodeSeq }
 
 /**
  * Brief description of Festival
@@ -28,11 +30,32 @@ import uk.co.randomcoding.android.beerfestival.util.Convertors._
  * @author RandomCoder
  *
  */
-case class Festival(festivalName: String, availableDrinks: Seq[FestivalDrinkData])
-
-case class FestivalDrinkData(drinkUid: String, price: Double, status: String)
+case class Festival(festivalId: String, festivalName: String, festivalTitle: String, description: String = "")
 
 object Festival {
+
+  def fromXml(xml: Node): Seq[Festival] = {
+    val nodes = festivalNodes(xml)
+    nodes.map(festivalFromNode).distinct
+  }
+
+  def festivalNodes(xml: Node): NodeSeq = {
+    val elementNodes = (xml \\ "element")
+    elementNodes.filter(node => {
+      val nodeTextAttr = (node \ "@name").text
+      nodeTextAttr == "result"
+    })
+  }
+
+  def festivalFromNode(node: Node): Festival = {
+    val id = elementValue(node, "Id")
+    val name = elementValue(node, "Name")
+    val title = elementValue(node, "Title")
+    val description = elementValue(node, "Description")
+
+    Festival(id, name, title, description)
+  }
+
   def fromJson(jsonData: String): Option[Festival] = JSON.parseFull(jsonData) match {
     case Some(data) => data match {
       case festivalData: Map[_, _] => Some(festivalFromJson(festivalData))
@@ -44,22 +67,6 @@ object Festival {
   private[this] def festivalFromJson(festivalJson: Map[String, _]): Festival = {
     val festivalName = festivalJson("festivalName").toString
 
-    val drinkData = festivalJson("availableDrinks") match {
-      case drinks: List[_] => drinks.map(_ match {
-        case drink: Map[_, _] => Some(drinkDataFromJson(drink))
-        case _ => None
-      })
-      case _ => Nil
-    }
-
-    Festival(festivalName, drinkData)
-  }
-
-  private[this] def drinkDataFromJson(drinkData: Map[String, _]): FestivalDrinkData = {
-    val drinkUid = drinkData("drinkUid").toString
-    val price = drinkData("price").toString.toDouble
-    val status = drinkData("status").toString
-
-    FestivalDrinkData(drinkUid, price, status)
+    Festival("", festivalName, "")
   }
 }

@@ -20,32 +20,22 @@
 package uk.co.randomcoding.android.beerfestival.model.festival
 
 import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
+import scala.xml.XML
 
 /**
- * Brief description of FestivalJsonTest
+ * Brief description of FestivalXmlLoadTest
  *
  * @author RandomCoder
  *
  */
-class FestivalJsonTest extends SimpleTestBase {
-  test("Festival Data can be loaded from JSON") {
-    Given("JSON that describes a festival with two drinks")
-    val json = """{
-	    | "festivalName": "A Festival",
-	    | "availableDrinks": [ 
-	    |  { "drinkUid": "10001", "price": 2.1, "status": "Plenty" },
-	    |  { "drinkUid": "10002", "price": 2.3, "status": "Plenty" }
-	    | ] 
-	    |}""".stripMargin
+class FestivalXmlLoadTest extends SimpleTestBase {
+  test("Festival Data can be loaded from Xml") {
+    Given("Xml that describes a festival with two drinks")
+    val xml = XML.load(getClass.getResourceAsStream("/festivalinfo.xml"))
 
-    When("the JSON is parsed")
-    val festival = Festival.fromJson(json).get
-
-    Then("The festival has the correct name")
-    festival.festivalName should be("A Festival")
-    And("it has the correct drink data")
-    /*festival.availableDrinks should (have size (2) and
-      contain(FestivalDrinkData("10001", 2.1, "Plenty")) and
-      contain(FestivalDrinkData("10002", 2.3, "Plenty")))*/
+    When("the Xml is parsed")
+    Then("The correct festivals are loaded")
+    Festival.fromXml(xml) should be(Seq(Festival("WOR/2013", "Worcester", "Worcester Beer, Cider and Perry Festival - 2013",
+      "Summer festival in a large marquee on the racecourse in the centre of historic Worcester City.")))
   }
 }
