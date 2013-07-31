@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<object>
+  <element name="outcome" type="string" value="success" />
+  <element name="result" type="array">
+    <item index="32" type="object">
+      <element name="Festival" type="string" value="WOR/2013" />
+      <element name="Id" type="string" value="ELLAND" />
+      <element name="Name" type="string" value="Elland" />
+      <element name="Location" type="string" value="Elland" />
+      <element name="County" type="string" value="W. Yorkshire" />
+      <element name="Postcode" type="string" value="HX5 9AE" />
+      <element name="Description" type="string" />
+    </item>
+    <item index="115" type="object">
+      <element name="Festival" type="string" value="WOR/2013" />
+      <element name="Id" type="string" value="STROUD" />
+      <element name="Name" type="string" value="Stroud" />
+      <element name="Location" type="string" value="Stroud" />
+      <element name="County" type="string" value="Gloucestershire" />
+      <element name="Postcode" type="string" value="GL5 2BU" />
+      <element name="Description" type="string"
+        value="The brewery commenced brewing in 2006 on a five-barrel plant. A new 20-barrel plant was installed in 2011 allowing the brewery to develop its range of organic bottled beers. Stroud supports the local economy and does not sell any beer through supermarkets, delivering to 40-50 pubs, independent retailers and direct to the public. Seasonal and bottle-conditioned beers are also available." />
+    </item>
+    <item index="60" type="object">
+      <element name="Festival" type="string" value="WOR/2013" />
+      <element name="Id" type="string" value="LONGMAN" />
+      <element name="Name" type="string" value="Long Man Brewery" />
+      <element name="Location" type="string" value="Litlington" />
+      <element name="County" type="string" value="E. Sussex" />
+      <element name="Postcode" type="string" value="BN26 5RA" />
+      <element name="Description" type="string"
+        value="Long Man began brewing in 2012 using a 20-barrel plant by Johnson Brewery Design Ltd. Hops and grain are sourced locally with a view to using its own barley currently being grown on the farm as well as a traditional strain of Sussex yeast." />
+    </item>
+  </element>
+</object>

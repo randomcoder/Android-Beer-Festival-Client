@@ -23,9 +23,12 @@ import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 import uk.co.randomcoding.android.beerfestival.model.DbAccessTestData
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
 import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
+import scala.xml.XML
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
+import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 
 /**
- * Test for the loading of the Festival Model from Json.
+ * Test for the loading of the Festival Model.
  *
  * The model should be able to load the drink, brewer and festival data
  *
@@ -33,56 +36,30 @@ import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
  *
  */
 class FestivalModelTest extends SimpleTestBase with DbAccessTestData {
-  val smallFestivalJson = """{
-    | "festivalName": "A Festival",
-    | "availableDrinks": [{"drinkUid": "10001", "price": 2.2, "status": "Plenty"},
-    |  {"drinkUid": "10003", "price": 2.3, "status": "Not Yet Ready"},
-    |  {"drinkUid": "10009", "price": 2.1, "status": "Plenty"}]
-    |}""".stripMargin
 
-  test("A Festival Model is correctly initialised with the festival object") {
-    Given("valid data that describes a festival")
-    val festivalData = smallFestivalJson
-    When("the festival model is initialised and retrieved")
-    val model = testFestival("A Festival", smallFestivalJson)
-    Then("the festival within the model has the expected name")
-    model.festival should be(Festival("A Festival",
-      Seq(FestivalDrinkData("10001", 2.2, "Plenty"),
-        FestivalDrinkData("10003", 2.3, "Not Yet Ready"),
-        FestivalDrinkData("10009", 2.1, "Plenty"))))
-  }
+  val festivalXml = XML.load(getClass.getResourceAsStream("/festivalinfo.xml"))
+  val beersXml = XML.load(getClass.getResourceAsStream("/beers_small.xml"))
+  val breweriesXml = XML.load(getClass.getResourceAsStream("/breweries_small.xml"))
+  val cidersXml = XML.load(getClass.getResourceAsStream("/ciders.xml"))
+  val producersXml = XML.load(getClass.getResourceAsStream("/producers.xml"))
 
-  test("Festival Model can generate a list of all drinks at the festival") {
-    Given("an initialised CamraDb")
-    initialiseDbAccess(smallDrinkDbFileLoc, smallBrewerDbFileLoc)
-    InMemoryCamraDbAccess.drinks should have size (4)
-    InMemoryCamraDbAccess.brewers should have size (3)
-    And("a Festival Model")
-    val model = testFestival("A Festival", smallFestivalJson)
+  test("A Festival Model can be created from Drink, Brewer and Festival Data") {
+    Given("drinks from combined beer and cider Xml sources")
+    val drinks = Drink.fromXml(beersXml) ++ Drink.fromXml(cidersXml)
+    And("brewers from combined Brewery and Producer Xml sources")
+    val brewers = Brewer.fromXml(breweriesXml) ++ Brewer.fromXml(producersXml)
+    And("fesitval data from a festival Xml source")
+    val festival = Festival.fromXml(festivalXml)(0)
 
-    When("the festival model is queried for all the drinks at the festival")
-    Then("it returns all the expected drinks")
-    model.drinksAtFestival should (have size (3) and
-      contain(dorothyGoodbodies) and
-      contain(astonDark) and
-      contain(rotundaRed))
-  }
+    When("the Festival Model is created")
+    val festivalModel = {
+      FestivalModel.initialise(festival, drinks, brewers)
+      FestivalModel(festival.festivalId).get
+    }
 
-  test("Festival Model can generate a list of all brewers at the festival") {
-    Given("an initialised CamraDb")
-    initialiseDbAccess(smallDrinkDbFileLoc, smallBrewerDbFileLoc)
-    And("a Festival Model")
-    val model = testFestival("A Festival", smallFestivalJson)
-
-    When("the festival model is queried for all the brewers at the festival")
-    Then("it returns all the expected brewers")
-    model.brewersAtFestival should (have size (2) and
-      contain(wyeValley) and
-      contain(abc))
-  }
-
-  def testFestival(festivalName: String, json: String) = {
-    FestivalModel.initialiseFromJson(json)
-    FestivalModel(festivalName).get
+    Then("it contains the expected drink, brewer and festival data")
+    festivalModel.festival should be(festival)
+    festivalModel.drinks should be(drinks)
+    festivalModel.brewers should be(brewers)
   }
 }

@@ -21,6 +21,8 @@ package uk.co.randomcoding.android.beerfestival.model.festival
 
 import uk.co.randomcoding.android.beerfestival.model.CamraDbAccess
 import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
+import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 
 /**
  * A Model of the available drinks and brewers present at a particular festival
@@ -28,16 +30,7 @@ import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
  * @author RandomCoder
  *
  */
-class FestivalModel private (val festival: Festival) {
-  lazy val drinksAtFestival = {
-    InMemoryCamraDbAccess.drinks.filter(drink => festival.availableDrinks.exists(_.drinkUid == drink.uid))
-  }
-
-  lazy val brewersAtFestival = {
-    val brewerNames = drinksAtFestival.map(_.brewer)
-    InMemoryCamraDbAccess.brewers.filter(brewer => brewerNames.contains(brewer.name))
-  }
-}
+case class FestivalModel private (val festival: Festival, val drinks: Seq[Drink], val brewers: Seq[Brewer])
 
 /**
  * Provides access to festival models, using the festival name as key
@@ -53,15 +46,12 @@ object FestivalModel {
    *
    * @param festivalJson The JSON string that contains the festival's data
    */
-  def initialiseFromJson(festivalJson: String) {
-    Festival.fromJson(festivalJson) match {
-      case Some(festival) => festivalModels = festivalModels + (festival.festivalName -> new FestivalModel(festival))
-      case _ => // do nothing
-    }
+  def initialise(festival: Festival, drinks: Seq[Drink], brewers: Seq[Brewer]) {
+    festivalModels += (festival.festivalId -> FestivalModel(festival, drinks, brewers))
   }
 
   /**
    * Get a [[uk.co.randomcoding.android.beerfestival.model.festival.FestivalModel]] by its name
    */
-  def apply(festivalName: String): Option[FestivalModel] = festivalModels.get(festivalName)
+  def apply(festivalId: String): Option[FestivalModel] = festivalModels.get(festivalId)
 }
