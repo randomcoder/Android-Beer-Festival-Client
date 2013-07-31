@@ -33,7 +33,7 @@ object TestBrewers {
   def surround(xml: NodeSeq): Elem = <object>
                                        <element name="outcome" type="string" value="success"/>
                                        <element name="result" type="array">
-                                         ++ xml
+                                         { xml }
                                        </element>
                                      </object>
 
@@ -71,7 +71,7 @@ object TestBrewers {
                           <element name="Description" type="string" value="The company was founded by George and Ernest Adnams in 1872, who were joined by the Loftus family in 1902; a member of each family is still a director of the company. Real ale is available in all 70 pubs and there is national distribution. All beers are now from a new energy-efficient 300-barrel brewery, built within the confines of the present site. Seasonal beers: see website. Bottle-conditioned beers are also available."/>
                         </item>
 
-  val brewerAdnams = Brewer("Adnams", "Southwold, uffolk, IP18 6JW", "The company was founded by George and Ernest Adnams in 1872, who were joined by the Loftus family in 1902; a member of each family is still a director of the company. Real ale is available in all 70 pubs and there is national distribution. All beers are now from a new energy-efficient 300-barrel brewery, built within the confines of the present site. Seasonal beers: see website. Bottle-conditioned beers are also available.")
+  val brewerAdnams = Brewer("Adnams", "Southwold, Suffolk, IP18 6JW", "The company was founded by George and Ernest Adnams in 1872, who were joined by the Loftus family in 1902; a member of each family is still a director of the company. Real ale is available in all 70 pubs and there is national distribution. All beers are now from a new energy-efficient 300-barrel brewery, built within the confines of the present site. Seasonal beers: see website. Bottle-conditioned beers are also available.")
 
   val producerBulmersXml = <item index="0" type="object">
                              <element name="Festival" type="string" value="WOR/2013"/>
