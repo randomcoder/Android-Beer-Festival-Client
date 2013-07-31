@@ -67,7 +67,7 @@ object Drink {
   /**
    * Load drink data from JUG Xml
    */
-  def fromXml(xml: Elem): Seq[Drink] = drinkNodes(xml).map(drinkFromXml)
+  def fromXml(xml: Elem): Seq[Drink] = drinkNodes(xml).map(drinkFromXml).distinct
 
   private[this] def drinkNodes(xml: Elem): NodeSeq = (xml \\ "element" \ "item").filter(isDrinkNode)
 
@@ -81,16 +81,27 @@ object Drink {
     val drinkName = elementValue(drinkNode, drinkNameElemNames: _*)
     val drinkDescription = elementValue(drinkNode, "Description")
     val abv = elementValue(drinkNode, "ABV").toDouble
-    val brewer = elementValue(drinkNode, "BreweryName")
+
     val drinkType = (drinkNode \ "element").find(node => drinkNameElemNames.contains((node \ "@name").text)) match {
       case Some(elem) => (elem \ "@name").text
       case _ => "" // Should cause a match error
     }
-    val features = {
-      val isUnusual = elementValue(drinkNode, "Unusual").toLowerCase() == "yes"
-      val style = elementValue(drinkNode, "Style")
 
-      List(style) ++ (if (isUnusual) Seq("Unusual") else Nil)
+    val (brewer, features) = drinkType.toLowerCase match {
+      case "beer" => {
+        val b = elementValue(drinkNode, "BreweryName")
+        val f = {
+          val style = List(elementValue(drinkNode, "Style"))
+          elementValue(drinkNode, "Unusual").toLowerCase() match {
+            case "yes" => "Unusual" :: style
+            case _ => style
+          }
+        }
+        (b, f)
+      }
+      case _ => {
+        (elementValue(drinkNode, "ProducerName"), List(elementValue(drinkNode, "Style")))
+      }
     }
 
     Drink(drinkName, drinkType, drinkName, drinkDescription, abv, brewer, features)

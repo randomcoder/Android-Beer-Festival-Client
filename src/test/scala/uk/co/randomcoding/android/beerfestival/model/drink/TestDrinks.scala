@@ -30,6 +30,7 @@ import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType._
  */
 object TestDrinks {
 
+  // JSON Test Data
   val tangerineDuck = Drink("10001", BEER, "Tangerine Duck",
     "Copper coloured beer with a hint of tangerine from the late addition of crystal hops. Named after the Atomic Boys famous duck Puskas at Blackpool FC in the 50s.",
     4.4, "Fuzzy Duck", List("Brown", "Best Bitter"))
@@ -100,4 +101,122 @@ object TestDrinks {
     | "features": ["Stout / Porter", "Speciality"]
     |}""".stripMargin
 
+  // Xml Test Data
+  val porter1872Xml = <object>
+                        <element name="outcome" type="string" value="success"/>
+                        <element name="result" type="array">
+                          <item index="0" type="object">
+                            <element name="Brewery" type="string" value="ELLAND"/>
+                            <element name="Beer" type="string" value="1872 Porter"/>
+                            <element name="ABV" type="number" value="6.5"/>
+                            <element name="Style" type="string" value="STOU"/>
+                            <element name="Description" type="string" value="Champion Winter Beer of Britain 2013. Rich, complex and dark porter, with an old port nose and coffee and bitter chocolate flavours on the palate. A 2013 Suggestabeer from Daryl Jenkins."/>
+                            <element name="State" type="string" value="Waiting"/>
+                            <element name="BreweryName" type="string" value="Elland"/>
+                            <element name="Unusual" type="string" value="no"/>
+                          </item>
+                        </element>
+                      </object>
+
+  val porter1872 = Drink("1872 Porter", DrinkType.BEER, "1872 Porter",
+    "Champion Winter Beer of Britain 2013. Rich, complex and dark porter, with an old port nose and coffee and bitter chocolate flavours on the palate. A 2013 Suggestabeer from Daryl Jenkins.",
+    6.5, "Elland", List("STOU"))
+
+  val deadDogXml = <object>
+                     <element name="outcome" type="string" value="success"/>
+                     <element name="result" type="array">
+                       <item index="0" type="object">
+                         <element name="Producer" type="string" value="BULMER"/>
+                         <element name="Cider" type="string" value="Dead Dog"/>
+                         <element name="ABV" type="number" value="7"/>
+                         <element name="Style" type="string" value="DP"/>
+                         <element name="Description" type="string" value="Paint stripper"/>
+                         <element name="State" type="string" value="Ready"/>
+                         <element name="ProducerName" type="string" value="Bulmer&apos;s"/>
+                       </item>
+                     </element>
+                   </object>
+
+  val deadDog = Drink("Dead Dog", DrinkType.CIDER, "Dead Dog", "Paint stripper", 7, "Bulmer's", List("DP"))
+
+  val alederflowerXml = <object>
+                          <element name="outcome" type="string" value="success"/>
+                          <element name="result" type="array">
+                            <item index="1" type="object">
+                              <element name="Brewery" type="string" value="STROUD"/>
+                              <element name="Beer" type="string" value="Alederflower"/>
+                              <element name="ABV" type="number" value="4.2"/>
+                              <element name="Style" type="string" value="SPEC"/>
+                              <element name="Description" type="string" value="Creamy pale ale infused with elderflowers picked on a local organic farm."/>
+                              <element name="State" type="string" value="Waiting"/>
+                              <element name="BreweryName" type="string" value="Stroud"/>
+                              <element name="Unusual" type="string" value="yes"/>
+                            </item>
+                          </element>
+                        </object>
+
+  val alederflower = Drink("Alederflower", DrinkType.BEER, "Alederflower",
+    "Creamy pale ale infused with elderflowers picked on a local organic farm.",
+    4.2, "Stroud", List("Unusual", "SPEC"))
+
+  val threeDrinksXml = <object>
+                         <element name="outcome" type="string" value="success"/>
+                         <element name="result" type="array">
+                           <item index="0" type="object">
+                             <element name="Brewery" type="string" value="ELLAND"/>
+                             <element name="Beer" type="string" value="1872 Porter"/>
+                             <element name="ABV" type="number" value="6.5"/>
+                             <element name="Style" type="string" value="STOU"/>
+                             <element name="Description" type="string" value="Champion Winter Beer of Britain 2013. Rich, complex and dark porter, with an old port nose and coffee and bitter chocolate flavours on the palate. A 2013 Suggestabeer from Daryl Jenkins."/>
+                             <element name="State" type="string" value="Waiting"/>
+                             <element name="BreweryName" type="string" value="Elland"/>
+                             <element name="Unusual" type="string" value="no"/>
+                           </item>
+                           <item index="1" type="object">
+                             <element name="Brewery" type="string" value="STROUD"/>
+                             <element name="Beer" type="string" value="Alederflower"/>
+                             <element name="ABV" type="number" value="4.2"/>
+                             <element name="Style" type="string" value="SPEC"/>
+                             <element name="Description" type="string" value="Creamy pale ale infused with elderflowers picked on a local organic farm."/>
+                             <element name="State" type="string" value="Waiting"/>
+                             <element name="BreweryName" type="string" value="Stroud"/>
+                             <element name="Unusual" type="string" value="yes"/>
+                           </item>
+                           <item index="2" type="object">
+                             <element name="Producer" type="string" value="BULMER"/>
+                             <element name="Cider" type="string" value="Dead Dog"/>
+                             <element name="ABV" type="number" value="7"/>
+                             <element name="Style" type="string" value="DP"/>
+                             <element name="Description" type="string" value="Paint stripper"/>
+                             <element name="State" type="string" value="Ready"/>
+                             <element name="ProducerName" type="string" value="Bulmer&apos;s"/>
+                           </item>
+                         </element>
+                       </object>
+
+  val duplicateAlederflowerXml = <object>
+                                   <element name="outcome" type="string" value="success"/>
+                                   <element name="result" type="array">
+                                     <item index="1" type="object">
+                                       <element name="Brewery" type="string" value="STROUD"/>
+                                       <element name="Beer" type="string" value="Alederflower"/>
+                                       <element name="ABV" type="number" value="4.2"/>
+                                       <element name="Style" type="string" value="SPEC"/>
+                                       <element name="Description" type="string" value="Creamy pale ale infused with elderflowers picked on a local organic farm."/>
+                                       <element name="State" type="string" value="Waiting"/>
+                                       <element name="BreweryName" type="string" value="Stroud"/>
+                                       <element name="Unusual" type="string" value="yes"/>
+                                     </item>
+                                     <item index="1" type="object">
+                                       <element name="Brewery" type="string" value="STROUD"/>
+                                       <element name="Beer" type="string" value="Alederflower"/>
+                                       <element name="ABV" type="number" value="4.2"/>
+                                       <element name="Style" type="string" value="SPEC"/>
+                                       <element name="Description" type="string" value="Creamy pale ale infused with elderflowers picked on a local organic farm."/>
+                                       <element name="State" type="string" value="Waiting"/>
+                                       <element name="BreweryName" type="string" value="Stroud"/>
+                                       <element name="Unusual" type="string" value="yes"/>
+                                     </item>
+                                   </element>
+                                 </object>
 }
