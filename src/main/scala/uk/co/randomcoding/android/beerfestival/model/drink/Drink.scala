@@ -20,11 +20,10 @@
 package uk.co.randomcoding.android.beerfestival.model.drink
 
 import scala.util.parsing.json.JSON
+import scala.xml.{ Elem, Node, NodeSeq }
+
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
-import scala.xml.Elem
-import scala.xml.NodeSeq
-import scala.xml.Node
-import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
+import uk.co.randomcoding.android.beerfestival.util.XmlHelpers._
 
 /**
  * Describes a drink
@@ -65,20 +64,17 @@ object Drink {
     case failedParse => Nil
   }
 
-  def fromXml(xml: Elem): Seq[Drink] = {
-    val nodes = drinkNodes(xml)
-    nodes.map(drinkFromXml)
-  }
+  /**
+   * Load drink data from JUG Xml
+   */
+  def fromXml(xml: Elem): Seq[Drink] = drinkNodes(xml).map(drinkFromXml)
 
   private[this] def drinkNodes(xml: Elem): NodeSeq = (xml \\ "element" \ "item").filter(isDrinkNode)
 
   private[this] val drinkNameElemNames = Seq("Beer", "Cider", "Perry")
 
   private[this] def isDrinkNode(node: Node): Boolean = {
-    (node \\ "element").exists(elem => {
-      val elemName = (elem \ "@name").text
-      drinkNameElemNames.contains(elemName)
-    })
+    (node \\ "element").exists(elem => drinkNameElemNames.contains((elem \ "@name").text))
   }
 
   private[this] def drinkFromXml(drinkNode: Node): Drink = {
@@ -98,13 +94,6 @@ object Drink {
     }
 
     Drink(drinkName, drinkType, drinkName, drinkDescription, abv, brewer, features)
-  }
-
-  def elementValue(node: Node, elementNameAttrValue: String*) = {
-    (node \ "element").find(node => elementNameAttrValue.contains((node \ "@name").text)) match {
-      case Some(elem) => (elem \ "@value").text
-      case _ => ""
-    }
   }
 
   private[this] def parseDrinks(drinksJsonData: List[_]): Seq[Drink] = {
