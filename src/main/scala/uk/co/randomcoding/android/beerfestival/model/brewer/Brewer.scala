@@ -20,8 +20,9 @@
 package uk.co.randomcoding.android.beerfestival.model.brewer
 
 import scala.util.parsing.json.JSON
-
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
+import uk.co.randomcoding.android.beerfestival.util.XmlHelpers._
+import scala.xml.Node
 
 /**
  * @constructor Create a new instance of a Brewer
@@ -34,7 +35,7 @@ import uk.co.randomcoding.android.beerfestival.util.Convertors._
 case class Brewer(name: String, location: String, drinkUids: Set[String])
 
 object Brewer {
-  private[this] val TAG = "Brewer Parser"
+  def fromXml(brewersXml: Node): Seq[Brewer] = Nil
 
   /**
    * Read brewers from a JSON input string.

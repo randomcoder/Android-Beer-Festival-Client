@@ -1,0 +1,2401 @@
+<?xml version="1.0"?>
+<object>
+
+	<element name="outcome" type="string" value="success" />
+
+	<element name="result" type="array">
+
+		<item index="0" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="4TS" />
+
+			<element name="Name" type="string" value="4Ts" />
+
+			<element name="Location" type="string" value="Runcorn" />
+
+			<element name="County" type="string" value="Cheshire" />
+
+			<element name="Postcode" type="string" value="WA7 4UA" />
+
+			<element name="Description" type="string"
+				value="4Ts (The Tavern Tasty Tipples) began brewing in 2010. The 0.5-barrel plant is located in a private garage and a further five-barrel plant is also used at a location in Runcorn. Beer are usually available in the Tavern, Warrington." />
+		</item>
+
+		<item index="1" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ABBEYDAL" />
+
+			<element name="Name" type="string" value="Abbeydale" />
+
+			<element name="Location" type="string" value="Sheffield" />
+
+			<element name="County" type="string" value="S. Yorkshire" />
+
+			<element name="Postcode" type="string" value="S8 0YX" />
+
+			<element name="Description" type="string"
+				value="Since starting in 1996, Abbeydale Brewery has grown steadily; it now produces upwards of 130 barrels a week, and recent investment has enabled further growth. The regular range is complemented by ever-changing seasonals - see website." />
+		</item>
+
+		<item index="2" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ADNAMS" />
+
+			<element name="Name" type="string" value="Adnams" />
+
+			<element name="Location" type="string" value="Southwold" />
+
+			<element name="County" type="string" value="Suffolk" />
+
+			<element name="Postcode" type="string" value="IP18 6JW" />
+
+			<element name="Description" type="string"
+				value="The company was founded by George and Ernest Adnams in 1872, who were joined by the Loftus family in 1902; a member of each family is still a director of the company. Real ale is available in all 70 pubs and there is national distribution. All beers are now from a new energy-efficient 300-barrel brewery, built within the confines of the present site. Seasonal beers: see website. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="3" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SCILLY" />
+
+			<element name="Name" type="string" value="Ales of Scilly" />
+
+			<element name="Location" type="string" value="Isles of Scilly" />
+
+			<element name="County" type="string" value="Iles of Scilley" />
+
+			<element name="Postcode" type="string" value="TR21 0JY" />
+
+			<element name="Description" type="string"
+				value="Opened in 2001 as a two-barrel plant and expanded in 2004 to five barrels, Ales of Scilly is the most south-westerly brewery in Britain. Nine local pubs are supplied, with regular exports to mainland pubs and beer festivals. The brewery moved to new premises in 2007. Seasonal beers are available." />
+		</item>
+
+		<item index="4" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="AMBRIDGE" />
+
+			<element name="Name" type="string" value="Ambridge" />
+
+			<element name="Location" type="string" value="Inkberrow" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="5" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BREWSTAR" />
+
+			<element name="Name" type="string" value="Anarchy" />
+
+			<element name="Location" type="string" value="Stannington" />
+
+			<element name="County" type="string" value="Northumberland" />
+
+			<element name="Postcode" type="string" value="NE61 6AW" />
+
+			<element name="Description" type="string"
+				value="Brew Star began brewing in 2012 using a 10-barrel plant. An on-site bar/lounge sells all beers and is available for small functions. Bottle-conditioned beers are planned." />
+		</item>
+
+		<item index="6" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ANDWELL" />
+
+			<element name="Name" type="string" value="Andwell" />
+
+			<element name="Location" type="string" value="Andwell" />
+
+			<element name="County" type="string" value="Hampshire" />
+
+			<element name="Postcode" type="string" value="RG27 9PA" />
+
+			<element name="Description" type="string"
+				value="Brewing commenced in 2008 on a 10-barrel plant. The brewery relocated and expanded in 2011 to an idyllic riverside location with a new bespoke 20-barrel plant. Beer is distributed within a 40-mile radius of the brewery. More than 200 outlets are supplied. Seasonal beers are also available." />
+		</item>
+
+		<item index="7" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ANGELALE" />
+
+			<element name="Name" type="string" value="Angel Ales" />
+
+			<element name="Location" type="string" value="Halesowen" />
+
+			<element name="County" type="string" value="West Midlands" />
+
+			<element name="Postcode" type="string" value="B63 2TA" />
+
+			<element name="Description" type="string"
+				value="Angel Ales is the brainchild of Nick Pritchard and Andy Kirk. The brewery building has been a Chapel of Rest, a coffin makers&apos; workshop and a pattern makers before becoming a brewhouse. All beers are produced using organic materials and there are plans to use spring water below the brewery. Commercial brewing began in 2011. Occasional ales are available: see website." />
+		</item>
+
+		<item index="8" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="AXHOLMEB" />
+
+			<element name="Name" type="string" value="Axholme" />
+
+			<element name="Location" type="string" value="Luddington" />
+
+			<element name="County" type="string" value="Lincolnshire" />
+
+			<element name="Postcode" type="string" value="DN17 2AU" />
+
+			<element name="Description" type="string"
+				value="Former Thorne brewer Mike Richards commissioned Scunthorpe&apos;s first ever microbrewery in 2012 using a 2.5-barrel plant from Brupaks. Seasonal and one-off brews are also available." />
+		</item>
+
+		<item index="9" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BANDT" />
+
+			<element name="Name" type="string" value="B&amp;T" />
+
+			<element name="Location" type="string" value="Shefford" />
+
+			<element name="County" type="string" value="Bedfordshire" />
+
+			<element name="Postcode" type="string" value="SG17 5DZ" />
+
+			<element name="Description" type="string"
+				value="Banks &amp; Taylor - now just B&amp;T - was founded in 1982. It produces an extensive range of beers, including monthly special brews together with occasional beers: see website for details. There are six tied houses, all operated with guest beers as well as B&amp;T beers." />
+		</item>
+
+		<item index="10" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BACKYARD" />
+
+			<element name="Name" type="string" value="Backyard" />
+
+			<element name="Location" type="string" value="Walsall" />
+
+			<element name="County" type="string" value="West Midlands" />
+
+			<element name="Postcode" type="string" value="WS8 6JZ" />
+
+			<element name="Description" type="string"
+				value="Backyard began brewing in 2008 on a five-barrel plant, expanding to 12 barrels in 2012. Four core beers are produced plus seasonal and monthly specials - see website for further details. Around 100 outlets are supplied direct." />
+		</item>
+
+		<item index="11" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BATH" />
+
+			<element name="Name" type="string" value="Bath Ales" />
+
+			<element name="Location" type="string" value="Warmley" />
+
+			<element name="County" type="string" value="Gloucestershire" />
+
+			<element name="Postcode" type="string" value="BS30 8XJ" />
+
+			<element name="Description" type="string"
+				value="Bath Ales started brewing in 1995. Around 400 outlets are supplied direct. It owns its own bottling plant and also bottles for more than 25 other breweries. 10 pubs are owned, all serving cask ale. Seasonal beers: see website." />
+		</item>
+
+		<item index="12" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BINGHAMS" />
+
+			<element name="Name" type="string" value="Bingham&apos;s" />
+
+			<element name="Location" type="string" value="Ruscombe" />
+
+			<element name="County" type="string" value="Berkshire" />
+
+			<element name="Postcode" type="string" value="RG10 9NJ" />
+
+			<element name="Description" type="string"
+				value="Binghams started brewing in 2010 using a 10-barrel plant and produces 40 firkins in each batch." />
+		</item>
+
+		<item index="13" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BLACKPAW" />
+
+			<element name="Name" type="string" value="Black Paw" />
+
+			<element name="Location" type="string" value="Bishop Auckland" />
+
+			<element name="County" type="string" value="Durham" />
+
+			<element name="Postcode" type="string" value="DL14 7AX" />
+
+			<element name="Description" type="string"
+				value="Black Paw began brewing in 2011 using a 12-barrel plant. Pubs are supplied across the North East. Seasonal beers are available." />
+		</item>
+
+		<item index="14" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BOXSTEAM" />
+
+			<element name="Name" type="string" value="Box Steam" />
+
+			<element name="Location" type="string" value="Holt" />
+
+			<element name="County" type="string" value="Wiltshire" />
+
+			<element name="Postcode" type="string" value="BA14 6RU" />
+
+			<element name="Description" type="string"
+				value="The brewery was founded in 2004 and boasts a Fulton steam-fired copper, hence the name. Under present ownership since 2006, the brewery has undergone a series of expansion work to increase production capacity and moved to larger premises in 2011. Two pubs are owned and more than 100 outlets supplied. Seasonal beers are brewed." />
+		</item>
+
+		<item index="15" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BRADFIEL" />
+
+			<element name="Name" type="string" value="Bradfield" />
+
+			<element name="Location" type="string" value="Sheffield" />
+
+			<element name="County" type="string" value="S. Yorkshire" />
+
+			<element name="Postcode" type="string" value="S6 6LG" />
+
+			<element name="Description" type="string"
+				value="Bradfield Brewery, established in 2005,  is a family-run business, based on a working farm in the Peak District. Only the finest ingredients are used, along with pure Milstone Grit spring water from a borehole on the farm. In 2009 the brewery bought its first brewery tap, the Nags Head, Loxley. Seasonal beer: see website. Bottle-conditioned beers are also available along with five-litre mini kegs." />
+		</item>
+
+		<item index="16" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="BREWSTER" />
+
+			<element name="Name" type="string" value="Brewsters" />
+
+			<element name="Location" type="string" value="Grantham" />
+
+			<element name="County" type="string" value="Lincolnshire" />
+
+			<element name="Postcode" type="string" value="NG31 7XU" />
+
+			<element name="Description" type="string"
+				value="Brewster is the old English term for a female brewer and Sara Barton is a modern example. Brewster&amp;apos;s Brewery was set up in the heart of the Vale of Belvoir in 1998 and moved in 2006 to its current premises. Beer is supplied to around 250 outlets throughout central England and further afield via wholesalers. Seasonal beers: see website." />
+		</item>
+
+		<item index="17" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="CAIRNGRM" />
+
+			<element name="Name" type="string" value="Cairngorm" />
+
+			<element name="Location" type="string" value="Aviemore" />
+
+			<element name="County" type="string" value="Highlands" />
+
+			<element name="Postcode" type="string" value="PH22 1ST" />
+
+			<element name="Description" type="string"
+				value="The brewery produces seven regular cask beers along with a rolling programme of seasonal ales. Expansion has taken the weekly capacity to 140 barrels. The free trade is supplied as far as the central belt with national delivery via wholesalers. Seasonal beers: see website." />
+		</item>
+
+		<item index="18" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="CANNONRY" />
+
+			<element name="Name" type="string" value="Cannon Royall" />
+
+			<element name="Location" type="string" value="Uphampton" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" value="WR9 0JW" />
+
+			<element name="Description" type="string"
+				value="Cannon Royalls first brew was in 1993 in a converted cider house behind the Fruiterers Arms. It has increased capacity from five barrels to more than 16 a week. The brewery supplies a number of outlets in Worcestershire and the West Midlands. Seasonal beers are regularly produced. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="19" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="CASTLERK" />
+
+			<element name="Name" type="string" value="Castle Rock" />
+
+			<element name="Location" type="string" value="Nottingham" />
+
+			<element name="County" type="string" value="Nottinghamshire" />
+
+			<element name="Postcode" type="string" value="NG2 1NB" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="20" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="CELTEXP" />
+
+			<element name="Name" type="string" value="Celt Experience" />
+
+			<element name="Location" type="string" value="Caerphilly" />
+
+			<element name="County" type="string" value="Glamorgan" />
+
+			<element name="Postcode" type="string" value="CF83 3HU" />
+
+			<element name="Description" type="string"
+				value="Celt Experience was established in 2007 by Tom Newman. In 2012 selected beers from its sister brewery, Newmans, were integrated to form one brand. Beers are distributed widely. A small cellar brewery (Y Bragdy Fach) is also situated at its tied house, the Wheatsheaf in Llantrisant." />
+		</item>
+
+		<item index="21" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="COACHHSE" />
+
+			<element name="Name" type="string" value="Coach House" />
+
+			<element name="Location" type="string" value="Warrington" />
+
+			<element name="County" type="string" value="Cheshire" />
+
+			<element name="Postcode" type="string" value="WA1 2DQ" />
+
+			<element name="Description" type="string"
+				value="Coach House was founded in 1991 following the closure of Greenall Whitley Brewery, which had a presence in Warrington since 1762. With a fermentation capacity of 240 barrels, the brewery produces permanent beers, seasonal and occasional brews and a range of fruit and spiced beers." />
+		</item>
+
+		<item index="22" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="COTSWOLD" />
+
+			<element name="Name" type="string" value="Cotswold Lion" />
+
+			<element name="Location" type="string" value="Coberley" />
+
+			<element name="County" type="string" value="Gloucestershire" />
+
+			<element name="Postcode" type="string" value="GL53 9QY" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="23" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="COTSWLDS" />
+
+			<element name="Name" type="string" value="Cotswold Spring" />
+
+			<element name="Location" type="string" value="Chipping Sodbury" />
+
+			<element name="County" type="string" value="Gloucestershire" />
+
+			<element name="Postcode" type="string" value="BS37 6RX" />
+
+			<element name="Description" type="string"
+				value="Cotswold Spring opened in 2005 with a 10-barrel plant. All the beers are produced using spring water sourced from a borehole on site. Seasonal beers: see website. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="24" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="CRADDOCK" />
+
+			<element name="Name" type="string" value="Craddock&apos;s" />
+
+			<element name="Location" type="string" value="Stourbridge" />
+
+			<element name="County" type="string" value="West Midlands" />
+
+			<element name="Postcode" type="string" value="DY8 1EP" />
+
+			<element name="Description" type="string"
+				value="Craddocks began production in 2011 at the back of the Duke William pub in Stourbridge using a four-barrel plant. Bottle-conditioned beer is also available at the local farmers&apos; market." />
+		</item>
+
+		<item index="25" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="CULLERCO" />
+
+			<element name="Name" type="string" value="Cullercoats" />
+
+			<element name="Location" type="string" value="Wallsend" />
+
+			<element name="County" type="string" value="Tyne and Wear" />
+
+			<element name="Postcode" type="string" value="NE30 4PH" />
+
+			<element name="Description" type="string"
+				value="Cullercoats was established in 2011." />
+		</item>
+
+		<item index="26" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="CUMBERLD" />
+
+			<element name="Name" type="string" value="Cumberland" />
+
+			<element name="Location" type="string" value="Great Corby" />
+
+			<element name="County" type="string" value="Cumbria" />
+
+			<element name="Postcode" type="string" value="CA4 8LR" />
+
+			<element name="Description" type="string"
+				value="Cumberland was established in 2009 using a bespoke 10-barrel plant in what was once the village blacksmiths." />
+		</item>
+
+		<item index="27" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="DARKSTAR" />
+
+			<element name="Name" type="string" value="Dark Star" />
+
+			<element name="Location" type="string" value="Partridge Green" />
+
+			<element name="County" type="string" value="W. Sussex" />
+
+			<element name="Postcode" type="string" value="RH13 8RA" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="28" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="DEVERELL" />
+
+			<element name="Name" type="string" value="Deverell&apos;s" />
+
+			<element name="Location" type="string" value="Grays" />
+
+			<element name="County" type="string" value="Essex" />
+
+			<element name="Postcode" type="string" value="RM17 6ST" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="29" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="DOWBRIDG" />
+
+			<element name="Name" type="string" value="Dow Bridge" />
+
+			<element name="Location" type="string" value="Catthorpe" />
+
+			<element name="County" type="string" value="Leicestershire" />
+
+			<element name="Postcode" type="string" value="LE17 6DA" />
+
+			<element name="Description" type="string"
+				value="Dow Bridge commenced brewing in 2001 and takes its name from a local bridge where Watling Street spans the River Avon. The brewery uses English whole hops and malt with no adjuncts or additives. It expanded in 2006 but is looking to relocate as extra capacity is needed. Over 50 outlets are supplied direct. Seasonal and bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="30" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="DOWNTON" />
+
+			<element name="Name" type="string" value="Downton" />
+
+			<element name="Location" type="string" value="Downton" />
+
+			<element name="County" type="string" value="Wiltshire" />
+
+			<element name="Postcode" type="string" value="SP5 3HU" />
+
+			<element name="Description" type="string"
+				value="Downton was set up in 2003 with equipment leased from the Hop Back Brewery (qv). The brewery has a 20-barrel brew length and three fermenting vessels producing around 1500 barrels a year. Speciality and experimental beers are available as monthly and seasonal offerings alongside six regular beers. Around 100 outlets are supplied direct. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="31" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="DUNSCARB" />
+
+			<element name="Name" type="string" value="Dunscar Bridge" />
+
+			<element name="Location" type="string" value="Bolton" />
+
+			<element name="County" type="string" value="Greater Manchester" />
+
+			<element name="Postcode" type="string" value="BL7 7LG" />
+
+			<element name="Description" type="string"
+				value="Dunscar Bridge began brewing in 2009 on a four-barrel plant, visible to customers behind a large glazed panel. Beer is available at the Brewhouse and the Thomas Egerton in Bolton. The brewery has recently been refurbished and expanded with plans to distribute to other local outlets." />
+		</item>
+
+		<item index="32" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ELLAND" />
+
+			<element name="Name" type="string" value="Elland" />
+
+			<element name="Location" type="string" value="Elland" />
+
+			<element name="County" type="string" value="W. Yorkshire" />
+
+			<element name="Postcode" type="string" value="HX5 9AE" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="33" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ENVILLE" />
+
+			<element name="Name" type="string" value="Enville" />
+
+			<element name="Location" type="string" value="Enville" />
+
+			<element name="County" type="string" value="West Midlands" />
+
+			<element name="Postcode" type="string" value="DY7 5LG" />
+
+			<element name="Description" type="string"
+				value="Enville Brewery is sited on a picturesque Victorian, Grade II-listed farm complex, using natural well water, traditional steam brewing and a reed and willow effluent plant. Enville Ale is infused with honey and is from a 19th-century recipe for beekeeper&apos;s ale passed down from the former proprietor&apos;s great-great aunt. Seasonal beers: see website." />
+		</item>
+
+		<item index="34" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="EXMOOR" />
+
+			<element name="Name" type="string" value="Exmoor" />
+
+			<element name="Location" type="string" value="Wiveliscombe" />
+
+			<element name="County" type="string" value="Somerset" />
+
+			<element name="Postcode" type="string" value="TA4 2NY" />
+
+			<element name="Description" type="string"
+				value="Somersets largest brewery was founded in 1980 in the old Hancocks brewery, which closed in 1959. Around 250 outlets in the South-west are supplied and others nationwide via wholesalers and pub chains. Seasonal beers: see website." />
+		</item>
+
+		<item index="35" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="FATCAT" />
+
+			<element name="Name" type="string" value="Fat Cat" />
+
+			<element name="Location" type="string" value="Norwich" />
+
+			<element name="County" type="string" value="Norfolk" />
+
+			<element name="Postcode" type="string" value="NR3 4LF" />
+
+			<element name="Description" type="string"
+				value="Fat Cat Brewery was founded by the owner of the Fat Cat free house in Norwich. Brewing started in 2005 at the Fat Cat&apos;s sister pub, the Fat Cat Brewery Tap, under the supervision of former Woodforde&apos;s owner Ray Ashworth. Locally-sourced malt from Norfolk-grown barley is used when possible. Seasonal beers, bottle-conditioned beers and occasional one-off brews are also available." />
+		</item>
+
+		<item index="36" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="FIREFLY" />
+
+			<element name="Name" type="string" value="Firefly" />
+
+			<element name="Location" type="string" value="Worcester" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="37" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="FRIDAY" />
+
+			<element name="Name" type="string" value="Friday" />
+
+			<element name="Location" type="string" value="Malvern" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="38" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="FULLER" />
+
+			<element name="Name" type="string" value="Fuller&apos;s" />
+
+			<element name="Location" type="string" value="London" />
+
+			<element name="County" type="string" />
+
+			<element name="Postcode" type="string" value="W4 2QB" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="39" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="FYNE" />
+
+			<element name="Name" type="string" value="Fyne Ales" />
+
+			<element name="Location" type="string" value="Cairndow" />
+
+			<element name="County" type="string" value="Argyll" />
+
+			<element name="Postcode" type="string" value="PA26 8BJ" />
+
+			<element name="Description" type="string"
+				value="Fyne Ales has been brewing since 2001. The 10-barrel plant was installed in a redundant milking parlour on a farm in Argyll, set in a beautiful glen at the head of Loch Fyne. Around 430 outlets are supplied nationally. In 2012 an on-site brewery tap was added. The range of beers is supplemented by one-off brews for special events. Seasonal beers are also available." />
+		</item>
+
+		<item index="40" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="GLOUCEST" />
+
+			<element name="Name" type="string" value="Gloucester" />
+
+			<element name="Location" type="string" value="Gloucester" />
+
+			<element name="County" type="string" value="Gloucestershire" />
+
+			<element name="Postcode" type="string" value="GL1 2EH" />
+
+			<element name="Description" type="string"
+				value="Gloucester began brewing in 2011 in an old warehouse in the historic Gloucester Docks. All ales are also available bottle conditioned." />
+		</item>
+
+		<item index="41" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="GRAIN" />
+
+			<element name="Name" type="string" value="Grain" />
+
+			<element name="Location" type="string" value="Harleston" />
+
+			<element name="County" type="string" value="Norfolk" />
+
+			<element name="Postcode" type="string" value="IP20 0BS" />
+
+			<element name="Description" type="string"
+				value="Grain Brewery was launched in 2006 by Geoff Wright and Phil Halls. Originally a five-barrel brewery it upgraded to a 15-barrel plant in 2012. Situated in a converted dairy on a farm in the Waveney Valley, it supplies around 40 outlets. In 2010 Grain purchased their first pub, the Plough in Norwich. Seasonal beers: see website. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="42" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="GREENJCK" />
+
+			<element name="Name" type="string" value="Green Jack" />
+
+			<element name="Location" type="string" value="Lowestoft" />
+
+			<element name="County" type="string" value="Suffolk" />
+
+			<element name="Postcode" type="string" value="NR32 2NZ" />
+
+			<element name="Description" type="string"
+				value="Green Jack started brewing in 2003 at the Triangle Tavern in Lowestoft and in 2009 moved to a 35-barrel brew house built in a refurbished fish smoking house. The plant at the Triangle closed in 2011. More than 150 outlets are supplied and three pubs are owned. Seasonal beers: see website. Bottle-conditioned beers are available. Beers are also brewed for Hektors Brewery Ltd." />
+		</item>
+
+		<item index="43" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="HARVIEST" />
+
+			<element name="Name" type="string" value="Harviestoun" />
+
+			<element name="Location" type="string" value="Alva" />
+
+			<element name="County" type="string" value="Clackmananshire" />
+
+			<element name="Postcode" type="string" value="FK12 5DQ" />
+
+			<element name="Description" type="string"
+				value="Harviestoun started in a barn in the village of Dollar in 1985 with a five-barrel brew plant, but now operate on a state-of-the-art 60-barrel brewery in Alva. The brewery supplies local outlets direct and nationwide via wholesalers. It was bought by Caledonian Brewing Co in 2006 but is now independent following the takeover of Caledonian by Scottish &amp;amp; Newcastle in 2008. Further expansion is planned. Seasonal beers: see website." />
+		</item>
+
+		<item index="44" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="HASTINGS" />
+
+			<element name="Name" type="string" value="Hastings" />
+
+			<element name="Location" type="string" value="St Leonards on Sea" />
+
+			<element name="County" type="string" value="E. Sussex" />
+
+			<element name="Postcode" type="string" value="TN38 9NB" />
+
+			<element name="Description" type="string"
+				value="The brewery was founded in 2010 by Brett Ross, alongside father and son Andy and Pete Mason. It exclusively produces vegan-friendly beers. The initial brewery had a one-barrel brew length, which was replaced in 2011 by a 5.25-barrel system." />
+		</item>
+
+		<item index="45" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="HIGHHOUS" />
+
+			<element name="Name" type="string" value="High House Farm" />
+
+			<element name="Location" type="string" value="Newcastle upon Tyne" />
+
+			<element name="County" type="string" value="Northumberland" />
+
+			<element name="Postcode" type="string" value="NE20 0RG" />
+
+			<element name="Description" type="string"
+				value="The brewery was founded in 2003 on a working farm with visitor centre, brewery shop and exhibition and function room. Over 350 outlets are supplied. Seasonal beers: see website." />
+		</item>
+
+		<item index="46" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="HIGHLAND" />
+
+			<element name="Name" type="string" value="Highland" />
+
+			<element name="Location" type="string" value="Birsay" />
+
+			<element name="County" type="string" value="Orkney" />
+
+			<element name="Postcode" type="string" value="KW17 2NP" />
+
+			<element name="Description" type="string"
+				value="Brewing began in 2006 and bigger plant was installed a year later. A visitor centre, caf&amp;eacute; and 20-barrel plant are planned. Around 300 outlets are supplied. Seasonal beers are also available." />
+		</item>
+
+		<item index="47" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="HOBSONS" />
+
+			<element name="Name" type="string" value="Hobsons" />
+
+			<element name="Location" type="string" value="Cleobury Mortimer" />
+
+			<element name="County" type="string" value="Shropshire" />
+
+			<element name="Postcode" type="string" value="DY14 8RD" />
+
+			<element name="Description" type="string"
+				value="Established in 1993 in a former sawmill, Hobsons relocated to a farm site with more space in 1995. A second brewery, bottling plant and a warehouse have been added along with significant expansion to the first brewery. Beers are supplied within a radius of 50 miles. The brewery has an onsite wind turbine and utilises environmental sustainable technologies where possible. Seasonal beer is also available." />
+		</item>
+
+		<item index="48" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="HOLDENS" />
+
+			<element name="Name" type="string" value="Holden&apos;s" />
+
+			<element name="Location" type="string" value="Dudley" />
+
+			<element name="County" type="string" value="West Midlands" />
+
+			<element name="Postcode" type="string" value="DY1 4LW" />
+
+			<element name="Description" type="string"
+				value="A family brewery spanning four generations, Holden&amp;rsquo;s began life as a brew-pub in the 1920s. The company continues to expand with 20 tied pubs and supplies around 70 other outlets. Plans are in place for the construction of a new brewhouse to cope with demand. Seasonal beers: see website." />
+		</item>
+
+		<item index="49" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="HOPBACK" />
+
+			<element name="Name" type="string" value="Hop Back" />
+
+			<element name="Location" type="string" value="Downton" />
+
+			<element name="County" type="string" value="Wiltshire" />
+
+			<element name="Postcode" type="string" value="SP5 3HU" />
+
+			<element name="Description" type="string"
+				value="Started by John Gilbert in 1987 at the Wyndham Arms in Salisbury, the brewery has expanded steadily ever since. It went public via a Business Expansion Scheme in 1993 and has enjoyed rapid continued growth. The brewery has 10 tied houses and also sells to some 500 other outlets. Seasonal beers are produced on a monthly basis. Entire Stout is suitable for vegans. Bottle-conditioned beers are also produced and bottled on site." />
+		</item>
+
+		<item index="50" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="HOPKETTL" />
+
+			<element name="Name" type="string" value="Hop Kettle" />
+
+			<element name="Location" type="string" value="Lechlade" />
+
+			<element name="County" type="string" value="Wiltshire" />
+
+			<element name="Postcode" type="string" value="GL7 3AD" />
+
+			<element name="Description" type="string"
+				value="Brewing began in 2012 using a four-barrel plant. No beer list was available at the time of going to print." />
+		</item>
+
+		<item index="51" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ILKLEY" />
+
+			<element name="Name" type="string" value="Ilkley" />
+
+			<element name="Location" type="string" value="Ilkley" />
+
+			<element name="County" type="string" value="W. Yorkshire" />
+
+			<element name="Postcode" type="string" value="LS29 8JT" />
+
+			<element name="Description" type="string"
+				value="Ilkley began brewing in 2009 on an eight-barrel plant, bringing brewing back to the town after a gap of some 80 years. In 2011 the brewery moved to new premises and upgraded to a 20-barrel plant. Beers are brewed traditionally using only the highest quality home-grown malted barley and whole hops with soft Yorkshire water. There are plans for expansion. Seasonal and bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="52" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="JENNINGS" />
+
+			<element name="Name" type="string" value="Jennings" />
+
+			<element name="Location" type="string" value="Cockermouth" />
+
+			<element name="County" type="string" value="Cumbria" />
+
+			<element name="Postcode" type="string" value="CA13 9NE" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="53" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="KELBURN" />
+
+			<element name="Name" type="string" value="Kelburn" />
+
+			<element name="Location" type="string" value="Barrhead" />
+
+			<element name="County" type="string" value="Glasgow" />
+
+			<element name="Postcode" type="string" value="G78 1QB" />
+
+			<element name="Description" type="string"
+				value="Kelburn is an award-winning family business established in 2002. Beers are available bottled and in take-away polypins. Seasonal beers: see website." />
+		</item>
+
+		<item index="54" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="KELHAMIS" />
+
+			<element name="Name" type="string" value="Kelham Island" />
+
+			<element name="Location" type="string" value="Sheffield" />
+
+			<element name="County" type="string" value="S. Yorkshire" />
+
+			<element name="Postcode" type="string" value="S3 8SA" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="55" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="KENTBREW" />
+
+			<element name="Name" type="string" value="Kent" />
+
+			<element name="Location" type="string" value="Birling" />
+
+			<element name="County" type="string" value="Kent" />
+
+			<element name="Postcode" type="string" value="ME19 5JN" />
+
+			<element name="Description" type="string"
+				value="Kent Brewery was founded in 2010 by Toby Simmonds (ex-brewer from Dark Star) and Paul Herbert. Originally brewing at Larkins, a ten-barrel plant is now used at the Birling site. More than 50 outlets are supplied direct, mainly throughout Kent and London. Seasonal and bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="56" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="KINVER" />
+
+			<element name="Name" type="string" value="Kinver Brewery" />
+
+			<element name="Location" type="string" value="Kinver" />
+
+			<element name="County" type="string" value="Staffordshire" />
+
+			<element name="Postcode" type="string" value="DY7 5NW" />
+
+			<element name="Description" type="string"
+				value="Established in 2004, Kinver Brewery consists of a five-barrel plant, producing a wide range of different beer styles, including one-off specials. Around 30 outlets are supplied direct. There are plans to move to a new, larger site. Seasonal beers are available." />
+		</item>
+
+		<item index="57" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="LINCOLNG" />
+
+			<element name="Name" type="string" value="Lincoln Green Brewing" />
+
+			<element name="Location" type="string" value="Nottingham" />
+
+			<element name="County" type="string" value="Nottinghamshire" />
+
+			<element name="Postcode" type="string" value="NG15 7SZ" />
+
+			<element name="Description" type="string"
+				value="Anthony Hughes established the Lincoln Green Brewing Company in 2012 using a 10-barrel plant. The brewery takes its name from the colour of dyed woollen cloth associated with the legend of Robin Hood. Seasonal and special beers are available." />
+		</item>
+
+		<item index="58" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="LLANGORS" />
+
+			<element name="Name" type="string" value="Llangorse" />
+
+			<element name="Location" type="string" value="Llangors" />
+
+			<element name="County" type="string" value="Powys" />
+
+			<element name="Postcode" type="string" value="LD3 7TY" />
+
+			<element name="Description" type="string"
+				value="Llangorse began brewing in 2012 and is owned by Howard Marlow who also owns the Breconshire Brewery." />
+		</item>
+
+		<item index="59" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="LODDON" />
+
+			<element name="Name" type="string" value="Loddon" />
+
+			<element name="Location" type="string" value="Dunsden" />
+
+			<element name="County" type="string" value="Oxfordshire" />
+
+			<element name="Postcode" type="string" value="RG4 9QD" />
+
+			<element name="Description" type="string"
+				value="Loddon was established in 2002 in a brick and flint barn that houses a 17-barrel brewery able to produce 120 barrels a week. More than 500 outlets are supplied. 2012 saw a comprehensive re-branding across the board. Seasonal beers and monthly specials: see website." />
+		</item>
+
+		<item index="60" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="LONGMAN" />
+
+			<element name="Name" type="string" value="Long Man Brewery" />
+
+			<element name="Location" type="string" value="Litlington" />
+
+			<element name="County" type="string" value="E. Sussex" />
+
+			<element name="Postcode" type="string" value="BN26 5RA" />
+
+			<element name="Description" type="string"
+				value="Long Man began brewing in 2012 using a 20-barrel plant by Johnson Brewery Design Ltd. Hops and grain are sourced locally with a view to using its own barley currently being grown on the farm as well as a traditional strain of Sussex yeast." />
+		</item>
+
+		<item index="61" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="LUDLOW" />
+
+			<element name="Name" type="string" value="Ludlow" />
+
+			<element name="Location" type="string" value="Ludlow" />
+
+			<element name="County" type="string" value="Shropshire" />
+
+			<element name="Postcode" type="string" value="SY8 2PQ" />
+
+			<element name="Description" type="string"
+				value="The brewery opened in 2006 in a renovated malthouse. During 2010 a move to larger premises, a former railway sidings shed on the same site, took place. In addition a new 20-barrel plant was installed. The premises also functions as the brewery tap and a visitor centre. Bottle-conditioned beer is available." />
+		</item>
+
+		<item index="62" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="LYTHAM" />
+
+			<element name="Name" type="string" value="Lytham" />
+
+			<element name="Location" type="string" value="St Annes" />
+
+			<element name="County" type="string" value="Lancashire" />
+
+			<element name="Postcode" type="string" value="FY8 2DF" />
+
+			<element name="Description" type="string"
+				value="Lytham started brewing in 2008 at the Hastings Club in Lytham but moved to larger premises soon after due to demand. The brewery originally used a 2.5-barrel plant which was upgraded to a 10-barrel plant in 2010. The brewery burnt down in 2011 and has moved to its present address. The 2.5-barrel plant was salvaged and brewing has recommenced with eight new fermenters and six new conditioning tanks. The 10-barrel plant is also now in use again." />
+		</item>
+
+		<item index="63" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="MALVERN" />
+
+			<element name="Name" type="string" value="Malvern Hills" />
+
+			<element name="Location" type="string" value="Malvern" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" value="WR14 4ND" />
+
+			<element name="Description" type="string"
+				value="Founded in 1998 in an old quarrying dynamite store and now an established presence in the Three Counties, Birmingham and the Black Country. Limited use of wholesalers can spread the ales further afield. The core beers are supplemented by a rolling programme of monthly specials." />
+		</item>
+
+		<item index="64" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="MARBLEB" />
+
+			<element name="Name" type="string" value="Marble" />
+
+			<element name="Location" type="string" value="Manchester" />
+
+			<element name="County" type="string" />
+
+			<element name="Postcode" type="string" value="M4 4JS" />
+
+			<element name="Description" type="string"
+				value="Marble opened at the Marble Arch Inn in 1997 and produces organic and vegan beers as well as some non-organic ales. It is registered with the Soil Association and the Vegetarian Society. Marble currently owns three pubs and supplies around 70 outlets. In 2009 a second, 12-barrel plant was installed at Unit 41, Williamson Street, Manchester. All brewing now takes place at this site. A number of bottle-conditioned beers are available as well as regular seasonals." />
+		</item>
+
+		<item index="65" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="MRSTONMR" />
+
+			<element name="Name" type="string" value="Marston Moor" />
+
+			<element name="Location" type="string" value="York" />
+
+			<element name="County" type="string" value="N. Yorkshire" />
+
+			<element name="Postcode" type="string" value="YO26 7XW" />
+
+			<element name="Description" type="string"
+				value="Established in 1983 in Kirk Hammerton, the brewery had a re-investment programme in 2005, moving brewing operations to nearby Tockwith, where it shares the site with Rudgate Brewery (qv). Two special beers are available each month. Around 250 outlets are supplied." />
+		</item>
+
+		<item index="66" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="MARSTON" />
+
+			<element name="Name" type="string" value="Marstons" />
+
+			<element name="Location" type="string" value="Burton" />
+
+			<element name="County" type="string" value="Staffordshire" />
+
+			<element name="Postcode" type="string" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="67" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="MAYFIELD" />
+
+			<element name="Name" type="string" value="Mayfields" />
+
+			<element name="Location" type="string" value="Leominster" />
+
+			<element name="County" type="string" value="Herefordshire" />
+
+			<element name="Postcode" type="string" value="HR6 0QF" />
+
+			<element name="Description" type="string"
+				value="Established in 2005, Mayfields is a small family brewery located in the heart of one of England&apos;s major hop growing regions. 2008 saw a change of location and ownership. Since then the range of core beers has been changed and updated. Around 50 outlets are supplied. Seasonal beers are brewed on a monthly basis: see website. The brewery also distributes draught and bottled traditional local cider." />
+		</item>
+
+		<item index="68" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="MIGHTYOK" />
+
+			<element name="Name" type="string" value="Mighty Oak" />
+
+			<element name="Location" type="string" value="Maldon" />
+
+			<element name="County" type="string" value="Essex" />
+
+			<element name="Postcode" type="string" value="CM9 6TW" />
+
+			<element name="Description" type="string"
+				value="Mighty Oak was formed in 1996 and moved in 2001 to Maldon, where capacity was increased. Around 350 outlets are supplied. Twelve monthly ales are brewed based on a theme." />
+		</item>
+
+		<item index="69" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="MILESTON" />
+
+			<element name="Name" type="string" value="Milestone" />
+
+			<element name="Location" type="string" value="Newark" />
+
+			<element name="County" type="string" value="Nottinghamshire" />
+
+			<element name="Postcode" type="string" value="NG23 6JE" />
+
+			<element name="Description" type="string"
+				value="The brewery has been in production since 2005 on a 12-barrel plant. Around 150 outlets are supplied. Seasonal and bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="70" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="MOORHOUS" />
+
+			<element name="Name" type="string" value="Moorhouse&apos;s" />
+
+			<element name="Location" type="string" value="Burnley" />
+
+			<element name="County" type="string" value="Lancashire" />
+
+			<element name="Postcode" type="string" value="BB11 5EN" />
+
+			<element name="Description" type="string"
+				value="Established in 1865 as a drinks manufacturer, the brewery started producing cask-conditioned ale in 1978 and has achieved recognition by winning more international and CAMRA awards than any other brewery of its size. A new brewhouse, visitors centre and training school were completed in 2010. The company owns six pubs, all serving cask-conditioned beer. Seasonal beers: see website." />
+		</item>
+
+		<item index="71" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="TRENTNAV" />
+
+			<element name="Name" type="string" value="Navigation" />
+
+			<element name="Location" type="string" value="Nottingham" />
+
+			<element name="County" type="string" value="Nottinghamshire" />
+
+			<element name="Postcode" type="string" value="NG2 3HS" />
+
+			<element name="Description" type="string"
+				value="Navigation began brewing in 2012 using a 20-barrel brewery located in the old stable block of the Trent Navigation Inn. The brewery is situated by the Nottingham Canal and the stables were originally built to house canal horses and their horsemen. It is owned by a sister company to Great Northern Inns and will supply all of the cask beers to pubs in their estate with guest beers being provided by brewery swaps." />
+		</item>
+
+		<item index="72" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="CROGLIN" />
+
+			<element name="Name" type="string" value="Nine Standards" />
+
+			<element name="Location" type="string" value="Kirkby Stephen" />
+
+			<element name="County" type="string" value="Cumbria" />
+
+			<element name="Postcode" type="string" value="CA17 4SY" />
+
+			<element name="Description" type="string"
+				value="Established in 2010, the brewery previously operated as the Croglin Brewery and is situated in the cellar of the Croglin Castle Hotel. It now has a new brewer, has been extensively refurbished and renamed after a famous local landmark visible from the brewery. Further beers are planned." />
+		</item>
+
+		<item index="73" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="NOOKBREW" />
+
+			<element name="Name" type="string" value="Nook" />
+
+			<element name="Location" type="string" value="Holmfirth" />
+
+			<element name="County" type="string" value="W. Yorkshire" />
+
+			<element name="Postcode" type="string" value="HD9 2DN" />
+
+			<element name="Description" type="string"
+				value="The Nook Brewhouse is the natural progression for the owners of the Nook public house, with a real ale pedigree including 30 consecutive years in the Good Beer Guide. It supplies two brewery taps and is built on the foundations of a previous brewhouse dating back to 1752, next to the River Ribble. A history room with renovated archives dating back to the 1700s and a brewery shop are planned once brewing is consolidated." />
+		</item>
+
+		<item index="74" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="OHANLON" />
+
+			<element name="Name" type="string" value="O&apos;Hanlon&apos;s" />
+
+			<element name="Location" type="string" value="Whimple" />
+
+			<element name="County" type="string" value="Devon" />
+
+			<element name="Postcode" type="string" value="EX5 2NY" />
+
+			<element name="Description" type="string"
+				value="Since moving to Whimple in 2000, the brewery has continued to expand to cope with increasing demand. More than 100 outlets are regularly supplied, with wholesalers distributing nationwide. Seasonal and bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="75" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="OAKHAM" />
+
+			<element name="Name" type="string" value="Oakham" />
+
+			<element name="Location" type="string" value="Peterborough" />
+
+			<element name="County" type="string" value="Cambridgeshire" />
+
+			<element name="Postcode" type="string" value="PE2 7JB" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="76" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="OAKLEAF" />
+
+			<element name="Name" type="string" value="Oakleaf" />
+
+			<element name="Location" type="string" value="Gosport" />
+
+			<element name="County" type="string" value="Hampshire" />
+
+			<element name="Postcode" type="string" value="PO12 1AJ" />
+
+			<element name="Description" type="string"
+				value="Ed Anderson set up Oakleaf with his father-in-law, Dave Pickersgill, in 2000. The brewery stands on the side of Portsmouth Harbour. Some 350 outlets are supplied direct with national deliveries via wholesalers. Seasonal beers: see website/facebook. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="77" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="OLDDAIRY" />
+
+			<element name="Name" type="string" value="Old Dairy" />
+
+			<element name="Location" type="string" value="Rolvenden" />
+
+			<element name="County" type="string" value="Kent" />
+
+			<element name="Postcode" type="string" value="TN17 4JD" />
+
+			<element name="Description" type="string"
+				value="Old Dairy was founded in 2009. Sales expanded rapidly across pubs in Kent and new staff were taken on after only three months to help cope with the demand. 50 outlets are supplied direct. Bottle-conditioned beers are available." />
+		</item>
+
+		<item index="78" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="OTLEY" />
+
+			<element name="Name" type="string" value="Otley" />
+
+			<element name="Location" type="string" value="Pontypridd" />
+
+			<element name="County" type="string" value="Glamorgan" />
+
+			<element name="Postcode" type="string" value="CF37 4NX" />
+
+			<element name="Description" type="string"
+				value="Otley Brewing was established in 2005 and since then the brewery has almost tripled in size. Seasonal beers: see website. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="79" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="OTTER" />
+
+			<element name="Name" type="string" value="Otter" />
+
+			<element name="Location" type="string" value="Honiton" />
+
+			<element name="County" type="string" value="Devon" />
+
+			<element name="Postcode" type="string" value="EX14 4SA" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="80" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="OUTSTAND" />
+
+			<element name="Name" type="string" value="Outstanding" />
+
+			<element name="Location" type="string" value="Bury" />
+
+			<element name="County" type="string" value="Greater Manchester" />
+
+			<element name="Postcode" type="string" value="BL9 6AW" />
+
+			<element name="Description" type="string"
+				value="The brewery was set up in 2008 as a collaboration between Paul Sandiford, Glen Woodcock, David Porter and Alex Lord. It operates a dual system, brewing on a 15-barrel plant and utilising a 2.5-barrel plant for special and experimental brews. Selective free trade accounts are supplied nationally." />
+		</item>
+
+		<item index="81" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="PEERLESS" />
+
+			<element name="Name" type="string" value="Peerless" />
+
+			<element name="Location" type="string" value="Birkenhead" />
+
+			<element name="County" type="string" value="Merseyside" />
+
+			<element name="Postcode" type="string" value="CH41 3NL" />
+
+			<element name="Description" type="string"
+				value="Peerless began brewing in 2009 and is under the directorship of Steve Briscoe. Beers are sold through festivals, local pubs and the free trade. Seasonal beers are available." />
+		</item>
+
+		<item index="82" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="PENNINE1" />
+
+			<element name="Name" type="string" value="Pennine" />
+
+			<element name="Location" type="string" value="Batley" />
+
+			<element name="County" type="string" value="W. Yorkshire" />
+
+			<element name="Postcode" type="string" value="WF17 6LL" />
+
+			<element name="Description" type="string"
+				value="Pennine began brewing in 2012 using an 18-barrel plant from Meantime Brewery. Head brewer Peter Goldsbrough previously worked at Moorhouses." />
+		</item>
+
+		<item index="83" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="PHEASANT" />
+
+			<element name="Name" type="string" value="Pheasantry" />
+
+			<element name="Location" type="string" value="Newark" />
+
+			<element name="County" type="string" value="Nottinghamshire" />
+
+			<element name="Postcode" type="string" value="NG22 0SN" />
+
+			<element name="Description" type="string"
+				value="Pheasantry began brewing in 2012 using a new 10-barrel plant from Canada. Situated in a listed barn on a farm, the brewery and visitor centre incorporates a restaurant, tearooms and bar with the brewery visible through glass partitions. Further beers are planned." />
+		</item>
+
+		<item index="84" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="PHOENIX" />
+
+			<element name="Name" type="string" value="Phoenix" />
+
+			<element name="Location" type="string" value="Heywood" />
+
+			<element name="County" type="string" value="Greater Manchester" />
+
+			<element name="Postcode" type="string" value="OL10 2EP" />
+
+			<element name="Description" type="string"
+				value="A company established as Oak Brewery in 1982 at Ellesmere Port, it moved in 1991 to the old Phoenix Brewery and adopted the name. It now supplies 400-500 outlets with additional deliveries via wholesalers. Many seasonal beers are produced throughout the year. Restoration of the old brewery, built in 1897, is ongoing." />
+		</item>
+
+		<item index="85" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="POPES" />
+
+			<element name="Name" type="string" value="Pope&apos;s" />
+
+			<element name="Location" type="string" value="Worcester" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" value="WR3 8TJ" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="86" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="POTTON" />
+
+			<element name="Name" type="string" value="Potton" />
+
+			<element name="Location" type="string" value="Potton" />
+
+			<element name="County" type="string" value="Bedfordshire" />
+
+			<element name="Postcode" type="string" value="SG19 2SP" />
+
+			<element name="Description" type="string"
+				value="Set up by the late Clive Towner and Bob Hearson in 1998, it was Potton&amp;rsquo;s first brewery since 1922. The brewery expanded from 20 barrels a week to 50 in 2004 and further expansion is now taking place. Around 150 outlets are supplied. Seasonal and bottle-conditioned beers are also available.&lt;br />" />
+		</item>
+
+		<item index="87" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="QUANTOCK" />
+
+			<element name="Name" type="string" value="Quantock" />
+
+			<element name="Location" type="string" value="Wellington" />
+
+			<element name="County" type="string" value="Somerset" />
+
+			<element name="Postcode" type="string" value="TA21 9ND" />
+
+			<element name="Description" type="string"
+				value="Quantock is a family-run microbrewery that began in 2008 using an eight-barrel plant. The philosophy is to brew using traditional craft brewing techniques with natural ingredients sourced locally where possible. Seasonal and bottle-conditioned beers are available. The brewery supplies pubs throughout Somerset and Devon and further afield via wholesalers." />
+		</item>
+
+		<item index="88" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="QUARTZ" />
+
+			<element name="Name" type="string" value="Quartz" />
+
+			<element name="Location" type="string" value="Kings Bromley" />
+
+			<element name="County" type="string" value="Staffordshire" />
+
+			<element name="Postcode" type="string" value="DE13 7HW" />
+
+			<element name="Description" type="string"
+				value="Quartz was established in 2005 by Scott and Julia Barnett. There are four regular beers produced in cask, bottle and mini-cask, supplemented with seasonal specials. Around 50 outlets are supplied direct." />
+		</item>
+
+		<item index="89" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="RAMSGATE" />
+
+			<element name="Name" type="string" value="Ramsgate" />
+
+			<element name="Location" type="string" value="Broadstairs" />
+
+			<element name="County" type="string" value="Kent" />
+
+			<element name="Postcode" type="string" value="CT10 2YD" />
+
+			<element name="Description" type="string"
+				value="Ramsgate was established in 2002 at the back of a Ramsgate pub. In 2006 the brewery moved to its current location, allowing for increased capacity and bottling. Bottle-conditioned beers are available. Seasonal and monthly specials: see website." />
+		</item>
+
+		<item index="90" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="RCH" />
+
+			<element name="Name" type="string" value="RCH" />
+
+			<element name="Location" type="string" value="Weston-Super-Mare" />
+
+			<element name="County" type="string" value="Somerset" />
+
+			<element name="Postcode" type="string" value="BS24 6RR" />
+
+			<element name="Description" type="string"
+				value="The brewery was originally installed in the early 1980s behind the Royal Clarence Hotel at Burnham-on-Sea. Since 1993 brewing has taken place in a former cider mill at West Hewish. A 30-barrel plant was installed in 2000. RCH supplies 150 outlets and the award-winning beers are available nationwide through its own wholesaling company, which also distributes beers from other small independent breweries. Seasonal and bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="91" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="REBELLIO" />
+
+			<element name="Name" type="string" value="Rebellion" />
+
+			<element name="Location" type="string" value="Marlow Bottom" />
+
+			<element name="County" type="string" value="Buckinghamshire" />
+
+			<element name="Postcode" type="string" value="SL7 3LT" />
+
+			<element name="Description" type="string"
+				value="Established in 1993, Rebellion filled the void left when Wethereds ceased brewing in 1987 in Marlow. Steady growth led to larger premises being sought and a relocation in 1999. Rebellion&amp;rsquo;s nearby Three Horseshoes pub is the brewery tap. Rebellion Mild is only available in this pub and a few other locals. Around 500 other outlets are supplied. Seasonal beers: see website. Bottle-conditioned beer is also available." />
+		</item>
+
+		<item index="92" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="REDEMPTI" />
+
+			<element name="Name" type="string" value="Redemption" />
+
+			<element name="Location" type="string" value="London" />
+
+			<element name="County" type="string" />
+
+			<element name="Postcode" type="string" value="N17 0XL" />
+
+			<element name="Description" type="string"
+				value="Redemption began brewing in 2010 on a 12-barrel plant. Most of the beer is supplied to pubs in north and central London." />
+		</item>
+
+		<item index="93" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="REEDLEYH" />
+
+			<element name="Name" type="string" value="Reedley Hallows" />
+
+			<element name="Location" type="string" value="Burnley" />
+
+			<element name="County" type="string" value="Lancashire" />
+
+			<element name="Postcode" type="string" value="BB11 5SS" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="94" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="REVOLUTI" />
+
+			<element name="Name" type="string" value="Revolutions" />
+
+			<element name="Location" type="string" value="Whitwood" />
+
+			<element name="County" type="string" value="W. Yorkshire" />
+
+			<element name="Postcode" type="string" value="WF10 5PX" />
+
+			<element name="Description" type="string"
+				value="Revolutions began brewing in 2010 and moved to its own premises in 2011. Beers are inspired by and pay homage to music from the analogue era and are typically brewed to 3.3%, 4.5% and 7.8%, to reflect the speeds at which music used to revolve (33, 45 and 78 rpm). The brewery produces a monthly 4.5% special referencing music from 33 years ago as part of the &apos;Rewind 33&apos; series." />
+		</item>
+
+		<item index="95" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ROBINSON" />
+
+			<element name="Name" type="string" value="Robinson&apos;s" />
+
+			<element name="Location" type="string" value="Stockport" />
+
+			<element name="County" type="string" value="Greater Manchester" />
+
+			<element name="Postcode" type="string" value="SK1 1JJ" />
+
+			<element name="Description" type="string"
+				value="Robinson&amp;rsquo;s has been brewing since 1838 and the business is still owned and run by the family. It has an estate of just under 400 pubs. A new brewhouse came on stream in 2012, which enables it to produce a wider range of seasonal and one-off beers. Contract beers are also brewed. Seasonal beers: see website." />
+		</item>
+
+		<item index="96" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="ROOSTER" />
+
+			<element name="Name" type="string" value="Rooster&apos;s" />
+
+			<element name="Location" type="string" value="Knaresborough" />
+
+			<element name="County" type="string" value="N. Yorkshire" />
+
+			<element name="Postcode" type="string" value="HG5 8LJ" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="97" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="RUDGATE" />
+
+			<element name="Name" type="string" value="Rudgate" />
+
+			<element name="Location" type="string" value="York" />
+
+			<element name="County" type="string" value="N. Yorkshire" />
+
+			<element name="Postcode" type="string" value="YO26 7QF" />
+
+			<element name="Description" type="string"
+				value="Rudgate Brewery was founded in 1992. In 2011 the brewery moved to a new 30-barrel plant capable of brewing twice daily. Several free trade and tied houses are supplied. Three seasonal beers are also produced each month." />
+		</item>
+
+		<item index="98" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SADLERSA" />
+
+			<element name="Name" type="string" value="Sadler&apos;s" />
+
+			<element name="Location" type="string" value="Stourbridge" />
+
+			<element name="County" type="string" value="West Midlands" />
+
+			<element name="Postcode" type="string" value="DY9 7DG" />
+
+			<element name="Description" type="string"
+				value="Thomas Alexander Sadler founded the original brewery in 1900 adjacent to the Windsor Castle Inn, Oldbury. Fourth generation brewers John and Chris Sadler re-opened the brewery in its new location in 2004. The brewery tap house was built and opened in 2006 next to the brewery. Around 250 outlets are supplied. An extensive range of bottle-conditioned beers is available as well as beer-based cheeses and condiments." />
+		</item>
+
+		<item index="99" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WESTCOUN" />
+
+			<element name="Name" type="string" value="Salisbury" />
+
+			<element name="Location" type="string" value="Salisbury" />
+
+			<element name="County" type="string" value="Wiltshire" />
+
+			<element name="Postcode" type="string" value="SP3 5EU" />
+
+			<element name="Description" type="string"
+				value="Salisbury Brewery was established in 2010 brewing deep in the heart of the ancient Wylye Valley. Formerly known as West Country Brewery." />
+		</item>
+
+		<item index="100" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SALOPIAN" />
+
+			<element name="Name" type="string" value="Salopian" />
+
+			<element name="Location" type="string" value="Shrewsbury" />
+
+			<element name="County" type="string" value="Shropshire" />
+
+			<element name="Postcode" type="string" value="SY3 8UQ" />
+
+			<element name="Description" type="string"
+				value="The brewery was established in 1995 in an old dairy on the outskirts of Shrewsbury and, having grown steadily, now produces more than 130 barrels a week. Salopian also brews under the Blackwater Brewery name." />
+		</item>
+
+		<item index="101" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SALTAIRE" />
+
+			<element name="Name" type="string" value="Saltaire" />
+
+			<element name="Location" type="string" value="Shipley" />
+
+			<element name="County" type="string" value="W. Yorkshire" />
+
+			<element name="Postcode" type="string" value="BD17 7AR" />
+
+			<element name="Description" type="string"
+				value="Launched in 2006, Saltaire Brewery is an award-winning brewery based in a former Victorian power station. A mezzanine bar gives visitors views of the brewing plant and the chance to taste the beers. More than 300 pubs are supplied across West Yorkshire and the north of England." />
+		</item>
+
+		<item index="102" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SARAHUGH" />
+
+			<element name="Name" type="string" value="Sarah Hughes" />
+
+			<element name="Location" type="string" value="Dudley" />
+
+			<element name="County" type="string" value="West Midlands" />
+
+			<element name="Postcode" type="string" value="DY3 1JE" />
+
+			<element name="Description" type="string"
+				value="A traditional Black Country tower brewery, established in 1921. Brewing ceased in the 1950s and recommenced in 1987. The original grist case and rare open-topped copper add to the ambience of the Victorian brewhouse and give a unique character to the brews. The Beacon Hotel is the brewery tap and the full range of beers is available there. Seasonal beers are also brewed." />
+		</item>
+
+		<item index="103" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SCARBORO" />
+
+			<element name="Name" type="string" value="Scarborough" />
+
+			<element name="Location" type="string" value="Scarborough" />
+
+			<element name="County" type="string" value="N. Yorkshire" />
+
+			<element name="Postcode" type="string" value="YO12 4HA" />
+
+			<element name="Description" type="string"
+				value="Scarborough Brewery was established in 2010 using a one-barrel plant. In 2011 commercial brewing began using a 10-barrel plant from Wold Top Brewery. Beers can be found at its brewery tap, Valley Bar in Scarborough, and nationwide via wholesalers. One-off and seasonal beers are also available." />
+		</item>
+
+		<item index="104" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SETTLE" />
+
+			<element name="Name" type="string" value="Settle" />
+
+			<element name="Location" type="string" value="Settle" />
+
+			<element name="County" type="string" value="Cumbria" />
+
+			<element name="Postcode" type="string" value="BD24 9RP" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="105" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SHEPHERD" />
+
+			<element name="Name" type="string" value="Shepherd Neame" />
+
+			<element name="Location" type="string" value="Faversham" />
+
+			<element name="County" type="string" value="Kent" />
+
+			<element name="Postcode" type="string" value="ME13 7AX" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="106" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SKINNERS" />
+
+			<element name="Name" type="string" value="Skinner&apos;s" />
+
+			<element name="Location" type="string" value="Truro" />
+
+			<element name="County" type="string" value="Cornwall" />
+
+			<element name="Postcode" type="string" value="TR1 2SU" />
+
+			<element name="Description" type="string"
+				value="Skinners brewery was founded in 1997. To increase production the brewery moved to bigger premises in 2003, opening a brewery shop and visitor centre. The brewery is now a 25-barrel plant with production capacity of 375 barrels a week. Since opening, the brewery has won numerous awards. Merchandise and beer are available to purchase online. Recently the brewery produced special edition beers under the brand The Cornish Beer &amp;amp; Surf Co. Seasonal beers: see website." />
+		</item>
+
+		<item index="107" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SLATERS" />
+
+			<element name="Name" type="string" value="Slater&apos;s" />
+
+			<element name="Location" type="string" value="Stafford" />
+
+			<element name="County" type="string" value="Staffordshire" />
+
+			<element name="Postcode" type="string" value="ST16 3DR" />
+
+			<element name="Description" type="string"
+				value="The brewery was opened in 1995 and in 2006 moved to new, larger premises, resulting in a tripling of capacity. It has won numerous awards from CAMRA and SIBA. One pub is owned, the George at Eccleshall, which serves as the brewery tap." />
+		</item>
+
+		<item index="108" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SOUTHHAM" />
+
+			<element name="Name" type="string" value="South Hams" />
+
+			<element name="Location" type="string" value="Kingsbridge" />
+
+			<element name="County" type="string" value="Devon" />
+
+			<element name="Postcode" type="string" value="TQ7 2SE" />
+
+			<element name="Description" type="string"
+				value="The brewery moved to its present site, a milking parlour, in 2003, with a 10-barrel plant and plenty of room to expand. It supplies more than 60 outlets in Plymouth and south Devon. Wholesalers are used to distribute to other areas. Three pubs are owned. Seasonal beers: see website. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="109" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SOUTHPRT" />
+
+			<element name="Name" type="string" value="Southport" />
+
+			<element name="Location" type="string" value="Southport" />
+
+			<element name="County" type="string" value="Merseyside" />
+
+			<element name="Postcode" type="string" value="PR9 7RF" />
+
+			<element name="Description" type="string"
+				value="The Southport brewery opened in 2004 as a 2.5-barrel plant but moved to a five-barrel plant due to demand. Around 30 pubs are supplied in the North-west. It also supplies the free trade via Boggart Brewery (qv). Seasonal beers: see website." />
+		</item>
+
+		<item index="110" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SPRINGHD" />
+
+			<element name="Name" type="string" value="Springhead" />
+
+			<element name="Location" type="string" value="Retford" />
+
+			<element name="County" type="string" value="Nottinghamshire" />
+
+			<element name="Postcode" type="string" value="DN22 0NA" />
+
+			<element name="Description" type="string"
+				value="Springhead Brewery opened in 1990, moving to bigger premises three years later and, to meet increased demand, expanded to a brew length of 50 barrels in 2003. In 2011 the brewery relocated to its current address. Around 500 outlets are supplied direct and the brewery owns two pubs. Many of the beer names have a Civil War theme. Drop O The Black Stuff (seasonal) is suitable for vegans." />
+		</item>
+
+		<item index="111" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="STAUSTEL" />
+
+			<element name="Name" type="string" value="St Austell" />
+
+			<element name="Location" type="string" value="St Austell" />
+
+			<element name="County" type="string" value="Cornwall" />
+
+			<element name="Postcode" type="string" value="PL25 4BY" />
+
+			<element name="Description" type="string"
+				value="St Austell Brewery celebrated 160 years of brewing in 2010. Founded by Walter Hicks in 1851, the company is still family owned, with a powerful commitment to cask beer, available in all 170 licensed houses, as well as in the free trade. A visitor centre offers guided tours and souvenirs from the brewery. Seasonal and bottle-conditioned beers are also available: see website." />
+		</item>
+
+		<item index="112" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="STGEORGE" />
+
+			<element name="Name" type="string" value="St George&apos;s" />
+
+			<element name="Location" type="string" value="Callow End" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" value="WR2 4TF" />
+
+			<element name="Description" type="string"
+				value="The brewery was established in 1998 in old village bakery premises. It was acquired in 2006 by Duncan Ironmonger. Andrew Sankey has been the brewer and brewery manager for a number of years. The brewery supplies local freehouses and wholesalers for a wider distribution. At least two monthly specials are usually available." />
+		</item>
+
+		<item index="113" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="STONEHOU" />
+
+			<element name="Name" type="string" value="Stonehouse" />
+
+			<element name="Location" type="string" value="Oswestry" />
+
+			<element name="County" type="string" value="Shropshire" />
+
+			<element name="Postcode" type="string" value="SY10 9ES" />
+
+			<element name="Description" type="string"
+				value="Stonehouse was established in 2007 by Shane and Alison Parr on a 15-barrel plant. The brewery is based in former chicken sheds and is next to the old Cambrian railway line. A new building is currently being planned to expand brewery capacity. More than 120 local outlets are supplied direct. Bottle-conditioned beers are available." />
+		</item>
+
+		<item index="114" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="STRATHAV" />
+
+			<element name="Name" type="string" value="Strathaven" />
+
+			<element name="Location" type="string" value="Strathaven" />
+
+			<element name="County" type="string" value="Lanarkshire" />
+
+			<element name="Postcode" type="string" value="ML10 6PB" />
+
+			<element name="Description" type="string"
+				value="Strathaven Ales is a 10-barrel brewery on the River Avon close to Strathaven and was converted from the remains of a 16th-century mill. The range is distributed throughout Scotland and the north of England. Seasonal beers: see website." />
+		</item>
+
+		<item index="115" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="STROUD" />
+
+			<element name="Name" type="string" value="Stroud" />
+
+			<element name="Location" type="string" value="Stroud" />
+
+			<element name="County" type="string" value="Gloucestershire" />
+
+			<element name="Postcode" type="string" value="GL5 2BU" />
+
+			<element name="Description" type="string"
+				value="The brewery commenced brewing in 2006 on a five-barrel plant. A new 20-barrel plant was installed in 2011 allowing the brewery to develop its range of organic bottled beers. Stroud supports the local economy and does not sell any beer through supermarkets, delivering to 40-50 pubs, independent retailers and direct to the public. Seasonal and bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="116" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="SUNNYREP" />
+
+			<element name="Name" type="string" value="Sunny Republic" />
+
+			<element name="Location" type="string" value="Winterborne Kingston" />
+
+			<element name="County" type="string" value="Dorset" />
+
+			<element name="Postcode" type="string" value="DT11 9AT" />
+
+			<element name="Description" type="string"
+				value="Brewing began in 2012 using a 30-barrel plant." />
+		</item>
+
+		<item index="117" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="TEMEVALY" />
+
+			<element name="Name" type="string" value="Teme Valley" />
+
+			<element name="Location" type="string" value="Knightwick" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" value="WR6 5PH" />
+
+			<element name="Description" type="string"
+				value="Teme Valley Brewery opened in 1997. In 2005, new investment enabled the brewery to expand to a 15-barrel brew-length. It maintains strong ties with local hop farming, using only Worcestershire-grown hops. Some 30 outlets are supplied. Seasonal beers: see website. Bottle-conditioned beers are also available." />
+		</item>
+
+		<item index="118" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="THORNBRG" />
+
+			<element name="Name" type="string" value="Thornbridge" />
+
+			<element name="Location" type="string" value="Bakewell" />
+
+			<element name="County" type="string" value="Derbyshire" />
+
+			<element name="Postcode" type="string" value="DE45 1GS" />
+
+			<element name="Description" type="string"
+				value="The first Thornbridge craft beers were produced in 2005 using a 10-barrel brewery, in the grounds of Thornbridge Hall. The beers have had much success with over 190 CAMRA and SIBA awards won. A 30-barrel brewery opened in Bakewell in 2009. The original site continues to develop new, seasonal and speciality beers. 200 outlets are supplied direct. 12 pubs are managed. Unfiltered and bottle-conditioned beers are available." />
+		</item>
+
+		<item index="119" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="TINYREBE" />
+
+			<element name="Name" type="string" value="Tiny Rebel" />
+
+			<element name="Location" type="string" value="Newport" />
+
+			<element name="County" type="string" value="Gwent" />
+
+			<element name="Postcode" type="string" value="NP20 2NN" />
+
+			<element name="Description" type="string"
+				value="Tiny Rebel was set up in 2012 by two enthusiastic home brewers." />
+		</item>
+
+		<item index="120" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="TIRRIL" />
+
+			<element name="Name" type="string" value="Tirril" />
+
+			<element name="Location" type="string" value="Appleby-in-Westmorland" />
+
+			<element name="County" type="string" value="Cumbria" />
+
+			<element name="Postcode" type="string" value="CA16 6BN" />
+
+			<element name="Description" type="string"
+				value="Tirril Brewery was established in 1999 in an abandoned toilet block behind the Queen&apos;s Head in Tirril. Since then it has relocated to the 1823 gothic brewing rooms at Brougham Hall and is now at the Red House Barn in Long Marton beneath the Pennines. Capacity has grown from 2.25 barrels to 60 barrels over the years. Around 120 outlets are supplied and one pub is owned. Seasonal beers are also available." />
+		</item>
+
+		<item index="121" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="TITANIC" />
+
+			<element name="Name" type="string" value="Titanic" />
+
+			<element name="Location" type="string" value="Stoke-on-Trent" />
+
+			<element name="County" type="string" value="Staffordshire" />
+
+			<element name="Postcode" type="string" value="ST6 1JL" />
+
+			<element name="Description" type="string"
+				value="Founded in 1985, the brewery is named in honour of Captain Smith who hailed from the Potteries and had the misfortune to captain the Titanic. A monthly seasonal beer provides the opportunity to offer distinctive beers of many styles, each with a link to the liner. Titanic supplies 300 free trade outlets throughout the country. The brewery has a small, constantly expanding tied house estate. Bottle-conditioned beer is also available." />
+		</item>
+
+		<item index="122" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="TOMWOOD" />
+
+			<element name="Name" type="string" value="Tom Wood&apos;s" />
+
+			<element name="Location" type="string" value="Melton Ross" />
+
+			<element name="County" type="string" value="Lincolnshire" />
+
+			<element name="Postcode" type="string" value="DN38 6AA" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="123" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="TRIPLFFF" />
+
+			<element name="Name" type="string" value="Triple fff" />
+
+			<element name="Location" type="string" value="Alton" />
+
+			<element name="County" type="string" value="Hampshire" />
+
+			<element name="Postcode" type="string" value="GU34 5HN" />
+
+			<element name="Description" type="string"
+				value="The brewery was established in 1997 with a five-barrel plant and through various stages of expansion has been brewing on a 50-barrel plant since 2006. Two pubs are owned; the Railway Arms in Alton and the White Lion in Aldershot. Seasonals, monthly specials and bottle-conditioned ales are also available." />
+		</item>
+
+		<item index="124" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="TYNEBANK" />
+
+			<element name="Name" type="string" value="Tyne Bank" />
+
+			<element name="Location" type="string" value="Newcastle upon Tyne" />
+
+			<element name="County" type="string" value="Tyne and Wear" />
+
+			<element name="Postcode" type="string" value="NE6 1AS" />
+
+			<element name="Description" type="string"
+				value="Tyne Bank began brewing in 2011. It has three fermenters and seven conditioning tanks, meaning that it can produce 20 barrels per brew and attain 60 barrels or 17,000 pints per week. Monthly special beers are also available." />
+		</item>
+
+		<item index="125" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="VALE" />
+
+			<element name="Name" type="string" value="Vale" />
+
+			<element name="Location" type="string" value="Brill" />
+
+			<element name="County" type="string" value="Buckinghamshire" />
+
+			<element name="Postcode" type="string" value="HP18 9TY" />
+
+			<element name="Description" type="string"
+				value="Established in 1994 and initially based in Haddenham, Vale moved to Brill in 2007. Capacity was expanded in 2009 and then doubled to 20 barrel length in 2010. Three pubs are owned, including a flagship outlet, the Hop Pole in Aylesbury. Monthly specials and occasional brews: see website. A wide range of bottle-conditioned beers is available. A sister brewery, the Aylesbury Brewhouse based in the Hop Pole, opened in 2011." />
+		</item>
+
+		<item index="126" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WHALEALE" />
+
+			<element name="Name" type="string" value="Whale Ale" />
+
+			<element name="Location" type="string" value="Brailes" />
+
+			<element name="County" type="string" value="Warwickshire" />
+
+			<element name="Postcode" type="string" value="OX15 5JW" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="127" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WHARFEBK" />
+
+			<element name="Name" type="string" value="WharfeBank" />
+
+			<element name="Location" type="string" value="Pool in Wharfedale" />
+
+			<element name="County" type="string" value="W. Yorkshire" />
+
+			<element name="Postcode" type="string" value="LS21 1EG" />
+
+			<element name="Description" type="string"
+				value="WharfeBank commenced brewing in 2010 using a 20-barrel plant in a converted paper mill on the banks of the River Wharfe. The team is led by Martin Kellaway, ex sales director at Caledonian Brewery, with brewing headed by Ian Smith, former Tetley&apos;s head brewer. Beers are available across the north, with flagship brand Tether Blond available regionally through Enterprise and Punch. Seasonal beers are also available." />
+		</item>
+
+		<item index="128" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WILLIAMS" />
+
+			<element name="Name" type="string" value="Williams Bros Brewing Co." />
+
+			<element name="Location" type="string" value="Alloa" />
+
+			<element name="County" type="string" value="Clackmananshire" />
+
+			<element name="Postcode" type="string" value="FK10 1NT" />
+
+			<element name="Description" type="string"
+				value="Bruce and Scott Williams started brewing Heather Ale in the West Highlands in 1993. A range of indigenous, historic ales were added over the following 10 years before the brothers invested in a 40-barrel brewery and bottling line in 2003. New beers are branded as Williams Bros of which there are many hoppy and esoteric styles to choose from. Hundreds of cask ale outlets are supplied worldwide. Seasonal beers: see website." />
+		</item>
+
+		<item index="129" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WOLF" />
+
+			<element name="Name" type="string" value="Wolf Brewery" />
+
+			<element name="Location" type="string" value="Attleborough" />
+
+			<element name="County" type="string" value="Norfolk" />
+
+			<element name="Postcode" type="string" value="NR17 2LD" />
+
+			<element name="Description" type="string"
+				value="The brewery was founded in 1996 on a 20-barrel plant, which was upgraded to a 30-barrel one in 2006. Over 300 outlets are supplied. Seasonal beers: see website." />
+		</item>
+
+		<item index="130" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WODENHND" />
+
+			<element name="Name" type="string" value="Wooden Hand" />
+
+			<element name="Location" type="string" value="Grampound Road" />
+
+			<element name="County" type="string" value="Cornwall" />
+
+			<element name="Postcode" type="string" value="TR2 4TB" />
+
+			<element name="Description" type="string"
+				value="Wooden Hand was founded in 2004. The brewery is named after the Black Hand of John Carew of Penwarne, in the parish of Mevagissey - Carew lost his hand fighting at the siege of Ostend in the reign of Elizabeth I. The brewery supplies around 50 outlets with a high percentage being sold further afield via wholesalers. A bottling line was installed in 2005, which also bottles for other breweries." />
+		</item>
+
+		<item index="131" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WORCESTE" />
+
+			<element name="Name" type="string" value="Worcester" />
+
+			<element name="Location" type="string" value="Worcester" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" value="WR1 3BH" />
+
+			<element name="Description" type="string" />
+		</item>
+
+		<item index="132" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WYEVALL" />
+
+			<element name="Name" type="string" value="Wye Valley" />
+
+			<element name="Location" type="string" value="Stoke Lacy" />
+
+			<element name="County" type="string" value="Herefordshire" />
+
+			<element name="Postcode" type="string" value="HR7 4HG" />
+
+			<element name="Description" type="string"
+				value="Founded in 1985 in Canon Pyon in Herefordshire, the brewery now occupies the historic Symonds Cider site at Stoke Lacy. Growth and investment continue and Wye Valley is now a successful regional brewery. Bottle-conditioned beers are available and are bottled on site." />
+		</item>
+
+		<item index="133" type="object">
+
+			<element name="Festival" type="string" value="WOR/2013" />
+
+			<element name="Id" type="string" value="WYREPIDL" />
+
+			<element name="Name" type="string" value="Wyre Piddle" />
+
+			<element name="Location" type="string" value="Inkberrow" />
+
+			<element name="County" type="string" value="Worcestershire" />
+
+			<element name="Postcode" type="string" value="WR10 2LF" />
+
+			<element name="Description" type="string"
+				value="Wyre Piddle was established in the early 1990s and following a relocation and equipment upgrade in 1997 it settled in its current location in 2002. It also brews for the Green Dragon, Malvern: Dragon&amp;rsquo;s Downfall (ABV 3.9%) and for the Severn Valley Railway: Royal Piddle (ABV 4.2%). Seasonal beers are available." />
+		</item>
+	</element>
+
+	<element name="time" type="number" value="0.047083139419556" />
+
+</object>
