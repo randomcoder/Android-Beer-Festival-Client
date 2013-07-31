@@ -67,20 +67,20 @@ class DrinkXmlLoadTest extends SimpleTestBase {
   }
 
   test("Beers can be loaded from an input xml source") {
-    Given("Xml created from an externaal input (sample file)")
+    Given("Beer Xml created from an external input (sample file)")
     val xml = XML.load(getClass.getResourceAsStream("/beers_small.xml"))
 
     When("the Xml is parsed")
     val beers = Drink.fromXml(xml)
     Then("it contains the expected number of drinks")
     beers should have size (4)
-    And("at least one of the ciders is correctly loaded")
+    And("at least two of the beers are correctly loaded")
     beers should (contain(porter1872) and
       contain(alederflower))
   }
 
   test("Ciders can be loaded from an input xml source") {
-    Given("Xml created from an externaal input (sample file)")
+    Given("Beer Xml created from an external input (sample file)")
     val xml = XML.load(getClass.getResourceAsStream("/ciders.xml"))
 
     When("the Xml is parsed")
