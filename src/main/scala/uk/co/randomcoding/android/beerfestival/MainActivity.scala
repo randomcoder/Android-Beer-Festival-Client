@@ -23,12 +23,44 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import uk.co.randomcoding.android.beerfestival.model.CamraDbAccess
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
+import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
+import scala.io.Source
+import uk.co.randomcoding.android.beerfestival.util.Convertors._
+import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
+import uk.co.randomcoding.android.beerfestival.model.festival.FestivalModel
 
 class MainActivity extends Activity with TypedActivity {
   override def onCreate(bundle: Bundle) {
     super.onCreate(bundle)
     setContentView(R.layout.main)
+    // Initialise Festival Data
+    // Currently only uses Worcester (WOR/2013)
 
+    // Initialise database
+    initialiseFestivalData("WOR/2013")
+
+  }
+
+  def showAllDrinks(view: View) {
+    val intent = new Intent(this, classOf[DisplayResultsActivity])
+    allDrinksIntentExtras foreach { case (k, v) => intent.putExtra(k, v) }
+    startActivity(intent)
+  }
+
+  private[this] def allDrinksIntentExtras: Map[String, String] = {
+    Map.empty
+  }
+
+  def showAllBrewers(view: View) {
+    /*val intent = new Intent(this, classOf[DisplayBrewersActivity])
+    allDrinksIntentExtras foreach { case (k, v) => intent.putExtra(k, v) }
+    startActivity(intent)*/
+  }
+
+  private[this] def allBrewersIntentExtras: Map[String, String] = {
+    Map.empty
   }
 
   def showSearchDrinks(view: View) {
@@ -36,13 +68,32 @@ class MainActivity extends Activity with TypedActivity {
     startActivity(intent)
   }
 
+  def showSearchBrewers(view: View) {
+    /*val intent = new Intent(this, classOf[SearchBrewerActivity])
+    startActivity(intent)*/
+  }
+  /*
   def updateData(view: View) {
     val intent = new Intent(this, classOf[UpdateDataActivity])
     startActivity(intent)
-  }
+  }*/
 
   def showWishList(view: View) {
     // TODO: Create intent to switch to the wishlist view
     // Not planned at this time
+  }
+
+  private[this] def initialiseFestivalData(festivalId: String) {
+    // get festival info
+
+    // get beers
+
+    // get brewers
+
+    // get ciders
+
+    // get producers
+
+    // Initialise Model
   }
 }
