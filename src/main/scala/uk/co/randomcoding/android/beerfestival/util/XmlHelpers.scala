@@ -20,6 +20,7 @@
 package uk.co.randomcoding.android.beerfestival.util
 
 import scala.xml.Node
+import scala.xml.XML
 
 /**
  * Helpers for use with the Beer Festival JUG Xml
@@ -43,4 +44,6 @@ object XmlHelpers {
       case _ => ""
     }
   }
+
+  implicit def stringToXml(xmlString: String): Node = XML.loadString(xmlString)
 }

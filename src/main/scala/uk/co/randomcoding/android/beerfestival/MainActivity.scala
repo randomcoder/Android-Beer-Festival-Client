@@ -23,12 +23,11 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import uk.co.randomcoding.android.beerfestival.model.CamraDbAccess
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
+import uk.co.randomcoding.android.beerfestival.model.festival.Festival
+import uk.co.randomcoding.android.beerfestival.util.XmlHelpers.stringToXml
+import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
-import scala.io.Source
-import uk.co.randomcoding.android.beerfestival.util.Convertors._
-import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
 import uk.co.randomcoding.android.beerfestival.model.festival.FestivalModel
 
 class MainActivity extends Activity with TypedActivity {
@@ -37,10 +36,7 @@ class MainActivity extends Activity with TypedActivity {
     setContentView(R.layout.main)
     // Initialise Festival Data
     // Currently only uses Worcester (WOR/2013)
-
-    // Initialise database
     initialiseFestivalData("WOR/2013")
-
   }
 
   def showAllDrinks(view: View) {
@@ -84,16 +80,18 @@ class MainActivity extends Activity with TypedActivity {
   }
 
   private[this] def initialiseFestivalData(festivalId: String) {
-    // get festival info
+    FestivalModel(festivalId) match {
+      case None => {
+        val festival = Festival.fromXml(festivalInfo(festivalId)).find(_.festivalId == festivalId).get
+        val beersAtFestival = Drink.fromXml(beers(festivalId))
+        val brewersAtFestival = Brewer.fromXml(brewers(festivalId))
+        val cidersAtFestival = Drink.fromXml(ciders(festivalId))
+        val producersAtFestival = Brewer.fromXml(producers(festivalId))
 
-    // get beers
-
-    // get brewers
-
-    // get ciders
-
-    // get producers
-
-    // Initialise Model
+        // Initialise Model
+        FestivalModel.initialise(festival, beersAtFestival ++ cidersAtFestival, brewersAtFestival ++ producersAtFestival)
+      }
+      case _ => // already initialised
+    }
   }
 }
