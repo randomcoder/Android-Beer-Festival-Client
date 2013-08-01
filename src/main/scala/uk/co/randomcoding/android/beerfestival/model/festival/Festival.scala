@@ -40,11 +40,7 @@ object Festival {
   }
 
   def festivalNodes(xml: Node): NodeSeq = {
-    val elementNodes = (xml \\ "element")
-    elementNodes.filter(node => {
-      val nodeTextAttr = (node \ "@name").text
-      nodeTextAttr == "result"
-    })
+    (xml \\ "element").filter(node => (node \ "@name").text == "result")
   }
 
   def festivalFromNode(node: Node): Festival = {
