@@ -43,20 +43,11 @@ object QueryHelper {
   def festivalsXml: String = doQuery(queryWithoutFestival("GetFestivals"))
 
   private[this] def queryWithoutFestival(queryType: String): String = {
-    s"""<object>
-      |<element name="action" type="string" value="${queryType}" />
-	  |<element name="param" type="object">
-	  |</element>
-	  |</object>""".stripMargin
+    s"""<object><element name="action" type="string" value="${queryType}" /><element name="param" type="object"></element></object>"""
   }
 
   private[this] def queryWithFestival(queryType: String, festivalId: String = "WOR/2013"): String = {
-    s"""<object>
-      |<element name="action" type="string" value="${queryType}" />
-      |<element name="param" type="object">
-      |<element name="Festival" type="string" value="${festivalId}" />
-      |</element>
-      |</object>""".stripMargin
+    s"""<object><element name="action" type="string" value="${queryType}" /><element name="param" type="object"><element name="Festival" type="string" value="${festivalId}" /></element></object>"""
   }
 
   private[this] def doQuery(queryXml: String) = {
