@@ -19,8 +19,8 @@
  */
 package uk.co.randomcoding.android.beerfestival.util.query
 
-import java.io.{BufferedInputStream, BufferedOutputStream}
-import java.net.{HttpURLConnection, URL}
+import java.io.{ BufferedInputStream, BufferedOutputStream }
+import java.net.{ HttpURLConnection, URL }
 
 import scala.collection.mutable.ListBuffer
 
@@ -34,13 +34,13 @@ object QueryHelper {
 
   private[this] val serviceUrl = new URL("http://tickets-test.worcesterbeerfest.org.uk/BeerList/checkAction.php")
 
-  def breweries(festivalId: String): String = doQuery(queryWithFestival("GetBrewers", festivalId))
-  def beers(festivalId: String): String = doQuery(queryWithFestival("GetBeers", festivalId))
-  def ciders(festivalId: String): String = doQuery(queryWithFestival("GetCiders", festivalId))
-  def brewers(festivalId: String): String = doQuery(queryWithFestival("GetBreweries", festivalId))
-  def producers(festivalId: String): String = doQuery(queryWithFestival("GetProducers", festivalId))
-  def festivalInfo(festivalId: String): String = doQuery(queryWithFestival("GetFestivalInfo", festivalId))
-  def festivals(): String = doQuery(queryWithoutFestival("GetFestivals"))
+  def breweriesXml(festivalId: String): String = doQuery(queryWithFestival("GetBrewers", festivalId))
+  def beersXml(festivalId: String): String = doQuery(queryWithFestival("GetBeers", festivalId))
+  def cidersXml(festivalId: String): String = doQuery(queryWithFestival("GetCiders", festivalId))
+  def brewersXml(festivalId: String): String = doQuery(queryWithFestival("GetBreweries", festivalId))
+  def producersXml(festivalId: String): String = doQuery(queryWithFestival("GetProducers", festivalId))
+  def festivalInfoXml(festivalId: String): String = doQuery(queryWithFestival("GetFestivalInfo", festivalId))
+  def festivalsXml: String = doQuery(queryWithoutFestival("GetFestivals"))
 
   private[this] def queryWithoutFestival(queryType: String): String = {
     s"""<object>

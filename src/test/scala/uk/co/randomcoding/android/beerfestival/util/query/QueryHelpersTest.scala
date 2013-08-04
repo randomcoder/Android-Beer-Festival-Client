@@ -37,7 +37,7 @@ class QueryHelpersTest extends SimpleTestBase {
     // TODO: Need to check for this somehow
     When("the 'festivals' query is used")
     Then("the response can be parsed into Xml")
-    val response = festivals()
+    val response = festivalsXml
     val responseXml = XML.loadString(response)
     And("has nodes for the festival ids")
     val itemNodes = (responseXml \\ "element" \ "item")

@@ -93,15 +93,15 @@ class MainActivity extends Activity with TypedActivity {
       case None => {
         val TAG = "MainActivityFestivalInitialise"
         // TODO: Check for connectivity and bail if not connected (with a message)
-        val festival = Festival.fromXml(festivalInfo(festivalId)).find(_.festivalId == festivalId).get
+        val festival = Festival.fromXml(festivalInfoXml(festivalId)).find(_.festivalId == festivalId).get
         Log.d(TAG, "Loaded Festival")
-        val beersAtFestival = Drink.fromXml(beers(festivalId))
+        val beersAtFestival = Drink.fromXml(beersXml(festivalId))
         Log.d(TAG, "Loaded Beers")
-        val brewersAtFestival = Brewer.fromXml(brewers(festivalId))
+        val brewersAtFestival = Brewer.fromXml(brewersXml(festivalId))
         Log.d(TAG, "Loaded Brewers")
-        val cidersAtFestival = Drink.fromXml(ciders(festivalId))
+        val cidersAtFestival = Drink.fromXml(cidersXml(festivalId))
         Log.d(TAG, "Loaded Ciders")
-        val producersAtFestival = Brewer.fromXml(producers(festivalId))
+        val producersAtFestival = Brewer.fromXml(producersXml(festivalId))
         Log.d(TAG, "Loaded Producers")
 
         // Initialise Model
