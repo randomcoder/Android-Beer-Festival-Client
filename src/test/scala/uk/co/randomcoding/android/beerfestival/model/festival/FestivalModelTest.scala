@@ -19,13 +19,10 @@
  */
 package uk.co.randomcoding.android.beerfestival.model.festival
 
-import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 import uk.co.randomcoding.android.beerfestival.model.DbAccessTestData
-import uk.co.randomcoding.android.beerfestival.util.Convertors._
-import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
-import scala.xml.XML
-import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
+import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 
 /**
  * Test for the loading of the Festival Model.
@@ -37,11 +34,11 @@ import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
  */
 class FestivalModelTest extends SimpleTestBase with DbAccessTestData {
 
-  val festivalXml = XML.load(getClass.getResourceAsStream("/festivalinfo.xml"))
-  val beersXml = XML.load(getClass.getResourceAsStream("/beers_small.xml"))
-  val breweriesXml = XML.load(getClass.getResourceAsStream("/breweries_small.xml"))
-  val cidersXml = XML.load(getClass.getResourceAsStream("/ciders.xml"))
-  val producersXml = XML.load(getClass.getResourceAsStream("/producers.xml"))
+  val festivalXml = getClass.getResourceAsStream("/festivalinfo.xml")
+  val beersXml = getClass.getResourceAsStream("/beers_small.xml")
+  val breweriesXml = getClass.getResourceAsStream("/breweries_small.xml")
+  val cidersXml = getClass.getResourceAsStream("/ciders.xml")
+  val producersXml = getClass.getResourceAsStream("/producers.xml")
 
   test("A Festival Model can be created from Drink, Brewer and Festival Data") {
     Given("drinks from combined beer and cider Xml sources")

@@ -19,17 +19,17 @@
  */
 package uk.co.randomcoding.android.beerfestival
 
+import java.io.{BufferedInputStream, ByteArrayInputStream, InputStream}
+
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import uk.co.randomcoding.android.beerfestival.model.drink.Drink
-import uk.co.randomcoding.android.beerfestival.model.festival.Festival
-import uk.co.randomcoding.android.beerfestival.util.XmlHelpers.stringToXml
-import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
-import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
-import uk.co.randomcoding.android.beerfestival.model.festival.FestivalModel
 import android.util.Log
+import android.view.View
+import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
+import uk.co.randomcoding.android.beerfestival.model.festival.{Festival, FestivalModel}
+import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
 
 class MainActivity extends Activity with TypedActivity {
 
@@ -111,4 +111,6 @@ class MainActivity extends Activity with TypedActivity {
       case _ => // already initialised
     }
   }
+
+  private implicit def stringToInStream(s: String): InputStream = new BufferedInputStream(new ByteArrayInputStream(s.getBytes()))
 }

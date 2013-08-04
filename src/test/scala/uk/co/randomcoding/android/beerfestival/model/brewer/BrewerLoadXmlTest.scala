@@ -22,6 +22,9 @@ package uk.co.randomcoding.android.beerfestival.model.brewer
 import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 import uk.co.randomcoding.android.beerfestival.model.brewer.TestBrewers._
 import scala.xml.XML
+import scala.xml.Node
+import java.io.InputStream
+import java.io.ByteArrayInputStream
 
 /**
  * Brief description of BrewerLoadXmlTest
@@ -90,4 +93,6 @@ class BrewerLoadXmlTest extends SimpleTestBase {
     And("at least one of the Brewers is correctly loaded")
     brewers should be(Seq(producerBulmers))
   }
+
+  private implicit def xmlToInStream(node: Node): InputStream = new ByteArrayInputStream(node.toString.getBytes)
 }

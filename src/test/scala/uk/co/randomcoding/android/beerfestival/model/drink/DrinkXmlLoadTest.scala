@@ -23,6 +23,9 @@ import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
 import uk.co.randomcoding.android.beerfestival.model.drink.TestDrinks._
 import scala.xml.XML
+import scala.xml.Node
+import java.io.InputStream
+import java.io.ByteArrayInputStream
 
 /**
  * Brief description of DrinkXmlLoadTest
@@ -90,4 +93,6 @@ class DrinkXmlLoadTest extends SimpleTestBase {
     And("at least one of the ciders is correctly loaded")
     ciders should contain(deadDog)
   }
+
+  private implicit def xmlToInputStream(node: Node): InputStream = new ByteArrayInputStream(node.toString.getBytes)
 }

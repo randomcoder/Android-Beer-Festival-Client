@@ -20,7 +20,6 @@
 package uk.co.randomcoding.android.beerfestival.model.festival
 
 import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
-import scala.xml.XML
 
 /**
  * Brief description of FestivalXmlLoadTest
@@ -31,7 +30,7 @@ import scala.xml.XML
 class FestivalXmlLoadTest extends SimpleTestBase {
   test("Festival Data can be loaded from Xml") {
     Given("Xml that describes a festival with two drinks")
-    val xml = XML.load(getClass.getResourceAsStream("/festivalinfo.xml"))
+    val xml = getClass.getResourceAsStream("/festivalinfo.xml")
 
     When("the Xml is parsed")
     Then("The correct festivals are loaded")

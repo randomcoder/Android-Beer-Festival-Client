@@ -19,10 +19,8 @@
  */
 package uk.co.randomcoding.android.beerfestival.model.festival
 
-import uk.co.randomcoding.android.beerfestival.model.CamraDbAccess
-import uk.co.randomcoding.android.beerfestival.model.InMemoryCamraDbAccess
-import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 
 /**
  * A Model of the available drinks and brewers present at a particular festival
