@@ -57,10 +57,11 @@ class SearchDrinkActivity extends Activity with TypedActivity {
   }
 }
 
+// TOD: Move to new object (ExtraKeys)
 object SearchDrinkActivity {
   private def extra(key: String): String = "uk.co.randomcoding.android.drinkfinder.%s".format(key)
 
   val NAME_SEARCH_EXTRA = extra("NameSearch")
   val DESCRIPTION_SEARCH_EXTRA = extra("DescriptionSearch")
-  val FESTIVAL_ID_EXTRA = extra("WCBCF")
+  val FESTIVAL_ID_EXTRA = extra("FestivalId")
 }

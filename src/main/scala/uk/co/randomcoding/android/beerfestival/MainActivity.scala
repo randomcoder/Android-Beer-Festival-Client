@@ -29,14 +29,23 @@ import uk.co.randomcoding.android.beerfestival.util.XmlHelpers.stringToXml
 import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 import uk.co.randomcoding.android.beerfestival.model.festival.FestivalModel
+import android.util.Log
 
 class MainActivity extends Activity with TypedActivity {
+
+  // This is fixed for now, but will be derived from config at some point.
+  private[this] final val worcesterId = "WOR/2013"
+
   override def onCreate(bundle: Bundle) {
     super.onCreate(bundle)
     setContentView(R.layout.main)
     // Initialise Festival Data
     // Currently only uses Worcester (WOR/2013)
-    initialiseFestivalData("WOR/2013")
+    initialiseFestivalData(worcesterId)
+  }
+
+  override def onDestroy() {
+    // Write the festival model(s) to storage (GSON?)
   }
 
   def showAllDrinks(view: View) {
@@ -46,7 +55,7 @@ class MainActivity extends Activity with TypedActivity {
   }
 
   private[this] def allDrinksIntentExtras: Map[String, String] = {
-    Map.empty
+    Map(SearchDrinkActivity.FESTIVAL_ID_EXTRA -> worcesterId)
   }
 
   def showAllBrewers(view: View) {
@@ -82,14 +91,22 @@ class MainActivity extends Activity with TypedActivity {
   private[this] def initialiseFestivalData(festivalId: String) {
     FestivalModel(festivalId) match {
       case None => {
+        val TAG = "MainActivityFestivalInitialise"
+        // TODO: Check for connectivity and bail if not connected (with a message)
         val festival = Festival.fromXml(festivalInfo(festivalId)).find(_.festivalId == festivalId).get
+        Log.d(TAG, "Loaded Festival")
         val beersAtFestival = Drink.fromXml(beers(festivalId))
+        Log.d(TAG, "Loaded Beers")
         val brewersAtFestival = Brewer.fromXml(brewers(festivalId))
+        Log.d(TAG, "Loaded Brewers")
         val cidersAtFestival = Drink.fromXml(ciders(festivalId))
+        Log.d(TAG, "Loaded Ciders")
         val producersAtFestival = Brewer.fromXml(producers(festivalId))
+        Log.d(TAG, "Loaded Producers")
 
         // Initialise Model
         FestivalModel.initialise(festival, beersAtFestival ++ cidersAtFestival, brewersAtFestival ++ producersAtFestival)
+        Log.d(TAG, "Initialised Festival Model")
       }
       case _ => // already initialised
     }

@@ -19,17 +19,10 @@
  */
 package uk.co.randomcoding.android.beerfestival.util.query
 
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.impl.client.DefaultHttpClient
-import android.net.http.AndroidHttpClient
-import java.net.URL
-import java.net.HttpURLConnection
-import java.io.BufferedOutputStream
-import java.io.BufferedInputStream
+import java.io.{BufferedInputStream, BufferedOutputStream}
+import java.net.{HttpURLConnection, URL}
+
 import scala.collection.mutable.ListBuffer
-import scala.xml.Node
-import scala.xml.NodeSeq
-import scala.xml.XML
 
 /**
  * Helper object to perform queries to the main web service

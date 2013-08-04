@@ -20,10 +20,10 @@
 package uk.co.randomcoding.android.beerfestival.model.drink
 
 import scala.util.parsing.json.JSON
-import scala.xml.{ Elem, Node, NodeSeq }
+import scala.xml.{ Node, NodeSeq }
 
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
-import uk.co.randomcoding.android.beerfestival.util.XmlHelpers._
+import uk.co.randomcoding.android.beerfestival.util.XmlHelpers.elementValue
 
 /**
  * Describes a drink
@@ -67,9 +67,9 @@ object Drink {
   /**
    * Load drink data from JUG Xml
    */
-  def fromXml(xml: Elem): Seq[Drink] = drinkNodes(xml).map(drinkFromXml).distinct
+  def fromXml(xml: Node): Seq[Drink] = drinkNodes(xml).map(drinkFromXml).distinct
 
-  private[this] def drinkNodes(xml: Elem): NodeSeq = (xml \\ "element" \ "item").filter(isDrinkNode)
+  private[this] def drinkNodes(xml: Node): NodeSeq = (xml \\ "element" \ "item").filter(isDrinkNode)
 
   private[this] val drinkNameElemNames = Seq("Beer", "Cider", "Perry")
 

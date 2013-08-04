@@ -84,10 +84,10 @@ class DisplayResultsActivity extends ListActivity with TypedActivity {
       case abv => ("ABV", "%.1f%%".format(abv))
     }
 
-    val priceEntry = drink.price match {
+    val priceEntry = 0.0 /*drink.price match {
       case 0.0 => ("", "")
       case price => ("Price", "£%.2f".format(price))
-    }
+    }*/
 
     val variableText = Seq(abvEntry, priceEntry).map(_ match {
       case ("", "") => ""
