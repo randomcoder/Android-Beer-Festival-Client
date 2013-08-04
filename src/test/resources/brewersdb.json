@@ -1,0 +1,46 @@
+[{
+  "name": "Wye Valley",
+  "location": "Herefordshire",
+  "drinkUids": ["10001"]
+ },
+ {
+  "name": "Wylam",
+  "location": "Place 1",
+  "drinkUids": ["10002"]
+ },
+ {
+  "name": "ABC",
+  "location": "Place 2",
+  "drinkUids": ["10003", "10009"]
+ },
+ {
+  "name": "Fuzzy Duck",
+  "location": "Place 3",
+  "drinkUids": ["10004"]
+ },
+ {
+  "name": "Dark Star",
+  "location": "Place 4",
+  "drinkUids": ["10005"]
+ },
+ {
+  "name": "Dorset Piddle",
+  "location": "Place 5",
+  "drinkUids": ["10006"]
+ },
+ {
+  "name": "Kinver",
+  "location": "Place 3",
+  "drinkUids": ["10007"]
+ },
+ {
+  "name": "Devilfish",
+  "location": "Place 5",
+  "drinkUids": ["10008"]
+ },
+ {
+  "name":"Cumbrian Legendary Ales",
+  "location": "Cumbria",
+  "drinkUids": ["10010"]
+ }
+]

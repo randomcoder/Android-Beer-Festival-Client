@@ -20,62 +20,124 @@
 package uk.co.randomcoding.android.beerfestival.model.drink
 
 import scala.util.parsing.json.JSON
-import scala.util.parsing.json.JSONArray
-import android.util.Log
-import scala.util.parsing.json.JSONObject
+import scala.xml.{ Node, NodeSeq }
+
+import uk.co.randomcoding.android.beerfestival.util.Convertors._
+import uk.co.randomcoding.android.beerfestival.util.XmlHelpers.elementValue
 
 /**
  * Describes a drink
+ *
+ * @constructor Create a new instance of a drink
+ * @param uid The unique Id of this drink
+ * @param drinkType The type of drink
+ * @param description The drink's description
+ * @param abv The drink's abv
+ * @param brewer The name of the drink's brewer
+ * @param features The features of the drink
  *
  * @author RandomCoder <randomcoder@randomcoding.co.uk>
  *
  * Created On: 5 Aug 2012
  */
-case class Drink(drinkType: DrinkType.drinkType, name: String, description: String, abv: Double, price: Double, remaining: String, brewer: String, features: List[String])
+case class Drink(uid: String, drinkType: DrinkType.drinkType, name: String, description: String, abv: Double, brewer: String, features: List[String])
 
 /**
  * Provides parsing of drink JSON data into a `List[Drink]`
  */
 object Drink {
-  private[this] val TAG = "Drink Parser"
+  /**
+   * Read drinks from a JSON input string.
+   *
+   * This can read a multiple or a single drink entity from the input
+   *
+   * @param jsonData The input drink data in JSON format
+   *
+   * @return all the drinks that were successfully parsed from the input data
+   */
+  def fromJson(jsonData: String): Seq[Drink] = JSON.parseFull(jsonData) match {
+    case Some(data) => data match {
+      case jsonDrinks: List[_] => parseDrinks(jsonDrinks).distinct
+      case drinkMap: Map[_, _] => Seq(drinkFromJson(drinkMap))
+      case _ => Nil
+    }
+    case failedParse => Nil
+  }
 
-  def fromJson(jsonData: String): Seq[Drink] = {
-    JSON.parseFull(jsonData) match {
-      case Some(data) => data match {
-        case jsonDrinks: List[_] => jsonDrinks.map(_ match {
-          case drinkMap: Map[_, _] => Some(drinkFromMap(drinkMap map (entry => entry._1.toString -> entry._2)))
-          case _ => None
-        }).filter(_.isDefined).map(_.get)
-        case drinkMap: Map[_, _] => Seq(drinkFromMap(drinkMap map (entry => entry._1.toString -> entry._2)))
-        case other => {
-          Log.e(TAG, "Unknown JSON Object: %s".format(other))
-          Nil
+  /**
+   * Load drink data from JUG Xml
+   */
+  def fromXml(xml: Node): Seq[Drink] = drinkNodes(xml).map(drinkFromXml).distinct
+
+  private[this] def drinkNodes(xml: Node): NodeSeq = (xml \\ "element" \ "item").filter(isDrinkNode)
+
+  private[this] val drinkNameElemNames = Seq("Beer", "Cider", "Perry")
+
+  private[this] def isDrinkNode(node: Node): Boolean = {
+    (node \\ "element").exists(elem => drinkNameElemNames.contains((elem \ "@name").text))
+  }
+
+  private[this] def drinkFromXml(drinkNode: Node): Drink = {
+    val drinkName = elementValue(drinkNode, drinkNameElemNames: _*)
+    val drinkDescription = elementValue(drinkNode, "Description")
+    val abv = elementValue(drinkNode, "ABV").toDouble
+
+    val drinkType = (drinkNode \ "element").find(node => drinkNameElemNames.contains((node \ "@name").text)) match {
+      case Some(elem) => (elem \ "@name").text
+      case _ => "" // Should cause a match error
+    }
+
+    val (brewer, features) = drinkType.toLowerCase match {
+      case "beer" => {
+        val b = elementValue(drinkNode, "BreweryName")
+        val f = {
+          val style = List(elementValue(drinkNode, "Style"))
+          elementValue(drinkNode, "Unusual").toLowerCase() match {
+            case "yes" => "Unusual" :: style
+            case _ => style
+          }
         }
+        (b, f)
       }
-      case failedParse => {
-        Log.e(TAG, "Failed to Parse:\n%s".format(failedParse))
-        Nil
+      case _ => {
+        (elementValue(drinkNode, "ProducerName"), List(elementValue(drinkNode, "Style")))
       }
     }
+
+    Drink(drinkName, drinkType, drinkName, drinkDescription, abv, brewer, features)
   }
 
-  private[this] def drinkFromMap(drinkMap: Map[String, Any]): Drink = {
-    val drinkType = drinkMap("drinkType").toString
-    val drinkName = drinkMap("name").toString
-    val description = drinkMap("description").toString
-    val abv = drinkMap("abv").toString.toDouble
-    val price = drinkMap("price").toString.drop(1).toDouble
-    val remaining = drinkMap("remaining").toString
-    val brewer = drinkMap("brewer").toString
-    val features = drinkMap("features").asInstanceOf[List[String]]
+  private[this] def parseDrinks(drinksJsonData: List[_]): Seq[Drink] = {
+    val drinks = drinksJsonData.map(_ match {
+      case drinkMap: Map[_, _] => Some(drinkFromJson(drinkMap))
+      case _ => None
+    })
 
-    Drink(DrinkType(drinkType), drinkName, description, abv, price, remaining, brewer, features)
+    drinks
   }
+
+  private[this] def drinkFromJson(drinkJsonMap: Map[String, Any]): Drink = {
+    val drinkUid = drinkJsonMap("drinkUid").toString
+    val drinkType = drinkJsonMap("drinkType").toString
+    val drinkName = drinkJsonMap("name").toString
+    val description = drinkJsonMap("description").toString
+    val abv = drinkJsonMap("abv").toString.toDouble
+    val brewer = drinkJsonMap("brewer").toString
+    val features = drinkJsonMap("features").asInstanceOf[List[String]]
+
+    Drink(drinkUid, drinkType, drinkName, description, abv, brewer, features)
+  }
+
+  private implicit def stringToDrinkType(in: String): DrinkType.drinkType = DrinkType(in)
 }
-object DrinkType extends Enumeration("Beer", "Cider", "Perry", "Wine") {
+
+object DrinkType extends Enumeration {
   type drinkType = Value
 
-  val BEER, CIDER, PERRY, WINE = Value
+  val BEER = Value("Beer")
+  val CIDER = Value("Cider")
+  val PERRY = Value("Perry")
+  val WINE = Value("Wine")
 
   def apply(typeString: String): drinkType = typeString.toLowerCase match {
     case "beer" => BEER

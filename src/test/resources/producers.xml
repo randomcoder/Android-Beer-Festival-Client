@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object>
+	<element name="outcome" type="string" value="success" />
+	<element name="result" type="array">
+		<item index="0" type="object">
+			<element name="Festival" type="string" value="WOR/2013" />
+			<element name="Id" type="string" value="BULMER" />
+			<element name="Name" type="string" value="Bulmer's" />
+			<element name="Location" type="string" value="Hereford" />
+			<element name="Description" type="string" value="Big cider producer" />
+		</item>
+	</element>
+	<element name="time" type="number" value="0.047506809234619" />
+</object>

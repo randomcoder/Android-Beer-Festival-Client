@@ -1,0 +1,16 @@
+[{
+  "name": "Wye Valley",
+  "location": "Herefordshire",
+  "drinkUids": ["10001"]
+ },
+ {
+  "name": "Wylam",
+  "location": "Place 1",
+  "drinkUids": ["10002"]
+ },
+ {
+  "name": "ABC",
+  "location": "Place 2",
+  "drinkUids": ["10003", "10009"]
+ }
+]
