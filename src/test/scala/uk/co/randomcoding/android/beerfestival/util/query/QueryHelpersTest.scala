@@ -20,9 +20,9 @@
 package uk.co.randomcoding.android.beerfestival.util.query
 
 import scala.xml.XML
-
 import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
+import java.io.InputStream
 
 /**
  * Simple Tests for the Query Helper object
@@ -36,8 +36,7 @@ class QueryHelpersTest extends SimpleTestBase {
     // TODO: Need to check for this somehow
     When("the 'festivals' query is used")
     Then("the response can be parsed into Xml")
-    val response = festivalsXml
-    val responseXml = XML.loadString(response)
+    val responseXml = festivalsXml() { stream: InputStream => XML.load(stream) }
     And("has nodes for the festival ids")
     val itemNodes = (responseXml \\ "element" \ "item")
     /*val worcNode = itemNodes.filter(node => elementValue(node, "Id") == "WOR/2013")
