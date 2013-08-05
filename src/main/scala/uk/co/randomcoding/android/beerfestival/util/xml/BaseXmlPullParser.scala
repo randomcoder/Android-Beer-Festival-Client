@@ -31,6 +31,8 @@ import android.util.Xml
  */
 abstract class BaseXmlPullParser[T] {
 
+  final val noNs = null
+
   final def parse(xmlStream: InputStream): Seq[T] = {
     try {
       val parser = Xml.newPullParser()

@@ -36,7 +36,7 @@ case class Festival(festivalId: String, festivalName: String, festivalTitle: Str
 object Festival {
 
   def fromXml(xml: InputStream): Seq[Festival] = {
-    Nil
+    new FestivalXmlParser().parse(xml)
     /*val nodes = festivalNodes(xml)
     nodes.map(festivalFromNode).distinct*/
   }

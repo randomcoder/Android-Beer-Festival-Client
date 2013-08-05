@@ -19,7 +19,10 @@
  */
 package uk.co.randomcoding.android.beerfestival
 
-import java.io.{BufferedInputStream, ByteArrayInputStream, InputStream}
+import java.io.InputStream
+
+import scala.annotation.tailrec
+import scala.collection.immutable.Stream
 
 import android.app.Activity
 import android.content.Intent
@@ -28,7 +31,7 @@ import android.util.Log
 import android.view.View
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
-import uk.co.randomcoding.android.beerfestival.model.festival.{Festival, FestivalModel}
+import uk.co.randomcoding.android.beerfestival.model.festival.{ FestivalModel, FestivalXmlParser }
 import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
 
 class MainActivity extends Activity with TypedActivity {
@@ -89,28 +92,27 @@ class MainActivity extends Activity with TypedActivity {
   }
 
   private[this] def initialiseFestivalData(festivalId: String) {
+    val TAG = "MainActivityFestivalInitialise"
     FestivalModel(festivalId) match {
       case None => {
-        val TAG = "MainActivityFestivalInitialise"
-        // TODO: Check for connectivity and bail if not connected (with a message)
-        val festival = Festival.fromXml(festivalInfoXml(festivalId)).find(_.festivalId == festivalId).get
-        Log.d(TAG, "Loaded Festival")
-        val beersAtFestival = Drink.fromXml(beersXml(festivalId))
-        Log.d(TAG, "Loaded Beers")
-        val brewersAtFestival = Brewer.fromXml(brewersXml(festivalId))
-        Log.d(TAG, "Loaded Brewers")
-        val cidersAtFestival = Drink.fromXml(cidersXml(festivalId))
-        Log.d(TAG, "Loaded Ciders")
-        val producersAtFestival = Brewer.fromXml(producersXml(festivalId))
-        Log.d(TAG, "Loaded Producers")
+        Log.i(TAG, "Initialising festival data")
+
+        val festival = festivalsXml() { stream: InputStream => new FestivalXmlParser().parse(stream) }.find(_.festivalId == festivalId).get
+        Log.d(TAG, s"Loaded Festival $festival")
+        val beersAtFestival = beersXml(festivalId) { stream: InputStream => Drink.fromXml(stream) }
+        Log.d(TAG, s"Loaded ${beersAtFestival.size} Beers")
+        val brewersAtFestival = breweriesXml(festivalId) { stream: InputStream => Brewer.fromXml(stream) }
+        Log.d(TAG, s"Loaded ${brewersAtFestival.size} Brewers")
+        val cidersAtFestival = cidersXml(festivalId) { stream: InputStream => Drink.fromXml(stream) }
+        Log.d(TAG, s"Loaded ${cidersAtFestival.size} Ciders")
+        val producersAtFestival = producersXml(festivalId) { stream: InputStream => Brewer.fromXml(stream) }
+        Log.d(TAG, s"Loaded ${producersAtFestival.size} Producers")
 
         // Initialise Model
         FestivalModel.initialise(festival, beersAtFestival ++ cidersAtFestival, brewersAtFestival ++ producersAtFestival)
-        Log.d(TAG, "Initialised Festival Model")
+        Log.i(TAG, s"Initialised Festival Model for ${festival.festivalId}")
       }
       case _ => // already initialised
     }
   }
-
-  private implicit def stringToInStream(s: String): InputStream = new BufferedInputStream(new ByteArrayInputStream(s.getBytes()))
 }

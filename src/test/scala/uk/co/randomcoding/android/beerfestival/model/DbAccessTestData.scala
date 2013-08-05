@@ -32,6 +32,7 @@ import scala.io.Source
  * @author RandomCoder
  *
  */
+@deprecated("Json Parsing is no longer supported", "1.0")
 trait DbAccessTestData extends ShouldMatchers {
   // Test data and helpers
   val smallDrinkDbFileLoc = "/drinksdb_small.json"
@@ -76,6 +77,6 @@ trait DbAccessTestData extends ShouldMatchers {
     val drinkSource = Source.fromInputStream(drinkDbFileLoc)
     val brewerSource = Source.fromInputStream(brewerDbFileLoc)
 
-    InMemoryCamraDbAccess.init(drinkSource, brewerSource)
+    //InMemoryCamraDbAccess.init(drinkSource, brewerSource)
   }
 }
