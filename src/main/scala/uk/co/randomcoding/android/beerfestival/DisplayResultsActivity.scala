@@ -22,10 +22,10 @@ package uk.co.randomcoding.android.beerfestival
 import android.app.ListActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import uk.co.randomcoding.android.beerfestival.SearchDrinkActivity.{ NAME_SEARCH_EXTRA, FESTIVAL_ID_EXTRA, DESCRIPTION_SEARCH_EXTRA }
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.util.DrinkSearcher._
 import uk.co.randomcoding.android.beerfestival.util.ExternalStorageHelper._
+import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 
 /**
  * Activity to get and display all search results
@@ -35,8 +35,6 @@ import uk.co.randomcoding.android.beerfestival.util.ExternalStorageHelper._
  * Created On: 4 Aug 2012
  */
 class DisplayResultsActivity extends ListActivity with TypedActivity {
-
-  val DISPLAY_DRINK_NAME_EXTRA = "uk.co.randomcoding.android.drinkfinder.display_drink_name"
 
   private[this] def TAG = "Display Results Activity"
 
