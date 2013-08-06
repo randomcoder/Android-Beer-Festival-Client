@@ -20,7 +20,7 @@
 package uk.co.randomcoding.android.beerfestival.util
 
 import java.io.File
-import uk.co.randomcoding.android.beerfestival.SearchDrinkActivity.{ NAME_SEARCH_EXTRA, DESCRIPTION_SEARCH_EXTRA, FESTIVAL_ID_EXTRA }
+import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import android.app.Activity
 import android.os.Bundle

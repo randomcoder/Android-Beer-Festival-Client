@@ -41,20 +41,20 @@ trait DbAccessTestData extends ShouldMatchers {
   val largeBrewerDbFileLoc = "/brewersdb.json"
 
   val dorothyGoodbodies = Drink("10001", DrinkType.BEER, "Dorothy Goodbody's Country Ale",
-    "Strong, full-bodied ruby ale. A 2011 Suggestabeer from Nick Bracey of Walsall.", 6.0, "Wye Valley",
+    "Strong, full-bodied ruby ale. A 2011 Suggestabeer from Nick Bracey of Walsall.", "Ready", 6.0, "Wye Valley",
     List("Dark", "Strong"))
 
   val bohemiaPilsner = Drink("10002", DrinkType.BEER, "Bohemia Pilsner",
     "Deep golden lager made to a typical Czech recipe with Pilsner yeast. Rich hop character.",
-    4.8, "Wylam", List("Lager", "Golden"))
+    "Ready", 4.8, "Wylam", List("Lager", "Golden"))
 
   val astonDark = Drink("10003", DrinkType.BEER, "Aston Dark",
     "Dark tanned and complex ale lightly hopped with Fuggles. Underlying malt gives way to hints of dark chocolate and coffee.",
-    3.6, "ABC", List("Mild"))
+    "Ready", 3.6, "ABC", List("Mild"))
 
   val rotundaRed = Drink("10009", DrinkType.BEER, "Rotunda Red",
     "Traditional ruby coloured ale of distinct character.  Lightly hopped with English Fuggles, finished with the distinct aroma of Liberty hops and a toffee aftertaste.",
-    4.8, "ABC", List("Brown", "Strong"))
+    "Ready", 4.8, "ABC", List("Brown", "Strong"))
 
   val wyeValley = Brewer("1", "Wye Valley", "Herefordshire")
 

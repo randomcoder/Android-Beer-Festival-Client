@@ -33,6 +33,7 @@ import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.model.festival.{ FestivalModel, FestivalXmlParser }
 import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
+import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 
 class MainActivity extends Activity with TypedActivity {
 
@@ -58,7 +59,7 @@ class MainActivity extends Activity with TypedActivity {
   }
 
   private[this] def allDrinksIntentExtras: Map[String, String] = {
-    Map(SearchDrinkActivity.FESTIVAL_ID_EXTRA -> worcesterId)
+    Map(FESTIVAL_ID_EXTRA -> worcesterId)
   }
 
   def showAllBrewers(view: View) {
