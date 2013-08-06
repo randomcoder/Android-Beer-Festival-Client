@@ -19,7 +19,6 @@
  */
 package uk.co.randomcoding.android.beerfestival.model.festival
 
-import uk.co.randomcoding.android.beerfestival.model.DbAccessTestData
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
@@ -32,7 +31,7 @@ import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
  * @author RandomCoder
  *
  */
-class FestivalModelTest extends SimpleTestBase with DbAccessTestData {
+class FestivalModelTest extends SimpleTestBase /*with DbAccessTestData*/ {
 
   val festivalXml = getClass.getResourceAsStream("/festivalinfo.xml")
   val beersXml = getClass.getResourceAsStream("/beers_small.xml")

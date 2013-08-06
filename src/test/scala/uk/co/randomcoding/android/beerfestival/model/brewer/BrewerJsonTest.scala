@@ -28,9 +28,9 @@ import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
  */
 class BrewerJsonTest extends SimpleTestBase {
 
-  private[this] val auldBrewers = Brewer("Auld Brewers", "Up North")
-  private[this] val newBrewers = Brewer("New Brewers", "In Scotland")
-  private[this] val farmBrewer = Brewer("Farm Brewer", "A Farm")
+  private[this] val auldBrewers = Brewer("1", "Auld Brewers", "Up North")
+  private[this] val newBrewers = Brewer("2", "New Brewers", "In Scotland")
+  private[this] val farmBrewer = Brewer("3", "Farm Brewer", "A Farm")
 
   test("A Brewer can be successfully created from a JSON array with one element") {
     Given("a JSON array than contains a single brewer element")

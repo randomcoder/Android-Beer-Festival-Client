@@ -26,6 +26,9 @@ import scala.xml.XML
 import scala.xml.Node
 import java.io.InputStream
 import java.io.ByteArrayInputStream
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import org.junit.Test
 
 /**
  * Brief description of DrinkXmlLoadTest
@@ -33,8 +36,12 @@ import java.io.ByteArrayInputStream
  * @author RandomCoder
  *
  */
+@RunWith(classOf[JUnitRunner])
 class DrinkXmlLoadTest extends SimpleTestBase {
-  test("A Drink can be successfully created from Xml with one drink element (beer)") {
+  @Test
+  @throws(classOf[java.lang.Exception])
+  def DrinkCanBeCreatedFromXml() {
+    //test("A Drink can be successfully created from Xml with one drink element (beer)") {
     Given("Xml than contains a single beer element")
 
     When("the Xml is parsed")

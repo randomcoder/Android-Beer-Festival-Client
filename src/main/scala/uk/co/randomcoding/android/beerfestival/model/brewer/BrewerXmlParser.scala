@@ -20,8 +20,9 @@
 package uk.co.randomcoding.android.beerfestival.model.brewer
 
 import org.xmlpull.v1.XmlPullParser
-import uk.co.randomcoding.android.beerfestival.util.xml.BaseXmlPullParser
+
 import android.util.Log
+import uk.co.randomcoding.android.beerfestival.util.xml.BaseXmlPullParser
 
 /**
  * Xml Pull Parser for reading Brewer Xml
@@ -45,43 +46,8 @@ class BrewerXmlParser extends BaseXmlPullParser[Brewer] {
       }
     })
 
-    /*while (parser.next != XmlPullParser.END_TAG) {
-      Log.d(TAG, s"Element: ${parser.getName}, type: ${parser.getEventType}")
-      parser.getEventType() match {
-        case XmlPullParser.START_TAG => parser.getName match {
-          case "element" => readElement(parser) match {
-            case Some(brewer) => brewers = brewer +: brewers
-            case _ => // do nothing
-          }
-          case tag => {
-            Log.d(TAG, s"Skipping $tag tag in Brewer Parser")
-            skip(parser)
-          }
-        }
-      }
-    }*/
-
     brewers
   }
-
-  /*  private def readElement(parser: XmlPullParser): Option[Brewer] = {
-    parser.require(XmlPullParser.START_TAG, noNs, "element")
-    var drink: Option[Brewer] = None
-
-    while (parser.next != XmlPullParser.END_TAG) {
-      parser.getEventType() match {
-        case XmlPullParser.START_TAG => {
-          parser.getName match {
-            case "item" => drink = Some(readEntity(parser))
-            case _ => skip(parser)
-          }
-        }
-        case _ => // next loop
-      }
-    }
-
-    drink
-  }*/
 
   override def readEntity(parser: XmlPullParser): Brewer = {
     var id = ""
@@ -107,38 +73,6 @@ class BrewerXmlParser extends BaseXmlPullParser[Brewer] {
       }
     })
     parser.require(XmlPullParser.END_TAG, null, "item")
-
-    /*    while (parser.next != XmlPullParser.END_TAG) {
-      parser.getEventType() match {
-        case XmlPullParser.START_TAG => (parser.getName, readAttribute(parser, "name")) match {
-          case ("element", "Name") => {
-            name = valueAttribute(parser)
-            Log.d(TAG, s"Brewer Name: $name")
-            parser.nextTag()
-          }
-          case ("element", "Location") => {
-            location = valueAttribute(parser)
-            Log.d(TAG, s"Brewer Location: $location")
-            parser.nextTag()
-          }
-          case ("element", "County") => {
-            location = valueAttribute(parser)
-            Log.d(TAG, s"Brewer County: $county")
-            parser.nextTag()
-          }
-          case ("element", "Postcode") => {
-            location = valueAttribute(parser)
-            Log.d(TAG, s"Brewer Post Code: $postCode")
-            parser.nextTag()
-          }
-          case ("element", "Description") => {
-            description = valueAttribute(parser)
-            Log.d(TAG, s"Brewer Descripion: $description")
-            parser.nextTag()
-          }
-        }
-      }
-    }*/
 
     Brewer(id, name, s"$location, $county. $postCode", description)
   }

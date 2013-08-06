@@ -20,8 +20,9 @@
 package uk.co.randomcoding.android.beerfestival.model.drink
 
 import org.xmlpull.v1.XmlPullParser
-import uk.co.randomcoding.android.beerfestival.util.xml.BaseXmlPullParser
+
 import android.util.Log
+import uk.co.randomcoding.android.beerfestival.util.xml.BaseXmlPullParser
 
 /**
  * Xml Parser for Drinks
@@ -36,7 +37,6 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     var drinks = Seq.empty[Drink]
     Stream.continually { p.next }.takeWhile(ev => ev != XmlPullParser.END_DOCUMENT).foreach(ev => {
       if (p.getEventType == XmlPullParser.START_TAG) {
-
         p.getName match {
           case "item" => drinks = readEntity(p) +: drinks
           case tag => Log.d(TAG, s"Ignore Element: ${p.getName}")
@@ -45,54 +45,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     })
 
     drinks
-    /*var drinks = Seq.empty[Drink]
-
-    while (parser.next != XmlPullParser.END_TAG) {
-      Log.d(TAG, s"Element: ${parser.getName}, type: ${parser.getEventType}")
-
-      parser.getEventType() match {
-        case XmlPullParser.START_TAG => parser.getName match {
-          case "element" => readElement(parser) match {
-            case Some(drink) => {
-              Log.d(TAG, s"Adding drink: $drink")
-              drinks = drink +: drinks
-            }
-            case _ => // Do nothing
-          }
-          case "item" => {
-            val drink = readEntity(parser)
-            Log.d(TAG, s"Adding drink: $drink")
-            drinks = drink +: drinks
-          }
-          case tag => {
-            Log.d(TAG, s"Skipping $tag tag in Drink Parser")
-            skip(parser)
-          }
-        }
-      }
-    }
-
-    drinks*/
   }
-
-  /*private[this] def readElement(parser: XmlPullParser): Option[Drink] = {
-    parser.require(XmlPullParser.START_TAG, noNs, "element")
-    var drink: Option[Drink] = None
-
-    while (parser.next != XmlPullParser.END_TAG) {
-      parser.getEventType() match {
-        case XmlPullParser.START_TAG => {
-          parser.getName match {
-            case "item" => drink = Some(readEntity(parser))
-            case _ => skip(parser)
-          }
-        }
-        case _ => // next loop
-      }
-    }
-
-    drink
-  }*/
 
   override def readEntity(parser: XmlPullParser): Drink = {
     parser.require(XmlPullParser.START_TAG, noNs, "item")
@@ -131,57 +84,6 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
       }
     })
     parser.require(XmlPullParser.END_TAG, null, "item")
-
-    /*while (parser.next != XmlPullParser.END_TAG) {
-      parser.getEventType() match {
-        case XmlPullParser.START_TAG => (parser.getName, readAttribute(parser, "name")) match {
-          case ("element", "Name") => {
-            drinkName = valueAttribute(parser)
-            Log.d(TAG, s"Drink Name: $drinkName")
-            parser.nextTag()
-          }
-          case ("element", "Description") => {
-            drinkDescription = valueAttribute(parser)
-            Log.d(TAG, s"Drink Description: $drinkDescription")
-            parser.nextTag()
-          }
-          case ("element", "Abv") => {
-            drinkAbv = valueAttribute(parser).toDouble
-            Log.d(TAG, s"Drink Abv: $drinkAbv")
-            parser.nextTag()
-          }
-          case ("element", "Cider") => {
-            drinkType = DrinkType.CIDER
-            Log.d(TAG, s"Drink Type: $drinkType")
-            parser.nextTag()
-          }
-          case ("element", "Beer") => {
-            drinkType = DrinkType.BEER
-            Log.d(TAG, s"Drink Type: $drinkType")
-            parser.nextTag()
-          }
-          case ("element", "Perry") => {
-            drinkType = DrinkType.PERRY
-            Log.d(TAG, s"Drink Type: $drinkType")
-            parser.nextTag()
-          }
-          case ("element", "Brewery") | ("element", "Producer") => {
-            drinkBrewer = valueAttribute(parser)
-            Log.d(TAG, s"Drink Brewer: $drinkBrewer")
-            parser.nextTag()
-          }
-          case ("element", "Style") => {
-            drinkFeatures = valueAttribute(parser) :: drinkFeatures // TODO: Convert to readable form
-            Log.d(TAG, s"Drink features: $drinkFeatures")
-            parser.nextTag()
-          }
-          case ("element", "Unusual") => {
-            if (valueAttribute(parser).toLowerCase == "yes") drinkFeatures = "Unusual" :: drinkFeatures
-            Log.d(TAG, s"$drinkName is flagged as Unusual")
-          }
-          case _ => // Do Nothing
-        }
-      }*/
 
     Drink(drinkName, drinkType, drinkName, drinkDescription, drinkAbv, drinkBrewer, drinkFeatures)
   }
