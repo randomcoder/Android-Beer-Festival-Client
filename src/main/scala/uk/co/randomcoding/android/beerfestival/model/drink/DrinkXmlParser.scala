@@ -55,6 +55,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     var drinkAbv = 0.0D
     var drinkBrewer = ""
     var drinkFeatures = List.empty[String]
+    var state = ""
 
     Stream.continually(parser.next).takeWhile(_ != XmlPullParser.END_TAG && parser.getName != "item").foreach(ev => {
       if (ev == XmlPullParser.START_TAG && parser.getName == "element") {
@@ -75,6 +76,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
           case "Description" => drinkDescription = valueAttribute(parser)
           case "Abv" => drinkAbv = valueAttribute(parser).toDouble
           case "Brewery" | "Producer" => drinkBrewer = valueAttribute(parser)
+          case "State" => state = valueAttribute(parser)
           case "Style" => drinkFeatures = valueAttribute(parser) +: drinkFeatures
           case "Unusual" => if (valueAttribute(parser).toLowerCase() == "yes") drinkFeatures = "Unusual" +: drinkFeatures
           case n => Log.d(TAG, s"""Unprocessed <element name="$n" value="${valueAttribute(parser)}"/>""")
@@ -85,7 +87,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     })
     parser.require(XmlPullParser.END_TAG, null, "item")
 
-    Drink(drinkName, drinkType, drinkName, drinkDescription, drinkAbv, drinkBrewer, drinkFeatures)
+    Drink(drinkName, drinkType, drinkName, drinkDescription, state, drinkAbv, drinkBrewer, drinkFeatures)
   }
 
 }

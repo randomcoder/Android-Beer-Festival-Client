@@ -33,7 +33,7 @@ object TestDrinks {
   // JSON Test Data
   val tangerineDuck = Drink("10001", BEER, "Tangerine Duck",
     "Copper coloured beer with a hint of tangerine from the late addition of crystal hops. Named after the Atomic Boys famous duck Puskas at Blackpool FC in the 50s.",
-    4.4, "Fuzzy Duck", List("Brown", "Best Bitter"))
+    "Ready", 4.4, "Fuzzy Duck", List("Brown", "Best Bitter"))
 
   val tangerineDuckJson = """{
     | "drinkUid": "10001",
@@ -47,7 +47,7 @@ object TestDrinks {
 
   val astonDark = Drink("10002", BEER, "Aston Dark",
     "Dark tanned and complex ale lightly hopped with Fuggles. Underlying malt gives way to hints of dark chocolate and coffee.",
-    3.6, "ABC", List("Mild"))
+    "Ready", 3.6, "ABC", List("Mild"))
 
   val astonDarkJson = """{
     | "drinkUid": "10002",
@@ -61,7 +61,7 @@ object TestDrinks {
 
   val rotundaRed = Drink("10003", BEER, "Rotunda Red",
     "Traditional ruby coloured ale of distinct character.  Lightly hopped with English Fuggles, finished with the distinct aroma of Liberty hops and a toffee aftertaste.",
-    4.8, "ABC", List("Brown", "Strong"))
+    "Ready", 4.8, "ABC", List("Brown", "Strong"))
 
   val rotundaRedJson = """{
     | "drinkUid": "10003",
@@ -75,7 +75,7 @@ object TestDrinks {
 
   val buttermereBeauty = Drink("10004", BEER, "Buttermere Beauty",
     "Golden pilsner style, made from lager malt, Saaz hops and a lager yeast fermented at cool temperature.",
-    4.8, "Cumbrian Legendary Ales", List("Lager", "Golden"))
+    "Ready", 4.8, "Cumbrian Legendary Ales", List("Lager", "Golden"))
 
   val buttermereBeautyJson = """{
     | "drinkUid": "10004",
@@ -89,7 +89,7 @@ object TestDrinks {
 
   val seville = Drink("10005", BEER, "Seville",
     "Dark Star's first fruit beer. Made with malted wheat as well as barley and Eldorado hops, matured with a hint of Spanish bitter oranges.",
-    4.0, "Dark Star", List("Stout / Porter", "Speciality"))
+    "Ready", 4.0, "Dark Star", List("Stout / Porter", "Speciality"))
 
   val sevilleJson = """{
     | "drinkUid": "10005",
@@ -120,7 +120,7 @@ object TestDrinks {
 
   val porter1872 = Drink("1872 Porter", DrinkType.BEER, "1872 Porter",
     "Champion Winter Beer of Britain 2013. Rich, complex and dark porter, with an old port nose and coffee and bitter chocolate flavours on the palate. A 2013 Suggestabeer from Daryl Jenkins.",
-    6.5, "Elland", List("STOU"))
+    "Waiting", 6.5, "Elland", List("STOU"))
 
   val deadDogXml = <object>
                      <element name="outcome" type="string" value="success"/>
@@ -137,7 +137,7 @@ object TestDrinks {
                      </element>
                    </object>
 
-  val deadDog = Drink("Dead Dog", DrinkType.CIDER, "Dead Dog", "Paint stripper", 7, "Bulmer's", List("DP"))
+  val deadDog = Drink("Dead Dog", DrinkType.CIDER, "Dead Dog", "Paint stripper", "Ready", 7, "Bulmer's", List("DP"))
 
   val alederflowerXml = <object>
                           <element name="outcome" type="string" value="success"/>
@@ -156,7 +156,7 @@ object TestDrinks {
                         </object>
 
   val alederflower = Drink("Alederflower", DrinkType.BEER, "Alederflower",
-    "Creamy pale ale infused with elderflowers picked on a local organic farm.",
+    "Creamy pale ale infused with elderflowers picked on a local organic farm.", "Waiting",
     4.2, "Stroud", List("Unusual", "SPEC"))
 
   val threeDrinksXml = <object>
