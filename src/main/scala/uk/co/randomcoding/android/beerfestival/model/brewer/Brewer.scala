@@ -19,26 +19,28 @@
  */
 package uk.co.randomcoding.android.beerfestival.model.brewer
 
+import java.io.InputStream
+
 import scala.util.parsing.json.JSON
+
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
-import uk.co.randomcoding.android.beerfestival.util.XmlHelpers._
-import scala.xml.Node
-import scala.xml.NodeSeq
 
 /**
  * @constructor Create a new instance of a Brewer
- * @param name The brewer's namer
+ *
+ * @param id The unique id of the brewer
+ * @param name The brewer's name
  * @param location Where the brewer is located
  * @param drinkUids The `uids` of all the drinks brewed by this brewer
  *
  * @author RandomCoder
  */
-case class Brewer(name: String, location: String, description: String = "")
+case class Brewer(id: String, name: String, location: String, description: String = "")
 
 object Brewer {
-  def fromXml(brewersXml: Node): Seq[Brewer] = brewerNodes(brewersXml).map(brewerFromNode).distinct
+  def fromXml(brewersXml: InputStream): Seq[Brewer] = new BrewerXmlParser().parse(brewersXml) //brewerNodes(brewersXml).map(brewerFromNode).distinct
 
-  private[this] def brewerNodes(brewersXml: Node): NodeSeq = (brewersXml \\ "element" \ "item")
+  /*private[this] def brewerNodes(brewersXml: Node): NodeSeq = (brewersXml \\ "element" \ "item")
 
   private[this] def brewerFromNode(brewerNode: Node): Brewer = {
     val brewerName = elementValue(brewerNode, "Name")
@@ -46,7 +48,7 @@ object Brewer {
     val brewerLocation = Seq("Location", "County", "Postcode").map(elementValue(brewerNode, _)).filterNot(_.isEmpty).mkString(", ")
 
     Brewer(brewerName, brewerLocation, brewerDescription)
-  }
+  }*/
 
   /**
    * Read brewers from a JSON input string.
@@ -67,10 +69,11 @@ object Brewer {
   }
 
   private[this] def brewerFromJson(brewerJson: Map[String, Any]): Brewer = {
+    val id = brewerJson("id").toString
     val name = brewerJson("name").toString
     val location = brewerJson("location").toString
 
-    Brewer(name, location)
+    Brewer(id, name, location)
   }
 
   private[this] def convertBrewers(brewerJsonData: List[_]): List[Brewer] = {

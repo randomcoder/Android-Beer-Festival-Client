@@ -23,6 +23,12 @@ import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
 import uk.co.randomcoding.android.beerfestival.model.drink.TestDrinks._
 import scala.xml.XML
+import scala.xml.Node
+import java.io.InputStream
+import java.io.ByteArrayInputStream
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import org.junit.Test
 
 /**
  * Brief description of DrinkXmlLoadTest
@@ -30,8 +36,12 @@ import scala.xml.XML
  * @author RandomCoder
  *
  */
+@RunWith(classOf[JUnitRunner])
 class DrinkXmlLoadTest extends SimpleTestBase {
-  test("A Drink can be successfully created from Xml with one drink element (beer)") {
+  @Test
+  @throws(classOf[java.lang.Exception])
+  def DrinkCanBeCreatedFromXml() {
+    //test("A Drink can be successfully created from Xml with one drink element (beer)") {
     Given("Xml than contains a single beer element")
 
     When("the Xml is parsed")
@@ -90,4 +100,6 @@ class DrinkXmlLoadTest extends SimpleTestBase {
     And("at least one of the ciders is correctly loaded")
     ciders should contain(deadDog)
   }
+
+  private implicit def xmlToInputStream(node: Node): InputStream = new ByteArrayInputStream(node.toString.getBytes)
 }

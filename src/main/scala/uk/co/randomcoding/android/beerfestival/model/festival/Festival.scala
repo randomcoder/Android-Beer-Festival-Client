@@ -19,10 +19,11 @@
  */
 package uk.co.randomcoding.android.beerfestival.model.festival
 
+import java.io.InputStream
+
 import scala.util.parsing.json.JSON
+
 import uk.co.randomcoding.android.beerfestival.util.Convertors._
-import uk.co.randomcoding.android.beerfestival.util.XmlHelpers._
-import scala.xml.{ Node, NodeSeq }
 
 /**
  * Brief description of Festival
@@ -34,12 +35,13 @@ case class Festival(festivalId: String, festivalName: String, festivalTitle: Str
 
 object Festival {
 
-  def fromXml(xml: Node): Seq[Festival] = {
-    val nodes = festivalNodes(xml)
-    nodes.map(festivalFromNode).distinct
+  def fromXml(xml: InputStream): Seq[Festival] = {
+    new FestivalXmlParser().parse(xml)
+    /*val nodes = festivalNodes(xml)
+    nodes.map(festivalFromNode).distinct*/
   }
 
-  def festivalNodes(xml: Node): NodeSeq = {
+  /*def festivalNodes(xml: Node): NodeSeq = {
     (xml \\ "element").filter(node => (node \ "@name").text == "result")
   }
 
@@ -50,7 +52,7 @@ object Festival {
     val description = elementValue(node, "Description")
 
     Festival(id, name, title, description)
-  }
+  }*/
 
   def fromJson(jsonData: String): Option[Festival] = JSON.parseFull(jsonData) match {
     case Some(data) => data match {

@@ -19,7 +19,7 @@ object General {
   )
 
   val keptClasses = Seq("scala.Function1", "scala.Tuple2", "scala.collection.Seq", "scala.Option", "scala.Function2", "scala.collection.immutable.Map",
-    "scala.collection.immutable.List", "scala.Enumeration$Value")
+    "scala.collection.immutable.List", "scala.Enumeration$Value", "scala.collection.immutable.StringLike")
 
   // Default Proguard settings
   lazy val proguardSettings = inConfig(Android) (Seq (

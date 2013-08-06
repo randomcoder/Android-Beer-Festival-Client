@@ -19,10 +19,12 @@
  */
 package uk.co.randomcoding.android.beerfestival.util.query
 
-import java.io.{BufferedInputStream, BufferedOutputStream}
-import java.net.{HttpURLConnection, URL}
+import java.io.{ BufferedInputStream, BufferedOutputStream, InputStream }
+import java.net.{ HttpURLConnection, URL }
 
-import scala.collection.mutable.ListBuffer
+import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
+import uk.co.randomcoding.android.beerfestival.model.drink.Drink
+import uk.co.randomcoding.android.beerfestival.model.festival.Festival
 
 /**
  * Helper object to perform queries to the main web service
@@ -34,32 +36,22 @@ object QueryHelper {
 
   private[this] val serviceUrl = new URL("http://tickets-test.worcesterbeerfest.org.uk/BeerList/checkAction.php")
 
-  def breweries(festivalId: String): String = doQuery(queryWithFestival("GetBrewers", festivalId))
-  def beers(festivalId: String): String = doQuery(queryWithFestival("GetBeers", festivalId))
-  def ciders(festivalId: String): String = doQuery(queryWithFestival("GetCiders", festivalId))
-  def brewers(festivalId: String): String = doQuery(queryWithFestival("GetBreweries", festivalId))
-  def producers(festivalId: String): String = doQuery(queryWithFestival("GetProducers", festivalId))
-  def festivalInfo(festivalId: String): String = doQuery(queryWithFestival("GetFestivalInfo", festivalId))
-  def festivals(): String = doQuery(queryWithoutFestival("GetFestivals"))
+  def breweriesXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetBreweries", festivalId))(parseFunc)
+  def beersXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetBeers", festivalId))(parseFunc)
+  def cidersXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetCiders", festivalId))(parseFunc)
+  def producersXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetProducers", festivalId))(parseFunc)
+  def festivalInfoXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetFestivalInfo", festivalId))(parseFunc)
+  def festivalsXml[A]()(parseFunc: InputStream => A): A = doQuery(queryWithoutFestival("GetFestivals"))(parseFunc)
 
   private[this] def queryWithoutFestival(queryType: String): String = {
-    s"""<object>
-      |<element name="action" type="string" value="${queryType}" />
-	  |<element name="param" type="object">
-	  |</element>
-	  |</object>""".stripMargin
+    s"""<object><element name="action" type="string" value="${queryType}" /><element name="param" type="object"></element></object>"""
   }
 
   private[this] def queryWithFestival(queryType: String, festivalId: String = "WOR/2013"): String = {
-    s"""<object>
-      |<element name="action" type="string" value="${queryType}" />
-      |<element name="param" type="object">
-      |<element name="Festival" type="string" value="${festivalId}" />
-      |</element>
-      |</object>""".stripMargin
+    s"""<object><element name="action" type="string" value="${queryType}" /><element name="param" type="object"><element name="Festival" type="string" value="${festivalId}" /></element></object>"""
   }
 
-  private[this] def doQuery(queryXml: String) = {
+  private[this] def doQuery[A](queryXml: String)(parseFunc: InputStream => A): A = {
     val connection = serviceUrl.openConnection().asInstanceOf[HttpURLConnection]
 
     try {
@@ -70,13 +62,12 @@ object QueryHelper {
       oStream.write(queryXml.getBytes())
       oStream.close()
 
-      val inStream = new BufferedInputStream(connection.getInputStream())
-      val buffer = new Array[Byte](1024)
-      val response = new ListBuffer[Byte]
-      Stream.continually(inStream.read(buffer)).takeWhile(_ != -1).foreach(response ++= buffer.take(_))
+      val inStream = new BufferedInputStream(connection.getInputStream(), 1024)
+      val response = parseFunc(inStream)
+      inStream.close
 
-      inStream.close()
-      new String(response.toArray)
+      response
+
     } finally {
       connection.disconnect()
     }
