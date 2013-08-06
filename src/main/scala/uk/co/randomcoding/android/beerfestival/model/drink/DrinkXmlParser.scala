@@ -32,30 +32,50 @@ import android.util.Log
 class DrinkXmlParser extends BaseXmlPullParser[Drink] {
   val TAG = "Drink Xml Parser"
 
-  override def readEntities(parser: XmlPullParser): Seq[Drink] = {
+  override def readEntities(p: XmlPullParser): Seq[Drink] = {
     var drinks = Seq.empty[Drink]
+    Stream.continually { p.next }.takeWhile(ev => ev != XmlPullParser.END_DOCUMENT).foreach(ev => {
+      if (p.getEventType == XmlPullParser.START_TAG) {
+
+        p.getName match {
+          case "item" => drinks = readEntity(p) +: drinks
+          case tag => Log.d(TAG, s"Ignore Element: ${p.getName}")
+        }
+      }
+    })
+
+    drinks
+    /*var drinks = Seq.empty[Drink]
 
     while (parser.next != XmlPullParser.END_TAG) {
-      Log.i(TAG, s"Element: ${parser.getName}, type: ${parser.getEventType}")
+      Log.d(TAG, s"Element: ${parser.getName}, type: ${parser.getEventType}")
 
       parser.getEventType() match {
         case XmlPullParser.START_TAG => parser.getName match {
           case "element" => readElement(parser) match {
-            case Some(drink) => drinks = drink +: drinks
+            case Some(drink) => {
+              Log.d(TAG, s"Adding drink: $drink")
+              drinks = drink +: drinks
+            }
             case _ => // Do nothing
           }
+          case "item" => {
+            val drink = readEntity(parser)
+            Log.d(TAG, s"Adding drink: $drink")
+            drinks = drink +: drinks
+          }
           case tag => {
-            Log.i(TAG, s"Skipping $tag tag in Drink Parser")
+            Log.d(TAG, s"Skipping $tag tag in Drink Parser")
             skip(parser)
           }
         }
       }
     }
 
-    drinks
+    drinks*/
   }
 
-  private[this] def readElement(parser: XmlPullParser): Option[Drink] = {
+  /*private[this] def readElement(parser: XmlPullParser): Option[Drink] = {
     parser.require(XmlPullParser.START_TAG, noNs, "element")
     var drink: Option[Drink] = None
 
@@ -72,7 +92,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     }
 
     drink
-  }
+  }*/
 
   override def readEntity(parser: XmlPullParser): Drink = {
     parser.require(XmlPullParser.START_TAG, noNs, "item")
@@ -83,7 +103,36 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     var drinkBrewer = ""
     var drinkFeatures = List.empty[String]
 
-    while (parser.next != XmlPullParser.END_TAG) {
+    Stream.continually(parser.next).takeWhile(_ != XmlPullParser.END_TAG && parser.getName != "item").foreach(ev => {
+      if (ev == XmlPullParser.START_TAG && parser.getName == "element") {
+        parser.require(XmlPullParser.START_TAG, null, "element")
+        readAttribute(parser, "name") match {
+          case "Beer" => {
+            drinkName = valueAttribute(parser)
+            drinkType = DrinkType.BEER
+          }
+          case "Cider" => {
+            drinkName = valueAttribute(parser)
+            drinkType = DrinkType.CIDER
+          }
+          case "Perry" => {
+            drinkName = valueAttribute(parser)
+            drinkType = DrinkType.PERRY
+          }
+          case "Description" => drinkDescription = valueAttribute(parser)
+          case "Abv" => drinkAbv = valueAttribute(parser).toDouble
+          case "Brewery" | "Producer" => drinkBrewer = valueAttribute(parser)
+          case "Style" => drinkFeatures = valueAttribute(parser) +: drinkFeatures
+          case "Unusual" => if (valueAttribute(parser).toLowerCase() == "yes") drinkFeatures = "Unusual" +: drinkFeatures
+          case n => Log.d(TAG, s"""Unprocessed <element name="$n" value="${valueAttribute(parser)}"/>""")
+        }
+        parser.next
+        parser.require(XmlPullParser.END_TAG, null, "element")
+      }
+    })
+    parser.require(XmlPullParser.END_TAG, null, "item")
+
+    /*while (parser.next != XmlPullParser.END_TAG) {
       parser.getEventType() match {
         case XmlPullParser.START_TAG => (parser.getName, readAttribute(parser, "name")) match {
           case ("element", "Name") => {
@@ -132,8 +181,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
           }
           case _ => // Do Nothing
         }
-      }
-    }
+      }*/
 
     Drink(drinkName, drinkType, drinkName, drinkDescription, drinkAbv, drinkBrewer, drinkFeatures)
   }

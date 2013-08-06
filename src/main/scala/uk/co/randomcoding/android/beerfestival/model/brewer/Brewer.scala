@@ -27,16 +27,18 @@ import uk.co.randomcoding.android.beerfestival.util.Convertors._
 
 /**
  * @constructor Create a new instance of a Brewer
- * @param name The brewer's namer
+ *
+ * @param id The unique id of the brewer
+ * @param name The brewer's name
  * @param location Where the brewer is located
  * @param drinkUids The `uids` of all the drinks brewed by this brewer
  *
  * @author RandomCoder
  */
-case class Brewer(name: String, location: String, description: String = "")
+case class Brewer(id: String, name: String, location: String, description: String = "")
 
 object Brewer {
-  def fromXml(brewersXml: InputStream): Seq[Brewer] = Nil //brewerNodes(brewersXml).map(brewerFromNode).distinct
+  def fromXml(brewersXml: InputStream): Seq[Brewer] = new BrewerXmlParser().parse(brewersXml) //brewerNodes(brewersXml).map(brewerFromNode).distinct
 
   /*private[this] def brewerNodes(brewersXml: Node): NodeSeq = (brewersXml \\ "element" \ "item")
 
@@ -67,10 +69,11 @@ object Brewer {
   }
 
   private[this] def brewerFromJson(brewerJson: Map[String, Any]): Brewer = {
+    val id = brewerJson("id").toString
     val name = brewerJson("name").toString
     val location = brewerJson("location").toString
 
-    Brewer(name, location)
+    Brewer(id, name, location)
   }
 
   private[this] def convertBrewers(brewerJsonData: List[_]): List[Brewer] = {
