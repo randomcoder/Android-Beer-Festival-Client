@@ -22,10 +22,12 @@ package uk.co.randomcoding.android.beerfestival
 import android.app.ListActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import uk.co.randomcoding.android.beerfestival.SearchDrinkActivity.{ NAME_SEARCH_EXTRA, FESTIVAL_ID_EXTRA, DESCRIPTION_SEARCH_EXTRA }
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
-import uk.co.randomcoding.android.beerfestival.util.DrinkSearcher._
-import uk.co.randomcoding.android.beerfestival.util.ExternalStorageHelper._
+import uk.co.randomcoding.android.beerfestival.util.DrinkSearcher.getMatchingDrinks
+import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
+import uk.co.randomcoding.android.beerfestival.model.festival.FestivalModel
+import android.util.Log
+import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
 
 /**
  * Activity to get and display all search results
@@ -36,64 +38,74 @@ import uk.co.randomcoding.android.beerfestival.util.ExternalStorageHelper._
  */
 class DisplayResultsActivity extends ListActivity with TypedActivity {
 
-  val DISPLAY_DRINK_NAME_EXTRA = "uk.co.randomcoding.android.drinkfinder.display_drink_name"
-
   private[this] def TAG = "Display Results Activity"
 
   val FAILED_TO_PARSE_DIALOGUE_ID = 1
 
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_display_results)
+
     val intent = getIntent
     val festivalId = intent.getStringExtra(FESTIVAL_ID_EXTRA)
 
-    val dataFile = festivalDataFile(this, festivalId)
+    val matchingDrinks = FestivalModel(festivalId) match {
 
-    val matchingDrinks = getMatchingDrinks(this, dataFile, intent.getExtras, FAILED_TO_PARSE_DIALOGUE_ID).toList
+      case Some(model) => {
+        val sortedDrinks = () => model.drinks.sortBy(_.name).filter(Seq("Ready", "Waiting").contains(_))
+
+        Option(intent.getStringExtra(DRINK_TYPE_SEARCH_EXTRA)) match {
+          case Some("Beer") => sortedDrinks().filter(_.drinkType == DrinkType.BEER)
+          case Some("Cider") => sortedDrinks().filter(_.drinkType == DrinkType.CIDER)
+          case Some("Perry") => sortedDrinks().filter(_.drinkType == DrinkType.PERRY)
+          case _ => sortedDrinks()
+        }
+      }
+      case _ => Nil
+    }
+
+    Log.d(TAG, s"Got ${matchingDrinks} from Festival $festivalId")
 
     displayResults(matchingDrinks)
   }
 
-  private[this] implicit def bundleToSearchMap(b: Bundle): Map[String, String] = {
-    Map(NAME_SEARCH_EXTRA -> b.getString(NAME_SEARCH_EXTRA),
-      DESCRIPTION_SEARCH_EXTRA -> b.getString(DESCRIPTION_SEARCH_EXTRA))
-  }
-
-  private[this] def displayResults(drinks: List[Drink]) {
-    val titleText = findView(TR.drinkResultsTitle)
-    titleText.setText("Search Results: (%d)".format(drinks.size))
+  private[this] def displayResults(drinks: Seq[Drink]) {
+    /*val titleText = findView(TR.drinkResultsTitle)
+    titleText.setText(s"Search Results: (${drinks.size})")*/
 
     val drinkTitles = drinks match {
-      case Nil => Array("There are no drinkd matching your search")
+      case Nil => Array("There are no drinks matching your search")
       case _ => drinks.map(drinkToText).toArray
     }
 
-    setListAdapter(new ArrayAdapter[String](this, R.id.drinkResultsContentText, drinkTitles))
+    setListAdapter(new ArrayAdapter[String](this, android.R.layout.simple_list_item_1, drinkTitles))
   }
 
   private[this] def drinkToText(drink: Drink): String = {
-    val descriptionText = drink.description.trim match {
-      case "" => ""
-      case description => "Description: %s\n".format(description)
-    }
+    Log.d(TAG, s"Converting $drink to list text")
+    /*val descriptionText = Option(drink.description) match {
+      case Some(description) => s"Description: $description\n"
+      case None => ""
+    }*/
+
+    val featuresEntry = drink.features.mkString(", ")
 
     // setup variable display entries
-    val abvEntry = drink.abv match {
-      case 0.0 => ("", "")
-      case abv => ("ABV", "%.1f%%".format(abv))
+    val abvEntry = Option(drink.abv) match {
+      case Some(abv) => ("ABV", abv)
+      case _ => ("ABV", "")
     }
 
-    val priceEntry = drink.price match {
-      case 0.0 => ("", "")
-      case price => ("Price", "£%.2f".format(price))
+    val stateEntry = Option(drink.state) match {
+      case Some(state) => ("State", state)
+      case _ => ("State", "")
     }
 
-    val variableText = Seq(abvEntry, priceEntry).map(_ match {
+    val variableText = Seq(abvEntry, stateEntry).map(_ match {
       case ("", "") => ""
-      case (label, text) => "%s: %s".format(label, text)
+      case (label, text) => s"$label: $text"
     }).mkString("   ")
 
-    "%s\n%s%s".format(drink.name, descriptionText, variableText)
+    Log.d(TAG, s"Converted drink: ${drink.name}")
+    s"${drink.name}\n$featuresEntry\n$variableText"
   }
 }

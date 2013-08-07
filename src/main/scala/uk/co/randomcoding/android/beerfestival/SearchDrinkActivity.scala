@@ -33,7 +33,7 @@ import android.content.Intent
  *
  */
 class SearchDrinkActivity extends Activity with TypedActivity {
-  import SearchDrinkActivity._
+  /* import SearchDrinkActivity._
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_search_drink)
@@ -54,13 +54,5 @@ class SearchDrinkActivity extends Activity with TypedActivity {
     Map(NAME_SEARCH_EXTRA -> nameSearch,
       DESCRIPTION_SEARCH_EXTRA -> descriptionSearch,
       FESTIVAL_ID_EXTRA -> "WCBCF")
-  }
-}
-
-object SearchDrinkActivity {
-  private def extra(key: String): String = "uk.co.randomcoding.android.drinkfinder.%s".format(key)
-
-  val NAME_SEARCH_EXTRA = extra("NameSearch")
-  val DESCRIPTION_SEARCH_EXTRA = extra("DescriptionSearch")
-  val FESTIVAL_ID_EXTRA = extra("WCBCF")
+  }*/
 }

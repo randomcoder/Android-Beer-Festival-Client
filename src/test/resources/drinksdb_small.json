@@ -1,0 +1,33 @@
+[{
+  "drinkUid": "10001",
+  "drinkType": "Beer",
+  "name": "Dorothy Goodbody's Country Ale",
+  "description": "Strong, full-bodied ruby ale. A 2011 Suggestabeer from Nick Bracey of Walsall.",
+  "abv": 6.0,
+  "brewer": "Wye Valley",
+  "features": ["Dark","Strong"]
+},{
+  "drinkUid": "10002",
+  "drinkType": "Beer",
+  "name": "Bohemia Pilsner",
+  "description": "Deep golden lager made to a typical Czech recipe with Pilsner yeast. Rich hop character.",
+  "abv": 4.8,
+  "brewer": "Wylam",
+  "features": ["Lager","Golden"]
+},{
+  "drinkUid": "10003",
+  "drinkType": "Beer",
+  "name": "Aston Dark",
+  "description": "Dark tanned and complex ale lightly hopped with Fuggles. Underlying malt gives way to hints of dark chocolate and coffee.",
+  "abv": 3.6,
+  "brewer": "ABC",
+  "features": ["Mild"]
+},{
+  "drinkUid": "10009",
+  "drinkType": "Beer",
+  "name": "Rotunda Red",
+  "description": "Traditional ruby coloured ale of distinct character.  Lightly hopped with English Fuggles, finished with the distinct aroma of Liberty hops and a toffee aftertaste.",
+  "abv": 4.8,
+  "brewer": "ABC",
+  "features": ["Brown","Strong"]
+}]

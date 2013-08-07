@@ -1,9 +1,8 @@
 <resources>
-
 	<string name="app_name">Android Beer Festival Client</string>
-	<string name="search_drinks_button_text">Search for Drinks</string>
+	<string name="search_drinks_button_text">Find Drinks</string>
 	<string name="view_wishlist_button_text">View Wishlist</string>
-	<string name="update_data_button_text">Update Data</string>
+	<string name="update_data_button_text">Update Data (Internet)</string>
 	<string name="hello_world">Hello world!</string>
 	<string name="menu_settings">Settings</string>
 	<string name="title_activity_search_drink">Search for a Drink</string>
@@ -32,5 +31,12 @@
 
 	<string name="title_activity_display_results">Search Results</string>
 	<string name="title_activity_display_drink">Display Drink</string>
+	<string name="main_activity_show_all_drinks_button_text">All Available Drinks</string>
+	<string name="main_activity_display_all_brewers_button_text">All Brewers</string>
+	<string name="main_activity_search_brewers_button_text">Find Brewers</string>
+	<string name="display_drinks_activity_name">Drinks at Festival</string>
+	<string name="main_activity_show_all_perries_button_text">All Available Perries</string>
+	<string name="main_activity_show_all_ciders_button_text">All Available Ciders</string>
+	<string name="main_activity_show_all_beers_button_text">All Available Beers</string>
 
 </resources>

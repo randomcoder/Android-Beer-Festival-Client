@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object>
+  <element name="outcome" type="string" value="success" />
+  <element name="result" type="array">
+    <item index="0" type="object">
+      <element name="Id" type="string" value="WOR/2013" />
+      <element name="Owner" type="string" value="WOR" />
+      <element name="Name" type="string" value="Worcester" />
+      <element name="Title" type="string"
+        value="Worcester Beer, Cider and Perry Festival - 2013" />
+      <element name="Description" type="string"
+        value="Summer festival in a large marquee on the racecourse in the centre of historic Worcester City." />
+      <element name="Latitude" type="number" value="52.195" />
+      <element name="Longitude" type="number" value="-2.22957" />
+    </item>
+  </element>
+  <element name="time" type="number" value="0.00074601173400879" />
+</object>

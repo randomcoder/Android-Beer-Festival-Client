@@ -3,7 +3,8 @@ import sbt._
 import Keys._
 
 // Import Android plugin
-import sbtandroid.AndroidKeys._
+//import sbtandroid.AndroidKeys._
+import AndroidKeys._
 
 // Import Eclipse plugin
 import com.typesafe.sbteclipse.plugin._

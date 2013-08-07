@@ -20,13 +20,12 @@
 package uk.co.randomcoding.android.beerfestival.util
 
 import java.io.File
-
-import uk.co.randomcoding.android.beerfestival.SearchDrinkActivity.{ NAME_SEARCH_EXTRA, DESCRIPTION_SEARCH_EXTRA }
+import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
-
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import uk.co.randomcoding.android.beerfestival.model.festival.FestivalModel
 
 /**
  * Loads the current drink data from a file and finds matching entries based on the extra data passed in the bundle.
@@ -45,18 +44,24 @@ object DrinkSearcher {
 
   private[this] val matchAny = (drink: Drink) => true
 
-  def getMatchingDrinks(activity: Activity, dataFile: File, searchData: Map[String, String], loadFailedDialogueId: Int): Seq[Drink] = {
-    val drinkData = loadDrinks(activity, dataFile, loadFailedDialogueId)
-    val searchFuncs = getSearchFuncs(searchData)
+  def getMatchingDrinks(activity: Activity, searchData: Map[String, String], loadFailedDialogueId: Int): Seq[Drink] = {
+    Log.d(TAG, s"Got Search Data: ${searchData.mkString(", ")}")
+    val festivalId = searchData.getOrElse(FESTIVAL_ID_EXTRA, "")
+    val drinkData = FestivalModel(festivalId) match {
+      case Some(festivalModel) => festivalModel.drinks
+      case _ => Nil
+    }
+    
+    Log.d(TAG, s"Got ${drinkData.size} for festival $festivalId}")
 
-    drinkData.filter(allSearchesMatch(_, searchFuncs))
+    drinkData.filter(allSearchesMatch(_, searchFuncs(searchData)))
   }
 
   private[this] def allSearchesMatch(drink: Drink, searchFunctions: Seq[Drink => Boolean]): Boolean = {
     searchFunctions.filter(_(drink) == false).isEmpty
   }
 
-  private[this] def getSearchFuncs(extras: Map[String, String]): Seq[Drink => Boolean] = {
+  private[this] def searchFuncs(extras: Map[String, String]): Seq[Drink => Boolean] = {
     for {
       key <- searchExtraKeys
       searchFuncOpt = extras.get(key) match {
@@ -72,18 +77,5 @@ object DrinkSearcher {
       }
       if searchFuncOpt.isDefined
     } yield { searchFuncOpt.get }
-  }
-
-  private[this] def loadDrinks(activity: Activity, dataFile: File, loadFailedDialogueId: Int): Seq[Drink] = {
-    try {
-      JsonDrinkDataLoader.loadJson(dataFile)
-    }
-    catch {
-      case e: Exception => {
-        Log.e(TAG, "Failed to parse data file %s".format(dataFile.getAbsolutePath), e)
-        activity.showDialog(loadFailedDialogueId)
-        Nil
-      }
-    }
   }
 }
