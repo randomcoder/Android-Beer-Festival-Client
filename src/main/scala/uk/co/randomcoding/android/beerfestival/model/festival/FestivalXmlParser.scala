@@ -105,7 +105,7 @@ class FestivalXmlParser extends BaseXmlPullParser[Festival] {
             parser.nextTag
           }
           case (elem, name) => {
-            Log.i(TAG, s"Skipping element: $elem with name $name")
+            Log.d(TAG, s"Skipping element: $elem with name $name")
             skip(parser)
           }
         }

@@ -33,8 +33,15 @@ import uk.co.randomcoding.android.beerfestival.model.festival.{ FestivalModel, F
 import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
 import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
+import android.content.Context
 
 class MainActivity extends Activity with TypedActivity {
+
+  private[this] val festivalXmlFile = "festivals.xml"
+  private[this] val beersXmlFile = "beers.xml"
+  private[this] val cidersXmlFile = "ciders.xml"
+  private[this] val brewersXmlFile = "brewers.xml"
+  private[this] val producersXmlFile = "producers.xml"
 
   // This is fixed for now, but will be derived from config at some point.
   private[this] final val worcesterId = "WOR/2013"
@@ -44,7 +51,7 @@ class MainActivity extends Activity with TypedActivity {
     setContentView(R.layout.main)
     // Initialise Festival Data
     // Currently only uses Worcester (WOR/2013)
-    initialiseFestivalData(worcesterId)
+    reloadFestivalModel(worcesterId, !(fileList().exists(_ == festivalXmlFile)))
   }
 
   override def onDestroy() {
@@ -103,39 +110,70 @@ class MainActivity extends Activity with TypedActivity {
     /*val intent = new Intent(this, classOf[SearchBrewerActivity])
     startActivity(intent)*/
   }
-  /*
+
   def updateData(view: View) {
-    val intent = new Intent(this, classOf[UpdateDataActivity])
-    startActivity(intent)
-  }*/
+    reloadFestivalModel(worcesterId, true)
+  }
 
   def showWishList(view: View) {
     // TODO: Create intent to switch to the wishlist view
     // Not planned at this time
   }
 
-  private[this] def initialiseFestivalData(festivalId: String) {
+  private[this] def reloadFestivalModel(festivalId: String, reloadData: Boolean) {
     val TAG = "MainActivityFestivalInitialise"
-    FestivalModel(festivalId) match {
-      case None => {
-        Log.i(TAG, "Initialising festival data")
+    if (reloadData) updateStoredData(festivalId)
 
-        val festival = festivalsXml() { stream: InputStream => new FestivalXmlParser().parse(stream) }.find(_.festivalId == festivalId).get
+    (reloadData, FestivalModel(festivalId)) match {
+      case (true, _) | (_, None) => {
+        Log.i(TAG, s"Initialising festival model for $festivalId")
+
+        val festival = new FestivalXmlParser().parse(openFileInput(festivalXmlFile)).find(_.festivalId == festivalId).get
+        //festivalsXml() { stream: InputStream => new FestivalXmlParser().parse(stream) }.find(_.festivalId == festivalId).get
         Log.d(TAG, s"Loaded Festival $festival")
-        val beersAtFestival = beersXml(festivalId) { stream: InputStream => Drink.fromXml(stream) }
+        val beersAtFestival = Drink.fromXml(openFileInput(beersXmlFile))
+        //beersXml(festivalId) { stream: InputStream => Drink.fromXml(stream) }
         Log.d(TAG, s"Loaded ${beersAtFestival.size} Beers")
-        val brewersAtFestival = breweriesXml(festivalId) { stream: InputStream => Brewer.fromXml(stream) }
+        val brewersAtFestival = Brewer.fromXml(openFileInput(brewersXmlFile))
+        //breweriesXml(festivalId) { stream: InputStream => Brewer.fromXml(stream) }
         Log.d(TAG, s"Loaded ${brewersAtFestival.size} Brewers")
-        val cidersAtFestival = cidersXml(festivalId) { stream: InputStream => Drink.fromXml(stream) }
+        val cidersAtFestival = Drink.fromXml(openFileInput(cidersXmlFile))
+        //cidersXml(festivalId) { stream: InputStream => Drink.fromXml(stream) }
         Log.d(TAG, s"Loaded ${cidersAtFestival.size} Ciders")
-        val producersAtFestival = producersXml(festivalId) { stream: InputStream => Brewer.fromXml(stream) }
+        val producersAtFestival = Brewer.fromXml(openFileInput(producersXmlFile))
+        //producersXml(festivalId) { stream: InputStream => Brewer.fromXml(stream) }
         Log.d(TAG, s"Loaded ${producersAtFestival.size} Producers")
 
         // Initialise Model
         FestivalModel.initialise(festival, beersAtFestival ++ cidersAtFestival, brewersAtFestival ++ producersAtFestival)
         Log.i(TAG, s"Initialised Festival Model for ${festival.festivalId}")
       }
-      case _ => // already initialised
+      case _ => // already initialised and not updated
     }
+  }
+
+  private[this] def updateStoredData(festivalId: String) {
+    val TAG = "Main Activity Update Stored Data"
+    Log.i(TAG, "Updating Stored Xml Files")
+
+    val writeStream = (fileName: String, stream: InputStream) => {
+      val fileOut = openFileOutput(fileName, Context.MODE_PRIVATE)
+      val buffer = new Array[Byte](1024)
+      Stream.continually(stream.read(buffer)).takeWhile(_ != -1).foreach(fileOut.write(buffer, 0, _))
+      fileOut.close
+    }
+
+    festivalsXml() { inStream: InputStream => writeStream(festivalXmlFile, inStream) }
+    Log.d(TAG, "Updated Festivals Data")
+    beersXml(festivalId) { inStream: InputStream => writeStream(beersXmlFile, inStream) }
+    Log.d(TAG, "Updated Beers Data")
+    cidersXml(festivalId) { inStream: InputStream => writeStream(cidersXmlFile, inStream) }
+    Log.d(TAG, "Updated Ciders & Perries Data")
+    breweriesXml(festivalId) { inStream: InputStream => writeStream(brewersXmlFile, inStream) }
+    Log.d(TAG, "Updated Breweries Data")
+    producersXml(festivalId) { inStream: InputStream => writeStream(producersXmlFile, inStream) }
+    Log.d(TAG, "Updated Producers Data")
+
+    Log.i(TAG, "Completed Updating Stored Xml Files")
   }
 }
