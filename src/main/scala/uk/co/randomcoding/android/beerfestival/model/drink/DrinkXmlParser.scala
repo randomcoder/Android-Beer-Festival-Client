@@ -52,7 +52,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     var drinkName = ""
     var drinkDescription = ""
     var drinkType = DrinkType.BEER
-    var drinkAbv = 0.0D
+    var drinkAbv = ""
     var drinkBrewer = ""
     var drinkFeatures = List.empty[String]
     var state = ""
@@ -74,7 +74,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
             drinkType = DrinkType.PERRY
           }
           case "Description" => drinkDescription = valueAttribute(parser)
-          case "Abv" => drinkAbv = valueAttribute(parser).toDouble
+          case "ABV" => drinkAbv = valueAttribute(parser)
           case "Brewery" | "Producer" => drinkBrewer = valueAttribute(parser)
           case "State" => state = valueAttribute(parser)
           case "Style" => drinkFeatures = valueAttribute(parser) +: drinkFeatures
