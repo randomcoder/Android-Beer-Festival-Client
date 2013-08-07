@@ -20,7 +20,7 @@
 package uk.co.randomcoding.android.beerfestival.util
 
 import java.io.File
-import uk.co.randomcoding.android.beerfestival.SearchDrinkActivity.{ NAME_SEARCH_EXTRA, DESCRIPTION_SEARCH_EXTRA, FESTIVAL_ID_EXTRA }
+import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import android.app.Activity
 import android.os.Bundle
@@ -44,12 +44,15 @@ object DrinkSearcher {
 
   private[this] val matchAny = (drink: Drink) => true
 
-  // TODO: This needs to get the festival model by id rather than the datafile
-  def getMatchingDrinks(activity: Activity, dataFile: File, searchData: Map[String, String], loadFailedDialogueId: Int): Seq[Drink] = {
-    val drinkData = FestivalModel(searchData.getOrElse(FESTIVAL_ID_EXTRA, "")) match {
+  def getMatchingDrinks(activity: Activity, searchData: Map[String, String], loadFailedDialogueId: Int): Seq[Drink] = {
+    Log.d(TAG, s"Got Search Data: ${searchData.mkString(", ")}")
+    val festivalId = searchData.getOrElse(FESTIVAL_ID_EXTRA, "")
+    val drinkData = FestivalModel(festivalId) match {
       case Some(festivalModel) => festivalModel.drinks
       case _ => Nil
     }
+    
+    Log.d(TAG, s"Got ${drinkData.size} for festival $festivalId}")
 
     drinkData.filter(allSearchesMatch(_, searchFuncs(searchData)))
   }

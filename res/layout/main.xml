@@ -11,34 +11,25 @@
         android:onClick="showAllDrinks"
         android:text="@string/main_activity_show_all_drinks_button_text" />
 
-	<Button
-	    android:id="@+id/searchDrinksButton"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:onClick="showSearchDrinks"
-	    android:text="@string/search_drinks_button_text" />
+    <Button
+        android:id="@+id/allBeersButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showAllBeers"
+        android:text="@string/main_activity_show_all_beers_button_text" />
 
-	<!--
-         <Button
-		android:id="@+id/viewWishListButton"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:onClick="showWishList"
-		android:text="@string/view_wishlist_button_text" />
-	-->
+    <Button
+        android:id="@+id/allCidersButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showAllCiders"
+        android:text="@string/main_activity_show_all_ciders_button_text" />
 
-	<Button
-	    android:id="@+id/allBrewersButton"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:onClick="showAllBrewers"
-	    android:text="@string/main_activity_display_all_brewers_button_text" />
-
-	<Button
-	    android:id="@+id/searchBrewersButton"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:onClick="showSearchBrewers"
-	    android:text="@string/main_activity_search_brewers_button_text" />
+    <Button
+        android:id="@+id/allPerriesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showAllPerries"
+        android:text="@string/main_activity_show_all_perries_button_text" />
 
 </LinearLayout>

@@ -40,7 +40,7 @@ import uk.co.randomcoding.android.beerfestival.util.Convertors._
  *
  * Created On: 5 Aug 2012
  */
-case class Drink(uid: String, drinkType: DrinkType.drinkType, name: String, description: String, abv: Double, brewer: String, features: List[String])
+case class Drink(uid: String, drinkType: DrinkType.drinkType, name: String, description: String, state: String, abv: String, brewer: String, features: List[String])
 
 /**
  * Provides parsing of drink JSON data into a `List[Drink]`
@@ -83,11 +83,12 @@ object Drink {
     val drinkType = drinkJsonMap("drinkType").toString
     val drinkName = drinkJsonMap("name").toString
     val description = drinkJsonMap("description").toString
-    val abv = drinkJsonMap("abv").toString.toDouble
+    val abv = drinkJsonMap("abv").toString.toString
     val brewer = drinkJsonMap("brewer").toString
+    val state = drinkJsonMap("state").toString
     val features = drinkJsonMap("features").asInstanceOf[List[String]]
 
-    Drink(drinkUid, drinkType, drinkName, description, abv, brewer, features)
+    Drink(drinkUid, drinkType, drinkName, description, state, abv, brewer, features)
   }
 
   private implicit def stringToDrinkType(in: String): DrinkType.drinkType = DrinkType(in)
