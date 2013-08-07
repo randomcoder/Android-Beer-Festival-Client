@@ -20,10 +20,8 @@
 package uk.co.randomcoding.android.beerfestival
 
 import java.io.InputStream
-
 import scala.annotation.tailrec
 import scala.collection.immutable.Stream
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -34,6 +32,7 @@ import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.model.festival.{ FestivalModel, FestivalXmlParser }
 import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
 import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
+import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
 
 class MainActivity extends Activity with TypedActivity {
 
@@ -49,6 +48,7 @@ class MainActivity extends Activity with TypedActivity {
   }
 
   override def onDestroy() {
+    super.onDestroy
     // Write the festival model(s) to storage (GSON?)
   }
 
@@ -60,6 +60,28 @@ class MainActivity extends Activity with TypedActivity {
 
   private[this] def allDrinksIntentExtras: Map[String, String] = {
     Map(FESTIVAL_ID_EXTRA -> worcesterId)
+  }
+
+  private[this] def drinkTypeSearchIntentExtras(drinkType: DrinkType.drinkType): Map[String, String] = {
+    Map(FESTIVAL_ID_EXTRA -> worcesterId, DRINK_TYPE_SEARCH_EXTRA -> drinkType.toString())
+  }
+
+  def showAllBeers(view: View) {
+    val intent = new Intent(this, classOf[DisplayResultsActivity])
+    drinkTypeSearchIntentExtras(DrinkType.BEER) foreach { case (k, v) => intent.putExtra(k, v) }
+    startActivity(intent)
+  }
+
+  def showAllCiders(view: View) {
+    val intent = new Intent(this, classOf[DisplayResultsActivity])
+    drinkTypeSearchIntentExtras(DrinkType.CIDER) foreach { case (k, v) => intent.putExtra(k, v) }
+    startActivity(intent)
+  }
+
+  def showAllPerries(view: View) {
+    val intent = new Intent(this, classOf[DisplayResultsActivity])
+    drinkTypeSearchIntentExtras(DrinkType.PERRY) foreach { case (k, v) => intent.putExtra(k, v) }
+    startActivity(intent)
   }
 
   def showAllBrewers(view: View) {

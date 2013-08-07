@@ -27,6 +27,7 @@ import uk.co.randomcoding.android.beerfestival.util.DrinkSearcher.getMatchingDri
 import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 import uk.co.randomcoding.android.beerfestival.model.festival.FestivalModel
 import android.util.Log
+import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
 
 /**
  * Activity to get and display all search results
@@ -48,7 +49,17 @@ class DisplayResultsActivity extends ListActivity with TypedActivity {
     val festivalId = intent.getStringExtra(FESTIVAL_ID_EXTRA)
 
     val matchingDrinks = FestivalModel(festivalId) match {
-      case Some(model) => model.drinks.sortBy(_.name)
+
+      case Some(model) => {
+        val sortedDrinks = () => model.drinks.sortBy(_.name).filter(Seq("Ready", "Waiting").contains(_))
+
+        Option(intent.getStringExtra(DRINK_TYPE_SEARCH_EXTRA)) match {
+          case Some("Beer") => sortedDrinks().filter(_.drinkType == DrinkType.BEER)
+          case Some("Cider") => sortedDrinks().filter(_.drinkType == DrinkType.CIDER)
+          case Some("Perry") => sortedDrinks().filter(_.drinkType == DrinkType.PERRY)
+          case _ => sortedDrinks()
+        }
+      }
       case _ => Nil
     }
 
@@ -71,10 +82,12 @@ class DisplayResultsActivity extends ListActivity with TypedActivity {
 
   private[this] def drinkToText(drink: Drink): String = {
     Log.d(TAG, s"Converting $drink to list text")
-    val descriptionText = Option(drink.description) match {
+    /*val descriptionText = Option(drink.description) match {
       case Some(description) => s"Description: $description\n"
       case None => ""
-    }
+    }*/
+
+    val featuresEntry = drink.features.mkString(", ")
 
     // setup variable display entries
     val abvEntry = Option(drink.abv) match {
@@ -93,6 +106,6 @@ class DisplayResultsActivity extends ListActivity with TypedActivity {
     }).mkString("   ")
 
     Log.d(TAG, s"Converted drink: ${drink.name}")
-    s"${drink.name}\n$descriptionText $variableText"
+    s"${drink.name}\n$featuresEntry\n$variableText"
   }
 }

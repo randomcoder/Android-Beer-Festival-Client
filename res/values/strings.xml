@@ -31,9 +31,12 @@
 
 	<string name="title_activity_display_results">Search Results</string>
 	<string name="title_activity_display_drink">Display Drink</string>
-	<string name="main_activity_show_all_drinks_button_text">All Drinks</string>
+	<string name="main_activity_show_all_drinks_button_text">All Available Drinks</string>
 	<string name="main_activity_display_all_brewers_button_text">All Brewers</string>
 	<string name="main_activity_search_brewers_button_text">Find Brewers</string>
 	<string name="display_drinks_activity_name">Drinks at Festival</string>
+	<string name="main_activity_show_all_perries_button_text">All Available Perries</string>
+	<string name="main_activity_show_all_ciders_button_text">All Available Ciders</string>
+	<string name="main_activity_show_all_beers_button_text">All Available Beers</string>
 
 </resources>

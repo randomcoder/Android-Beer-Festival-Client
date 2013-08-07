@@ -32,4 +32,5 @@ object IntentExtras {
   final val DESCRIPTION_SEARCH_EXTRA = extra("DescriptionSearch")
   final val FESTIVAL_ID_EXTRA = extra("FestivalId")
   final val DISPLAY_DRINK_NAME_EXTRA = extra("display_drink_name")
+  final val DRINK_TYPE_SEARCH_EXTRA = extra("DrinkTypeSearch")
 }
