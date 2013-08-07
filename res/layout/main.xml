@@ -32,4 +32,11 @@
         android:onClick="showAllPerries"
         android:text="@string/main_activity_show_all_perries_button_text" />
 
+    <Button
+        android:id="@+id/UpdateDataButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateData"
+        android:text="@string/update_data_button_text" />
+
 </LinearLayout>
