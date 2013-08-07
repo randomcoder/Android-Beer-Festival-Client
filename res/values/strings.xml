@@ -34,5 +34,6 @@
 	<string name="main_activity_show_all_drinks_button_text">All Drinks</string>
 	<string name="main_activity_display_all_brewers_button_text">All Brewers</string>
 	<string name="main_activity_search_brewers_button_text">Find Brewers</string>
+	<string name="display_drinks_activity_name">Drinks at Festival</string>
 
 </resources>

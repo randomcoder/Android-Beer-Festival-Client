@@ -44,12 +44,15 @@ object DrinkSearcher {
 
   private[this] val matchAny = (drink: Drink) => true
 
-  // TODO: This needs to get the festival model by id rather than the datafile
-  def getMatchingDrinks(activity: Activity, dataFile: File, searchData: Map[String, String], loadFailedDialogueId: Int): Seq[Drink] = {
-    val drinkData = FestivalModel(searchData.getOrElse(FESTIVAL_ID_EXTRA, "")) match {
+  def getMatchingDrinks(activity: Activity, searchData: Map[String, String], loadFailedDialogueId: Int): Seq[Drink] = {
+    Log.d(TAG, s"Got Search Data: ${searchData.mkString(", ")}")
+    val festivalId = searchData.getOrElse(FESTIVAL_ID_EXTRA, "")
+    val drinkData = FestivalModel(festivalId) match {
       case Some(festivalModel) => festivalModel.drinks
       case _ => Nil
     }
+    
+    Log.d(TAG, s"Got ${drinkData.size} for festival $festivalId}")
 
     drinkData.filter(allSearchesMatch(_, searchFuncs(searchData)))
   }

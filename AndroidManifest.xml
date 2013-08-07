@@ -24,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="DisplayResultsActivity" android:label="@string/display_drinks_activity_name"></activity>
     </application>
 
 </manifest>
