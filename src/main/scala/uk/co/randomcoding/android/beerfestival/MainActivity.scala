@@ -124,8 +124,8 @@ class MainActivity extends Activity with TypedActivity {
     val TAG = "MainActivityFestivalInitialise"
     if (reloadData) updateStoredData(festivalId)
 
-    FestivalModel(festivalId) match {
-      case None => {
+    (reloadData, FestivalModel(festivalId)) match {
+      case (true, _) | (_, None) => {
         Log.i(TAG, s"Initialising festival model for $festivalId")
 
         val festival = new FestivalXmlParser().parse(openFileInput(festivalXmlFile)).find(_.festivalId == festivalId).get
@@ -148,7 +148,7 @@ class MainActivity extends Activity with TypedActivity {
         FestivalModel.initialise(festival, beersAtFestival ++ cidersAtFestival, brewersAtFestival ++ producersAtFestival)
         Log.i(TAG, s"Initialised Festival Model for ${festival.festivalId}")
       }
-      case _ => // already initialised
+      case _ => // already initialised and not updated
     }
   }
 
