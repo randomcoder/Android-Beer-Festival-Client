@@ -11,7 +11,7 @@ object General {
   // Some basic configuration
   val settings = Defaults.defaultSettings ++ Seq (
     name := "Android Beer Festival Client",
-    version := "0.1",
+    version := "0.2-SNAPSHOT",
     versionCode := 0,
     scalaVersion := "2.10.1",
     platformName in Android := "android-8",
