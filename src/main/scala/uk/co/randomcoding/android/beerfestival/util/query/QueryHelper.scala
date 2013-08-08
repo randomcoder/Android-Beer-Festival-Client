@@ -21,10 +21,10 @@ package uk.co.randomcoding.android.beerfestival.util.query
 
 import java.io.{ BufferedInputStream, BufferedOutputStream, InputStream }
 import java.net.{ HttpURLConnection, URL }
-
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 import uk.co.randomcoding.android.beerfestival.model.drink.Drink
 import uk.co.randomcoding.android.beerfestival.model.festival.Festival
+import android.util.Log
 
 /**
  * Helper object to perform queries to the main web service
@@ -34,7 +34,7 @@ import uk.co.randomcoding.android.beerfestival.model.festival.Festival
  */
 object QueryHelper {
 
-  private[this] val serviceUrl = new URL("http://tickets-test.worcesterbeerfest.org.uk/BeerList/checkAction.php")
+  private[this] val serviceUrl = new URL("http://www.worcester-beerfest.org.uk/checkAction.php")
 
   def breweriesXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetBreweries", festivalId))(parseFunc)
   def beersXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetBeers", festivalId))(parseFunc)
@@ -44,11 +44,11 @@ object QueryHelper {
   def festivalsXml[A]()(parseFunc: InputStream => A): A = doQuery(queryWithoutFestival("GetFestivals"))(parseFunc)
 
   private[this] def queryWithoutFestival(queryType: String): String = {
-    s"""<object><element name="action" type="string" value="${queryType}" /><element name="param" type="object"></element></object>"""
+    "<object><element name=\"action\" type=\"string\" value=\"" + queryType + "\" /><element name=\"param\" type=\"object\" /></object>"
   }
 
   private[this] def queryWithFestival(queryType: String, festivalId: String = "WOR/2013"): String = {
-    s"""<object><element name="action" type="string" value="${queryType}" /><element name="param" type="object"><element name="Festival" type="string" value="${festivalId}" /></element></object>"""
+    s"""<object><element name="action" type="string" value="""" + queryType + """" /><element name="param" type="object"><element name="Festival" type="string" value="""" + festivalId + """" /></element></object>"""
   }
 
   private[this] def doQuery[A](queryXml: String)(parseFunc: InputStream => A): A = {
@@ -56,21 +56,21 @@ object QueryHelper {
 
     try {
       connection.setDoOutput(true)
-      connection.setChunkedStreamingMode(0)
+      val bytes = queryXml.getBytes()
+      connection.setFixedLengthStreamingMode(queryXml.length())
       connection.setRequestProperty("Content-Type", "text/xml")
       val oStream = new BufferedOutputStream(connection.getOutputStream())
-      oStream.write(queryXml.getBytes())
+      oStream.write(bytes)
       oStream.close()
 
       val inStream = new BufferedInputStream(connection.getInputStream(), 1024)
       val response = parseFunc(inStream)
-      inStream.close
+      inStream.close()
 
       response
 
     } finally {
       connection.disconnect()
     }
-
   }
 }
