@@ -20,20 +20,19 @@
 package uk.co.randomcoding.android.beerfestival
 
 import java.io.InputStream
-import scala.annotation.tailrec
+
 import scala.collection.immutable.Stream
+
 import android.app.Activity
-import android.content.Intent
+import android.content.{Context, Intent}
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
-import uk.co.randomcoding.android.beerfestival.model.drink.Drink
-import uk.co.randomcoding.android.beerfestival.model.festival.{ FestivalModel, FestivalXmlParser }
-import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
+import uk.co.randomcoding.android.beerfestival.model.drink.{Drink, DrinkType}
+import uk.co.randomcoding.android.beerfestival.model.festival.{FestivalModel, FestivalXmlParser}
 import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
-import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
-import android.content.Context
+import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
 
 class MainActivity extends Activity with TypedActivity {
 
@@ -129,19 +128,14 @@ class MainActivity extends Activity with TypedActivity {
         Log.i(TAG, s"Initialising festival model for $festivalId")
 
         val festival = new FestivalXmlParser().parse(openFileInput(festivalXmlFile)).find(_.festivalId == festivalId).get
-        //festivalsXml() { stream: InputStream => new FestivalXmlParser().parse(stream) }.find(_.festivalId == festivalId).get
         Log.d(TAG, s"Loaded Festival $festival")
         val beersAtFestival = Drink.fromXml(openFileInput(beersXmlFile))
-        //beersXml(festivalId) { stream: InputStream => Drink.fromXml(stream) }
         Log.d(TAG, s"Loaded ${beersAtFestival.size} Beers")
         val brewersAtFestival = Brewer.fromXml(openFileInput(brewersXmlFile))
-        //breweriesXml(festivalId) { stream: InputStream => Brewer.fromXml(stream) }
         Log.d(TAG, s"Loaded ${brewersAtFestival.size} Brewers")
         val cidersAtFestival = Drink.fromXml(openFileInput(cidersXmlFile))
-        //cidersXml(festivalId) { stream: InputStream => Drink.fromXml(stream) }
         Log.d(TAG, s"Loaded ${cidersAtFestival.size} Ciders")
         val producersAtFestival = Brewer.fromXml(openFileInput(producersXmlFile))
-        //producersXml(festivalId) { stream: InputStream => Brewer.fromXml(stream) }
         Log.d(TAG, s"Loaded ${producersAtFestival.size} Producers")
 
         // Initialise Model
