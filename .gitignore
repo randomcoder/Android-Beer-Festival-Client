@@ -21,3 +21,6 @@ android-support-*.jar
 *.bak
 *~
 
+# package files
+*.apk
+
