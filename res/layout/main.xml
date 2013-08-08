@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
+	android:layout_height="fill_parent"
 	android:orientation="vertical" >
 
     <Button
@@ -25,12 +25,12 @@
         android:onClick="showAllCiders"
         android:text="@string/main_activity_show_all_ciders_button_text" />
 
-    <Button
+    <!-- <Button
         android:id="@+id/allPerriesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showAllPerries"
-        android:text="@string/main_activity_show_all_perries_button_text" />
+        android:text="@string/main_activity_show_all_perries_button_text" /> -->
 
     <Button
         android:id="@+id/UpdateDataButton"

@@ -36,7 +36,7 @@
 	<string name="main_activity_search_brewers_button_text">Find Brewers</string>
 	<string name="display_drinks_activity_name">Drinks at Festival</string>
 	<string name="main_activity_show_all_perries_button_text">All Available Perries</string>
-	<string name="main_activity_show_all_ciders_button_text">All Available Ciders</string>
+	<string name="main_activity_show_all_ciders_button_text">All Available Perries and Ciders</string>
 	<string name="main_activity_show_all_beers_button_text">All Available Beers</string>
 
 </resources>
