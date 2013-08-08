@@ -51,7 +51,10 @@ class DisplayResultsActivity extends ListActivity with TypedActivity {
     val matchingDrinks = FestivalModel(festivalId) match {
 
       case Some(model) => {
-        val sortedDrinks = () => model.drinks.sortBy(_.name).filter(Seq("Ready", "Waiting").contains(_))
+        val sortedDrinks = () => model.drinks.sortBy(_.name).filter(_.state match {
+          case "Ready" | "Waiting" => true
+          case _ => false
+        })
 
         Option(intent.getStringExtra(DRINK_TYPE_SEARCH_EXTRA)) match {
           case Some("Beer") => sortedDrinks().filter(_.drinkType == DrinkType.BEER)

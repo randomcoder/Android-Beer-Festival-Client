@@ -34,7 +34,7 @@ import uk.co.randomcoding.android.beerfestival.model.festival.Festival
  */
 object QueryHelper {
 
-  private[this] val serviceUrl = new URL("http://tickets-test.worcesterbeerfest.org.uk/BeerList/checkAction.php")
+  private[this] val serviceUrl = new URL("http://www.worcester-beerfest.org.uk/checkAction.php")
 
   def breweriesXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetBreweries", festivalId))(parseFunc)
   def beersXml[A](festivalId: String)(parseFunc: InputStream => A): A = doQuery(queryWithFestival("GetBeers", festivalId))(parseFunc)
