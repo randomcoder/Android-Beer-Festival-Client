@@ -21,7 +21,8 @@ package uk.co.randomcoding.android.beerfestival.util.xml
 
 import java.io.InputStream
 import org.xmlpull.v1.XmlPullParser
-import android.util.Xml
+import org.xmlpull.v1.XmlPullParserFactory
+//import android.util.Xml
 
 /**
  * Brief description of BaseXmlPullParser
@@ -35,7 +36,9 @@ abstract class BaseXmlPullParser[T] {
 
   final def parse(xmlStream: InputStream): Seq[T] = {
     try {
-      val parser = Xml.newPullParser()
+      val factory = XmlPullParserFactory.newInstance()
+      factory.setNamespaceAware(false)
+      val parser = factory.newPullParser()
       parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false)
       parser.setInput(xmlStream, null)
       parser.nextTag()

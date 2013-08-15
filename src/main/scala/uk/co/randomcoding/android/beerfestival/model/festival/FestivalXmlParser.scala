@@ -21,7 +21,6 @@ package uk.co.randomcoding.android.beerfestival.model.festival
 
 import uk.co.randomcoding.android.beerfestival.util.xml.BaseXmlPullParser
 import org.xmlpull.v1.XmlPullParser
-import android.util.Log
 
 /**
  * Xml Pull Parser for Loading Festivals
@@ -36,15 +35,15 @@ class FestivalXmlParser extends BaseXmlPullParser[Festival] {
     var festivals = Seq.empty[Festival]
 
     while (parser.next != XmlPullParser.END_TAG) {
-      Log.d(TAG, s"Element: ${parser.getName}, type: ${parser.getEventType}")
+      //Log.d(TAG, s"Element: ${parser.getName}, type: ${parser.getEventType}")
       parser.getEventType() match {
         case XmlPullParser.START_TAG => parser.getName match {
           case "element" => readElement(parser) match {
             case Some(festival) => festivals = festival +: festivals
-            case _ => Log.i(TAG, s"Skipping tag ${parser.getName}")
+            case _ => //Log.i(TAG, s"Skipping tag ${parser.getName}")
           }
           case tag => {
-            Log.d(TAG, s"$tag tag in Festival Parser")
+            //Log.d(TAG, s"$tag tag in Festival Parser")
             skip(parser)
           }
         }
@@ -81,31 +80,31 @@ class FestivalXmlParser extends BaseXmlPullParser[Festival] {
     var description: String = ""
 
     while (parser.next != XmlPullParser.END_TAG) {
-      Log.d(TAG, s"Reading element ${parser.getName} with name: ${readAttribute(parser, "name")}")
+      //Log.d(TAG, s"Reading element ${parser.getName} with name: ${readAttribute(parser, "name")}")
       parser.getEventType() match {
         case XmlPullParser.START_TAG => (parser.getName, readAttribute(parser, "name")) match {
           case ("element", "Id") => {
             festivalId = valueAttribute(parser)
-            Log.d(TAG, s"""Id $festivalId.""")
+            //Log.d(TAG, s"""Id $festivalId.""")
             parser.nextTag
           }
           case ("element", "Name") => {
             festivalName = valueAttribute(parser)
-            Log.d(TAG, s"""Id $festivalName.""")
+            //Log.d(TAG, s"""Id $festivalName.""")
             parser.nextTag
           }
           case ("element", "Title") => {
             festivalTitle = valueAttribute(parser)
-            Log.d(TAG, s"""Id $festivalTitle.""")
+            //Log.d(TAG, s"""Id $festivalTitle.""")
             parser.nextTag
           }
           case ("element", "Description") => {
             description = valueAttribute(parser)
-            Log.d(TAG, s"""Id $description.""")
+            //Log.d(TAG, s"""Id $description.""")
             parser.nextTag
           }
           case (elem, name) => {
-            Log.d(TAG, s"Skipping element: $elem with name $name")
+            //Log.d(TAG, s"Skipping element: $elem with name $name")
             skip(parser)
           }
         }

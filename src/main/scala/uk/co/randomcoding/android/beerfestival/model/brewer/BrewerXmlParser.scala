@@ -21,7 +21,6 @@ package uk.co.randomcoding.android.beerfestival.model.brewer
 
 import org.xmlpull.v1.XmlPullParser
 
-import android.util.Log
 import uk.co.randomcoding.android.beerfestival.util.xml.BaseXmlPullParser
 
 /**
@@ -41,7 +40,7 @@ class BrewerXmlParser extends BaseXmlPullParser[Brewer] {
 
         p.getName match {
           case "item" => brewers = readEntity(p) +: brewers
-          case tag => Log.d(TAG, s"Ignore Element: ${p.getName}")
+          case tag => //Log.d(TAG, s"Ignore Element: ${p.getName}")
         }
       }
     })
@@ -66,7 +65,7 @@ class BrewerXmlParser extends BaseXmlPullParser[Brewer] {
           case "Location" => location = valueAttribute(parser)
           case "County" => county = valueAttribute(parser)
           case "Postcode" => postCode = valueAttribute(parser)
-          case n => Log.d(TAG, s"""Unprocessed <element name="$n" value="${valueAttribute(parser)}"/>""")
+          case n => //Log.d(TAG, s"""Unprocessed <element name="$n" value="${valueAttribute(parser)}"/>""")
         }
         parser.next
         parser.require(XmlPullParser.END_TAG, null, "element")

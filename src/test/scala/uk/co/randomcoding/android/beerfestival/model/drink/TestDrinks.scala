@@ -120,7 +120,7 @@ object TestDrinks {
 
   val porter1872 = Drink("1872 Porter", DrinkType.BEER, "1872 Porter",
     "Champion Winter Beer of Britain 2013. Rich, complex and dark porter, with an old port nose and coffee and bitter chocolate flavours on the palate. A 2013 Suggestabeer from Daryl Jenkins.",
-    "Waiting", "6.5", "Elland", List("STOU"))
+    "Waiting", "6.5", "Elland", List("Stouts/Porters"))
 
   val deadDogXml = <object>
                      <element name="outcome" type="string" value="success"/>
@@ -137,7 +137,7 @@ object TestDrinks {
                      </element>
                    </object>
 
-  val deadDog = Drink("Dead Dog", DrinkType.CIDER, "Dead Dog", "Paint stripper", "Ready", "7", "Bulmer's", List("DP"))
+  val deadDog = Drink("Dead Dog", DrinkType.CIDER, "Dead Dog", "Paint stripper", "Ready", "7", "Bulmer's", List("Dry Perry"))
 
   val alederflowerXml = <object>
                           <element name="outcome" type="string" value="success"/>
@@ -157,7 +157,7 @@ object TestDrinks {
 
   val alederflower = Drink("Alederflower", DrinkType.BEER, "Alederflower",
     "Creamy pale ale infused with elderflowers picked on a local organic farm.", "Waiting",
-    "4.2", "Stroud", List("Unusual", "SPEC"))
+    "4.2", "Stroud", List("Unusual", "Speciality"))
 
   val threeDrinksXml = <object>
                          <element name="outcome" type="string" value="success"/>

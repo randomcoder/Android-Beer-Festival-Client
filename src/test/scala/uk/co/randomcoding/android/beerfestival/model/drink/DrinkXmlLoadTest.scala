@@ -19,16 +19,13 @@
  */
 package uk.co.randomcoding.android.beerfestival.model.drink
 
-import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
-import uk.co.randomcoding.android.beerfestival.util.Convertors._
+import java.io.{ ByteArrayInputStream, InputStream }
+
+import scala.xml.{ Node, XML }
+
+import uk.co.randomcoding.android.beerfestival.MainActivity
 import uk.co.randomcoding.android.beerfestival.model.drink.TestDrinks._
-import scala.xml.XML
-import scala.xml.Node
-import java.io.InputStream
-import java.io.ByteArrayInputStream
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import org.junit.Test
+import uk.co.randomcoding.android.beerfestival.test.util.SimpleTestBase
 
 /**
  * Brief description of DrinkXmlLoadTest
@@ -36,11 +33,11 @@ import org.junit.Test
  * @author RandomCoder
  *
  */
-@RunWith(classOf[JUnitRunner])
 class DrinkXmlLoadTest extends SimpleTestBase {
-  @Test
-  @throws(classOf[java.lang.Exception])
+
   def DrinkCanBeCreatedFromXml() {
+    val activity = new MainActivity
+    activity.onCreate(null)
     //test("A Drink can be successfully created from Xml with one drink element (beer)") {
     Given("Xml than contains a single beer element")
 

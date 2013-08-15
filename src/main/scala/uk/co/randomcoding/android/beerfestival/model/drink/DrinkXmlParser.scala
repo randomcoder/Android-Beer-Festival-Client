@@ -21,7 +21,6 @@ package uk.co.randomcoding.android.beerfestival.model.drink
 
 import org.xmlpull.v1.XmlPullParser
 
-import android.util.Log
 import uk.co.randomcoding.android.beerfestival.util.xml.BaseXmlPullParser
 
 /**
@@ -44,12 +43,12 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
       if (p.getEventType == XmlPullParser.START_TAG) {
         p.getName match {
           case "item" => drinks = readEntity(p) +: drinks
-          case tag => Log.d(TAG, s"Ignore Element: ${p.getName}")
+          case tag => //Log.d(TAG, s"Ignore Element: ${p.getName}")
         }
       }
     })
 
-    drinks
+    drinks.distinct
   }
 
   override def readEntity(parser: XmlPullParser): Drink = {
@@ -86,7 +85,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
             case Some(v) => v
             case _ => "0"
           }
-          case "Brewery" | "Producer" => drinkBrewer = Option(valueAttribute(parser)) match {
+          case "BreweryName" | "ProducerName" => drinkBrewer = Option(valueAttribute(parser)) match {
             case Some(b) => b
             case _ => ""
           }
@@ -102,7 +101,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
             case Some("yes") => drinkFeatures = "Unusual" +: drinkFeatures
             case _ => // Do Nothing
           }
-          case n => Log.d(TAG, s"""Unprocessed <element name="$n" value="${valueAttribute(parser)}"/>""")
+          case n => //Log.d(TAG, s"""Unprocessed <element name="$n" value="${valueAttribute(parser)}"/>""")
         }
         parser.next
         parser.require(XmlPullParser.END_TAG, null, "element")
