@@ -24,3 +24,8 @@ android-support-*.jar
 # package files
 *.apk
 
+# Auto generated android files
+ant.properties
+build.xml
+local.properties
+proguard-project.txt
