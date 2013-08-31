@@ -38,17 +38,18 @@ object General {
 
   // Full Android settings
   lazy val fullAndroidSettings =
-    General.settings ++
+    General.settings ++ Seq(
+      libraryDependencies ++= Seq(
+        "org.scalatest" %% "scalatest" % "2.0.M5b" % "test",
+        "xpp3" % "xpp3" % "1.1.4c" % "provided"
+      )
+    )
     AndroidProject.androidSettings ++
     TypedResources.settings ++
     proguardSettings ++
     AndroidManifestGenerator.settings ++
     AndroidMarketPublish.settings ++ Seq (
-      keyalias in Android := "change-me",
-      libraryDependencies ++= Seq(
-        "org.scalatest" %% "scalatest" % "2.0.M5b" % "test",
-        "xpp3" % "xpp3" % "1.1.4c" % "provided"
-      )
+      keyalias in Android := "change-me"
     )
 }
 

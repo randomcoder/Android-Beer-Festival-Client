@@ -37,22 +37,7 @@ object Festival {
 
   def fromXml(xml: InputStream): Seq[Festival] = {
     new FestivalXmlParser().parse(xml)
-    /*val nodes = festivalNodes(xml)
-    nodes.map(festivalFromNode).distinct*/
   }
-
-  /*def festivalNodes(xml: Node): NodeSeq = {
-    (xml \\ "element").filter(node => (node \ "@name").text == "result")
-  }
-
-  def festivalFromNode(node: Node): Festival = {
-    val id = elementValue(node, "Id")
-    val name = elementValue(node, "Name")
-    val title = elementValue(node, "Title")
-    val description = elementValue(node, "Description")
-
-    Festival(id, name, title, description)
-  }*/
 
   def fromJson(jsonData: String): Option[Festival] = JSON.parseFull(jsonData) match {
     case Some(data) => data match {

@@ -45,7 +45,7 @@ class BrewerXmlParser extends BaseXmlPullParser[Brewer] {
       }
     })
 
-    brewers
+    brewers.distinct
   }
 
   override def readEntity(parser: XmlPullParser): Brewer = {
@@ -65,6 +65,7 @@ class BrewerXmlParser extends BaseXmlPullParser[Brewer] {
           case "Location" => location = valueAttribute(parser)
           case "County" => county = valueAttribute(parser)
           case "Postcode" => postCode = valueAttribute(parser)
+          case "Description" => description = valueAttribute(parser)
           case n => //Log.d(TAG, s"""Unprocessed <element name="$n" value="${valueAttribute(parser)}"/>""")
         }
         parser.next
@@ -73,6 +74,14 @@ class BrewerXmlParser extends BaseXmlPullParser[Brewer] {
     })
     parser.require(XmlPullParser.END_TAG, null, "item")
 
-    Brewer(id, name, s"$location, $county. $postCode", description)
+    val locValue = (location.trim, county.trim, postCode.trim) match {
+      case ("", "", "") => "Location not given"
+      case (loc, "", "") => loc
+      case (loc, cou, "") => s"$loc, $cou."
+      case (loc, cou, pc) => s"$loc, $cou. $pc"
+      case _ => "No Value"
+    }
+
+    Brewer(id, name, locValue, description)
   }
 }

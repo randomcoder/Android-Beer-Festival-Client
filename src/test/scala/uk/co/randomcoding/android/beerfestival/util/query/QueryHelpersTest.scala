@@ -32,15 +32,17 @@ import java.io.InputStream
  */
 class QueryHelpersTest extends SimpleTestBase {
   test("Query Helper can get a list of festivals") {
-    Given("a working connection to the internet")
-    // TODO: Need to check for this somehow
-    When("the 'festivals' query is used")
-    Then("the response can be parsed into Xml")
-    val responseXml = festivalsXml() { stream: InputStream => XML.load(stream) }
-    And("has nodes for the festival ids")
-    val itemNodes = (responseXml \\ "element" \ "item")
-    /*val worcNode = itemNodes.filter(node => elementValue(node, "Id") == "WOR/2013")
+    pendingUntilFixed {
+      Given("a working connection to the internet")
+      // TODO: Need to check for this somehow
+      When("the 'festivals' query is used")
+      Then("the response can be parsed into Xml")
+      val responseXml = festivalsXml() { stream: InputStream => XML.load(stream) }
+      And("has nodes for the festival ids")
+      val itemNodes = (responseXml \\ "element" \ "item")
+      /*val worcNode = itemNodes.filter(node => elementValue(node, "Id") == "WOR/2013")
     worcNode should not be ('empty)*/
-    fail("Not Completed Yet")
+      throw new Exception("Test not really complete")
+    }
   }
 }

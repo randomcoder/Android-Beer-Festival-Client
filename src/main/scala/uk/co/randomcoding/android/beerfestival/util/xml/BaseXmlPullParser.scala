@@ -63,9 +63,22 @@ abstract class BaseXmlPullParser[T] {
     }
   }
 
+  /**
+   * Read the value of an attribute from the current element in the parser
+   *
+   * @param parser The parser being used
+   * @param attributeName The nae of the attribute to get the value of
+   *
+   * @return The value of the attribute as a string or an empty string if the attribute does not exist or has no value
+   */
   final def readAttribute(parser: XmlPullParser, attributeName: String): String = {
-    parser.getAttributeValue(null, attributeName)
+    Some(parser.getAttributeValue(null, attributeName)).getOrElse("")
   }
 
-  final def valueAttribute(parser: XmlPullParser): String = readAttribute(parser, "value")
+  /**
+   * Get the value of an attribute with the name '''value''' if it exists.
+   *
+   * @return The value of the attribute as a string or an empty string if the attribute does not exist or has no value
+   */
+  final def valueAttribute(parser: XmlPullParser): String = Some(readAttribute(parser, "value")).getOrElse("")
 }

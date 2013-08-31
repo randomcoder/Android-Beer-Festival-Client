@@ -47,7 +47,7 @@ object TestBrewers {
                        <element name="Description" type="string" value="4Ts (The Tavern Tasty Tipples) began brewing in 2010. The 0.5-barrel plant is located in a private garage and a further five-barrel plant is also used at a location in Runcorn. Beer are usually available in the Tavern, Warrington."/>
                      </item>
 
-  val brewer4Ts = Brewer("4Ts", "Runcorn, Cheshire, WA7 4UA", "4Ts (The Tavern Tasty Tipples) began brewing in 2010. The 0.5-barrel plant is located in a private garage and a further five-barrel plant is also used at a location in Runcorn. Beer are usually available in the Tavern, Warrington.")
+  val brewer4Ts = Brewer("4TS", "4Ts", "Runcorn, Cheshire. WA7 4UA", "4Ts (The Tavern Tasty Tipples) began brewing in 2010. The 0.5-barrel plant is located in a private garage and a further five-barrel plant is also used at a location in Runcorn. Beer are usually available in the Tavern, Warrington.")
 
   val brewerAbbeydaleXml = <item index="1" type="object">
                              <element name="Festival" type="string" value="WOR/2013"/>
@@ -59,7 +59,7 @@ object TestBrewers {
                              <element name="Description" type="string" value="Since starting in 1996, Abbeydale Brewery has grown steadily; it now produces upwards of 130 barrels a week, and recent investment has enabled further growth. The regular range is complemented by ever-changing seasonals - see website."/>
                            </item>
 
-  val brewerAbbeydale = Brewer("Abbeydale", "Sheffield, S. Yorkshire, S8 0YX", "Since starting in 1996, Abbeydale Brewery has grown steadily; it now produces upwards of 130 barrels a week, and recent investment has enabled further growth. The regular range is complemented by ever-changing seasonals - see website.")
+  val brewerAbbeydale = Brewer("ABBEYDAL", "Abbeydale", "Sheffield, S. Yorkshire. S8 0YX", "Since starting in 1996, Abbeydale Brewery has grown steadily; it now produces upwards of 130 barrels a week, and recent investment has enabled further growth. The regular range is complemented by ever-changing seasonals - see website.")
 
   val brewerAdnamsXml = <item index="2" type="object">
                           <element name="Festival" type="string" value="WOR/2013"/>
@@ -71,7 +71,7 @@ object TestBrewers {
                           <element name="Description" type="string" value="The company was founded by George and Ernest Adnams in 1872, who were joined by the Loftus family in 1902; a member of each family is still a director of the company. Real ale is available in all 70 pubs and there is national distribution. All beers are now from a new energy-efficient 300-barrel brewery, built within the confines of the present site. Seasonal beers: see website. Bottle-conditioned beers are also available."/>
                         </item>
 
-  val brewerAdnams = Brewer("Adnams", "Southwold, Suffolk, IP18 6JW", "The company was founded by George and Ernest Adnams in 1872, who were joined by the Loftus family in 1902; a member of each family is still a director of the company. Real ale is available in all 70 pubs and there is national distribution. All beers are now from a new energy-efficient 300-barrel brewery, built within the confines of the present site. Seasonal beers: see website. Bottle-conditioned beers are also available.")
+  val brewerAdnams = Brewer("ADNAMS", "Adnams", "Southwold, Suffolk. IP18 6JW", "The company was founded by George and Ernest Adnams in 1872, who were joined by the Loftus family in 1902; a member of each family is still a director of the company. Real ale is available in all 70 pubs and there is national distribution. All beers are now from a new energy-efficient 300-barrel brewery, built within the confines of the present site. Seasonal beers: see website. Bottle-conditioned beers are also available.")
 
   val producerBulmersXml = <item index="0" type="object">
                              <element name="Festival" type="string" value="WOR/2013"/>
@@ -81,5 +81,5 @@ object TestBrewers {
                              <element name="Description" type="string" value="Big cider producer"/>
                            </item>
 
-  val producerBulmers = Brewer("Bulmer's", "Hereford", "Big cider producer")
+  val producerBulmers = Brewer("BULMER", "Bulmer's", "Hereford", "Big cider producer")
 }

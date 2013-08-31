@@ -35,15 +35,13 @@ class FestivalXmlParser extends BaseXmlPullParser[Festival] {
     var festivals = Seq.empty[Festival]
 
     while (parser.next != XmlPullParser.END_TAG) {
-      //Log.d(TAG, s"Element: ${parser.getName}, type: ${parser.getEventType}")
       parser.getEventType() match {
         case XmlPullParser.START_TAG => parser.getName match {
           case "element" => readElement(parser) match {
             case Some(festival) => festivals = festival +: festivals
-            case _ => //Log.i(TAG, s"Skipping tag ${parser.getName}")
+            case _ => // Do Nothing
           }
           case tag => {
-            //Log.d(TAG, s"$tag tag in Festival Parser")
             skip(parser)
           }
         }
