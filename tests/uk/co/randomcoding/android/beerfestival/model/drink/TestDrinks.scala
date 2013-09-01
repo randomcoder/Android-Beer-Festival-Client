@@ -137,7 +137,24 @@ object TestDrinks {
                      </element>
                    </object>
 
-  val deadDog = Drink("Dead Dog", DrinkType.CIDER, "Dead Dog", "Paint stripper", "Ready", "7", "Bulmer's", List("Dry Perry"))
+  val deadDog = Drink("Dead Dog", DrinkType.PERRY, "Dead Dog", "Paint stripper", "Ready", "7", "Bulmer's", List("Dry Perry"))
+
+  val bulmersTraditionalXml = <object>
+  <element name="outcome" type="string" value="success" />
+    <element name="result" type="array">
+      <item index="1" type="object">
+        <element name="Producer" type="string" value="BULMER" />
+        <element name="Cider" type="string" value="Traditional" />
+        <element name="ABV" type="number" value="5.5" />
+        <element name="Style" type="string" value="MC" />
+        <element name="Description" type="string" value="Cloudy medium cider" />
+        <element name="State" type="string" value="Ready" />
+        <element name="ProducerName" type="string" value="Bulmer&apos;s" />
+      </item>
+    </element>
+  </object>
+
+  val bulmersTraditional = Drink("Traditional", DrinkType.CIDER, "Traditional", "Cloudy medium cider", "Ready", "5.5", "Bulmer's", List("Medium Cider"))
 
   val alederflowerXml = <object>
                           <element name="outcome" type="string" value="success"/>
