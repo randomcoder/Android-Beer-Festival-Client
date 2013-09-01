@@ -15,25 +15,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contributors:
- *    RandomCoder - initial API and implementation and/or initial documentation
+ * RandomCoder - initial API and implementation and/or initial documentation
  */
 package uk.co.randomcoding.android.beerfestival
-
-import java.io.InputStream
-
-import scala.collection.immutable.Stream
 
 import android.app.Activity
 import android.content.{Context, Intent}
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import java.io.InputStream
+import uk.co.randomcoding.android.beerfestival.dialogue.AlertBuilder._
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 import uk.co.randomcoding.android.beerfestival.model.drink.{Drink, DrinkType}
 import uk.co.randomcoding.android.beerfestival.model.festival.{FestivalModel, FestivalXmlParser}
 import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
+import uk.co.randomcoding.android.beerfestival.util.stream.StreamHelpers._
 
+/**
+ * The main activity of the application.
+ *
+ * @author RandomCoder
+ */
 class MainActivity extends Activity {
 
   private[this] val festivalXmlFile = "festivals.xml"
@@ -50,17 +54,18 @@ class MainActivity extends Activity {
     setContentView(R.layout.main)
     // Initialise Festival Data
     // Currently only uses Worcester (WOR/2013)
-    reloadFestivalModel(worcesterId, !(fileList().exists(_ == festivalXmlFile)))
+    reloadFestivalModel(worcesterId, fileList().find(_ == festivalXmlFile).isEmpty)
   }
 
   override def onDestroy() {
-    super.onDestroy
-    // Write the festival model(s) to storage (GSON?)
+    super.onDestroy()
   }
 
   def showAllDrinks(view: View) {
     val intent = new Intent(this, classOf[DisplayResultsActivity])
-    allDrinksIntentExtras foreach { case (k, v) => intent.putExtra(k, v) }
+    allDrinksIntentExtras foreach {
+      case (k, v) => intent.putExtra(k, v)
+    }
     startActivity(intent)
   }
 
@@ -69,38 +74,44 @@ class MainActivity extends Activity {
   }
 
   private[this] def drinkTypeSearchIntentExtras(drinkType: DrinkType.drinkType): Map[String, String] = {
-    Map(FESTIVAL_ID_EXTRA -> worcesterId, DRINK_TYPE_SEARCH_EXTRA -> drinkType.toString())
+    Map(FESTIVAL_ID_EXTRA -> worcesterId, DRINK_TYPE_SEARCH_EXTRA -> drinkType.toString)
   }
 
   def showAllBeers(view: View) {
     val intent = new Intent(this, classOf[DisplayResultsActivity])
-    drinkTypeSearchIntentExtras(DrinkType.BEER) foreach { case (k, v) => intent.putExtra(k, v) }
+    drinkTypeSearchIntentExtras(DrinkType.BEER) foreach {
+      case (k, v) => intent.putExtra(k, v)
+    }
     startActivity(intent)
   }
 
   def showAllCiders(view: View) {
     val intent = new Intent(this, classOf[DisplayResultsActivity])
-    drinkTypeSearchIntentExtras(DrinkType.CIDER) foreach { case (k, v) => intent.putExtra(k, v) }
+    drinkTypeSearchIntentExtras(DrinkType.CIDER) foreach {
+      case (k, v) => intent.putExtra(k, v)
+    }
     startActivity(intent)
   }
 
   def showAllPerries(view: View) {
     val intent = new Intent(this, classOf[DisplayResultsActivity])
-    drinkTypeSearchIntentExtras(DrinkType.PERRY) foreach { case (k, v) => intent.putExtra(k, v) }
+    drinkTypeSearchIntentExtras(DrinkType.PERRY) foreach {
+      case (k, v) => intent.putExtra(k, v)
+    }
     startActivity(intent)
   }
 
-  def showAllBrewers(view: View) {
+  /*def showAllBrewers(view: View) {
     /*val intent = new Intent(this, classOf[DisplayBrewersActivity])
     allDrinksIntentExtras foreach { case (k, v) => intent.putExtra(k, v) }
     startActivity(intent)*/
-  }
+  }*/
 
-  private[this] def allBrewersIntentExtras: Map[String, String] = {
+  /*private[this] def allBrewersIntentExtras: Map[String, String] = {
     Map.empty
-  }
+  }*/
 
-  def showSearchDrinks(view: View) {
+  /*def showSearchDrinks(view: View) {
     val intent = new Intent(this, classOf[SearchDrinkActivity])
     startActivity(intent)
   }
@@ -108,16 +119,16 @@ class MainActivity extends Activity {
   def showSearchBrewers(view: View) {
     /*val intent = new Intent(this, classOf[SearchBrewerActivity])
     startActivity(intent)*/
-  }
+  }*/
 
   def updateData(view: View) {
     reloadFestivalModel(worcesterId, true)
   }
 
-  def showWishList(view: View) {
+  /*def showWishList(view: View) {
     // TODO: Create intent to switch to the wishlist view
     // Not planned at this time
-  }
+  }*/
 
   private[this] def reloadFestivalModel(festivalId: String, reloadData: Boolean) {
     val TAG = "MainActivityFestivalInitialise"
@@ -148,26 +159,34 @@ class MainActivity extends Activity {
 
   private[this] def updateStoredData(festivalId: String) {
     val TAG = "Main Activity Update Stored Data"
-    Log.i(TAG, "Updating Stored Xml Files")
 
     val writeStream = (fileName: String, stream: InputStream) => {
-      val fileOut = openFileOutput(fileName, Context.MODE_PRIVATE)
-      val buffer = new Array[Byte](1024)
-      Stream.continually(stream.read(buffer)).takeWhile(_ != -1).foreach(fileOut.write(buffer, 0, _))
-      fileOut.close
+      copyStream(stream, openFileOutput(fileName, Context.MODE_PRIVATE))
     }
 
-    festivalsXml() { inStream: InputStream => writeStream(festivalXmlFile, inStream) }
-    Log.d(TAG, "Updated Festivals Data")
-    beersXml(festivalId) { inStream: InputStream => writeStream(beersXmlFile, inStream) }
-    Log.d(TAG, "Updated Beers Data")
-    cidersXml(festivalId) { inStream: InputStream => writeStream(cidersXmlFile, inStream) }
-    Log.d(TAG, "Updated Ciders & Perries Data")
-    breweriesXml(festivalId) { inStream: InputStream => writeStream(brewersXmlFile, inStream) }
-    Log.d(TAG, "Updated Breweries Data")
-    producersXml(festivalId) { inStream: InputStream => writeStream(producersXmlFile, inStream) }
-    Log.d(TAG, "Updated Producers Data")
+    //implicit val act: Activity = this
+    try {
+      Log.i(TAG, "Updating Stored Xml Data Files")
 
-    Log.i(TAG, "Completed Updating Stored Xml Files")
+      festivalsXml() { writeStream(festivalXmlFile, _) }
+      Log.d(TAG, "Updated Festivals Data File")
+
+      beersXml(festivalId) { writeStream(beersXmlFile, _) }
+      Log.d(TAG, "Updated Beers Data File")
+
+      cidersXml(festivalId) { writeStream(cidersXmlFile, _) }
+      Log.d(TAG, "Updated Ciders & Perries Data File")
+
+      breweriesXml(festivalId) { writeStream(brewersXmlFile, _) }
+      Log.d(TAG, "Updated Breweries Data File")
+
+      producersXml(festivalId) { writeStream(producersXmlFile, _) }
+      Log.d(TAG, "Updated Producers Data File")
+
+      Log.i(TAG, "Completed Updating Stored Xml Files")
+    }
+    catch {
+      case e: Exception => alert("Failed to Update Festival or Drink Data", e.getMessage)
+    }
   }
 }
