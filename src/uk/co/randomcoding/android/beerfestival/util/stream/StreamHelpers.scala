@@ -24,19 +24,23 @@ import java.io.{OutputStream, InputStream}
 import scala.collection.immutable.Stream
 
 /**
- * Brief Description of Class
+ * Helper classes for streams
  *
- * @author: RandomCoder
+ * Author: RandomCoder
  */
 object StreamHelpers {
+
+  /**
+   * Copy and input stream to an output stream
+   *
+   * The output stream is closed once used, but the input stream needs to be managed outside this method
+   *
+   * @param in The input stream
+   * @param out The output stream
+   */
   def copyStream(in: InputStream, out: OutputStream): Unit = {
-    try {
-      val buffer = new Array[Byte](1024)
-      Stream.continually(in.read(buffer)).takeWhile(_ != -1).foreach(out.write(buffer, 0, _))
-    }
-    finally {
-      in.close()
-      out.close()
-    }
+    val buffer = new Array[Byte](1024)
+    try {Stream.continually(in.read(buffer)).takeWhile(_ != -1).foreach(out.write(buffer, 0, _))}
+    finally {out.close() }
   }
 }

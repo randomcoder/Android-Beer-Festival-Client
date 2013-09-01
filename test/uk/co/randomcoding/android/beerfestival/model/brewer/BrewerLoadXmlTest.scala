@@ -54,7 +54,7 @@ class BrewerLoadXmlTest extends SimpleTestBase {
     val xml = surround(brewer4TsXml ++ brewerAbbeydaleXml ++ brewerAdnamsXml)
     When("the Xml is parsed")
     Then("the expected Brewer objects are created")
-    Brewer.fromXml(xml) should (have size (3) and
+    Brewer.fromXml(xml) should (have size 3 and
       contain(brewer4Ts) and
       contain(brewerAbbeydale) and
       contain(brewerAdnams))
@@ -75,7 +75,7 @@ class BrewerLoadXmlTest extends SimpleTestBase {
     When("the Xml is parsed")
     val brewers = Brewer.fromXml(xml)
     Then("it contains the expected number of brewers")
-    brewers should have size (134)
+    brewers should have size 134
     And("at least three of the brewers is correctly loaded")
     brewers should (contain(brewer4Ts) and
       contain(brewerAbbeydale) and
@@ -89,10 +89,10 @@ class BrewerLoadXmlTest extends SimpleTestBase {
     When("the Xml is parsed")
     val brewers = Brewer.fromXml(xml)
     Then("it contains the expected number of drinks")
-    brewers should have size (1)
+    brewers should have size 1
     And("at least one of the Brewers is correctly loaded")
     brewers should be(Seq(producerBulmers))
   }
 
-  private implicit def xmlToInStream(node: Node): InputStream = new ByteArrayInputStream(node.toString.getBytes)
+  private implicit def xmlToInStream(node: Node): InputStream = new ByteArrayInputStream(node.toString().getBytes)
 }

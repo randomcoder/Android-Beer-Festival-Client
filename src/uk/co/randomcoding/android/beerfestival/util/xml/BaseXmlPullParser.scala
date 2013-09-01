@@ -43,7 +43,7 @@ abstract class BaseXmlPullParser[T] {
       parser.setInput(xmlStream, null)
       parser.nextTag()
       readEntities(parser)
-    } finally { xmlStream.close }
+    } finally { xmlStream.close() }
   }
 
   def readEntities(parser: XmlPullParser): Seq[T]
@@ -51,10 +51,9 @@ abstract class BaseXmlPullParser[T] {
   def readEntity(parser: XmlPullParser): T
 
   final def skip(parser: XmlPullParser) {
-    if (parser.getEventType() != XmlPullParser.START_TAG) {
-      throw new IllegalStateException();
-    }
-    var depth = 1;
+    if (parser.getEventType != XmlPullParser.START_TAG) throw new IllegalStateException()
+
+    var depth = 1
     while (depth != 0) {
       parser.next() match {
         case XmlPullParser.END_TAG => depth -= 1

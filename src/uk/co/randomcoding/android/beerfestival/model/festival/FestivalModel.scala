@@ -28,7 +28,7 @@ import uk.co.randomcoding.android.beerfestival.model.drink.Drink
  * @author RandomCoder
  *
  */
-case class FestivalModel private (val festival: Festival, val drinks: Seq[Drink], val brewers: Seq[Brewer])
+case class FestivalModel private (festival: Festival, drinks: Seq[Drink], brewers: Seq[Brewer])
 
 /**
  * Provides access to festival models, using the festival name as key
@@ -42,7 +42,6 @@ object FestivalModel {
    *
    * The JSON could come from a file (in the case of first load or from http for a live update
    *
-   * @param festivalJson The JSON string that contains the festival's data
    */
   def initialise(festival: Festival, drinks: Seq[Drink], brewers: Seq[Brewer]) {
     festivalModels += (festival.festivalId -> FestivalModel(festival, drinks, brewers))

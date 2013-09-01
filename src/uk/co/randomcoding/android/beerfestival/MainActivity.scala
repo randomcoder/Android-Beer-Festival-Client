@@ -164,7 +164,7 @@ class MainActivity extends Activity {
       copyStream(stream, openFileOutput(fileName, Context.MODE_PRIVATE))
     }
 
-    //implicit val act: Activity = this
+    implicit val act: Activity = this
     try {
       Log.i(TAG, "Updating Stored Xml Data Files")
 

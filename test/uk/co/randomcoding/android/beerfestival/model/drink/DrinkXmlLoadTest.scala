@@ -59,7 +59,7 @@ class DrinkXmlLoadTest extends SimpleTestBase {
 
     When("the Xml is parsed")
     Then("the expected Drink objects are created")
-    Drink.fromXml(threeDrinksXml) should (have size (3) and
+    Drink.fromXml(threeDrinksXml) should (have size 3 and
       contain(porter1872) and
       contain(deadDog) and
       contain(alederflower))
@@ -80,7 +80,7 @@ class DrinkXmlLoadTest extends SimpleTestBase {
     When("the Xml is parsed")
     val beers = Drink.fromXml(xml)
     Then("it contains the expected number of drinks")
-    beers should have size (4)
+    beers should have size 4
     And("at least two of the beers are correctly loaded")
     beers should (contain(porter1872) and
       contain(alederflower))
@@ -93,10 +93,10 @@ class DrinkXmlLoadTest extends SimpleTestBase {
     When("the Xml is parsed")
     val ciders = Drink.fromXml(xml)
     Then("it contains the expected number of drinks")
-    ciders should have size (2)
+    ciders should have size 2
     And("at least one of the ciders is correctly loaded")
     ciders should contain(deadDog)
   }
 
-  private implicit def xmlToInputStream(node: Node): InputStream = new ByteArrayInputStream(node.toString.getBytes)
+  private implicit def xmlToInputStream(node: Node): InputStream = new ByteArrayInputStream(node.toString().getBytes)
 }
