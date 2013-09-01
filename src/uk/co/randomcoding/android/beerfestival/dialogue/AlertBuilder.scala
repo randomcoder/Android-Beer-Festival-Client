@@ -20,8 +20,9 @@
 
 package uk.co.randomcoding.android.beerfestival.dialogue
 
-import android.os.Bundle
 import android.app.{Activity, AlertDialog}
+import android.content.DialogInterface
+import android.content.DialogInterface.OnClickListener
 
 /**
  * Provides simple creation of Alert Dialogues
@@ -31,16 +32,31 @@ import android.app.{Activity, AlertDialog}
 object AlertBuilder {
 
   /**
-   * Create an alert dialogue with a title and message
+   * Type for dialogue listener functions that can be implicitly converted
+   */
+  final type dialogueListenerFunction = (DialogInterface, Int) => Unit
+
+  /**
+   * A listener functio that is a ''No-Op''
+   */
+  final val noopListenerFunction = (dialogue: DialogInterface,  id: Int) => ()
+
+  /**
+   * Create an alert dialogue with a title, message and Ok button
    *
    * @param title The dialogue's title
    * @param message The message to display in the body of the message
+   * @param okFunc The function `(DialogInterface, Int) => ()` to invoke when the alert's '''Ok''' button is pressed
    * @param activity Implicit activity. This is required to be able to create the dialogue
    *
    * @return The new `AlertDialog`
    */
-  def alert(title: String, message: String)(implicit activity: Activity): AlertDialog = {
+  def alert(title: String, message: String, okFunc: dialogueListenerFunction = noopListenerFunction)(implicit activity: Activity): AlertDialog = {
     val builder = new AlertDialog.Builder(activity)
-    builder.setTitle(title).setMessage(message).create()
+    builder.setTitle(title).setMessage(message).setPositiveButton("Ok", okFunc).create()
+  }
+
+  private[this] implicit def funcToDialogueOnClickListener(f: dialogueListenerFunction): DialogInterface.OnClickListener = new OnClickListener {
+    def onClick(dialog: DialogInterface, id: Int): Unit = f(dialog, id)
   }
 }
