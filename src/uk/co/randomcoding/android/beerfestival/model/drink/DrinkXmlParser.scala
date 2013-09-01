@@ -15,13 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contributors:
- *    RandomCoder <randomcoder@randomcoding.co.uk> - initial API and implementation and/or initial documentation
+ * RandomCoder <randomcoder@randomcoding.co.uk> - initial API and implementation and/or initial documentation
  */
 package uk.co.randomcoding.android.beerfestival.model.drink
 
 import org.xmlpull.v1.XmlPullParser
-
 import uk.co.randomcoding.android.beerfestival.util.xml.BaseXmlPullParser
+
 
 /**
  * Xml Parser for Drinks
@@ -33,9 +33,11 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
   val TAG = "Drink Xml Parser"
 
   private[this] val perryFeatures = Map("P" -> "Perry", "SP" -> "Sweet Perry", "MP" -> "Medium Perry", "DP" -> "Dry Perry")
-  private[this] val featureMap = perryFeatures ++ Map("MILD" -> "Milds", "BITT" -> "Bitters", "BEST" -> "Best Bitters",
-    "STRO" -> "Strong Ales", "GOLD" -> "Golden Ales", "STOU" -> "Stouts/Porters", "SPEC" -> "Speciality",
-    "C" -> "Cider", "SC" -> "Sweet Cider", "MC" -> "Medium Cider", "DC" -> "Dry Cider").withDefaultValue("")
+  private[this] val ciderFeatures = Map("C" -> "Cider", "SC" -> "Sweet Cider", "MC" -> "Medium Cider", "DC" -> "Dry Cider")
+  private[this] val beerFeatures = Map("MILD" -> "Milds", "BITT" -> "Bitters", "BEST" -> "Best Bitters",
+    "STRO" -> "Strong Ales", "GOLD" -> "Golden Ales", "STOU" -> "Stouts/Porters", "SPEC" -> "Speciality")
+  private[this] val featureMap = ciderFeatures ++ perryFeatures ++ beerFeatures.withDefaultValue("")
+
 
   override def readEntities(p: XmlPullParser): Seq[Drink] = {
     var drinks = Seq.empty[Drink]
@@ -43,7 +45,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
       if (p.getEventType == XmlPullParser.START_TAG) {
         p.getName match {
           case "item" => drinks = readEntity(p) +: drinks
-          case tag => //Log.d(TAG, s"Ignore Element: ${parser.getName}")
+          case tag => // Do Nothing
         }
       }
     })
@@ -101,7 +103,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
             case Some("yes") => drinkFeatures = "Unusual" +: drinkFeatures
             case _ => // Do Nothing
           }
-          case n => //Log.d(TAG, s"""Unprocessed <element name="$n" value="${valueAttribute(parser)}"/>""")
+          case n => // Do nothing
         }
         parser.next
         parser.require(XmlPullParser.END_TAG, null, "element")
@@ -109,7 +111,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     })
     parser.require(XmlPullParser.END_TAG, null, "item")
 
-    if (drinkFeatures.exists(perryFeatures.contains)) drinkType = DrinkType.PERRY
+    if (perryFeatures.values.exists{drinkFeatures.contains(_)}) drinkType = DrinkType.PERRY
 
     Drink(drinkName, drinkType, drinkName, drinkDescription, state, drinkAbv, drinkBrewer, drinkFeatures)
   }

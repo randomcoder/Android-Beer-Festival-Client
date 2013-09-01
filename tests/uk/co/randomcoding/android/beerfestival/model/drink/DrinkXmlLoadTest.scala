@@ -87,15 +87,26 @@ class DrinkXmlLoadTest extends SimpleTestBase {
   }
 
   test("Ciders can be loaded from an input xml source") {
-    Given("Beer Xml created from an external input (sample file)")
+    Given("Cider Xml created from an external input (sample file)")
     val xml = XML.load(getClass.getResourceAsStream("/ciders.xml"))
 
     When("the Xml is parsed")
     val ciders = Drink.fromXml(xml)
-    Then("it contains the expected number of drinks")
-    ciders should have size 2
-    And("at least one of the ciders is correctly loaded")
-    ciders should contain(deadDog)
+    Then("it contains the expected drinks")
+    ciders should (have size 2 and
+      contain (deadDog) and
+      contain (bulmersTraditional))
+  }
+
+  test("Perries are correctly identified from a Ciders xml input source") {
+    Given("Cider and Perry Data in an Xml File")
+    val xml = XML.load(getClass.getResourceAsStream("/ciders.xml"))
+
+    When("the xml is parsed")
+    val drinks = Drink.fromXml(xml)
+
+    Then("there should be a single perry")
+    drinks.filter(_.drinkType == DrinkType.PERRY) should be (Seq(deadDog))
   }
 
   private implicit def xmlToInputStream(node: Node): InputStream = new ByteArrayInputStream(node.toString().getBytes)
