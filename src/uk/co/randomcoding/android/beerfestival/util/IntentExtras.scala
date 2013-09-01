@@ -19,8 +19,10 @@
  */
 package uk.co.randomcoding.android.beerfestival.util
 
+import uk.co.randomcoding.android.beerfestival.model.drink.DrinkType
+
 /**
- * Values to use as Keys for passing data in Intent extra bundles
+ * Helper methods and values to use as keys for passing data in Intent extra bundles
  *
  * @author RandomCoder
  *
@@ -33,4 +35,14 @@ object IntentExtras {
   final val FESTIVAL_ID_EXTRA = extra("FestivalId")
   final val DISPLAY_DRINK_NAME_EXTRA = extra("display_drink_name")
   final val DRINK_TYPE_SEARCH_EXTRA = extra("DrinkTypeSearch")
+
+  final val worcesterId = "WOR/2013"
+
+  def allDrinksIntentExtras: Map[String, String] = {
+    Map(FESTIVAL_ID_EXTRA -> worcesterId)
+  }
+
+  def drinkTypeSearchIntentExtras(drinkType: DrinkType.drinkType): Map[String, String] = {
+    Map(FESTIVAL_ID_EXTRA -> worcesterId, DRINK_TYPE_SEARCH_EXTRA -> drinkType.toString)
+  }
 }

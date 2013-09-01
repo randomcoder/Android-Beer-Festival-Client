@@ -109,7 +109,7 @@ class DrinkXmlParser extends BaseXmlPullParser[Drink] {
     })
     parser.require(XmlPullParser.END_TAG, null, "item")
 
-    if (drinkFeatures.exists(perryFeatures.contains(_))) drinkType = DrinkType.PERRY
+    if (drinkFeatures.exists(perryFeatures.contains)) drinkType = DrinkType.PERRY
 
     Drink(drinkName, drinkType, drinkName, drinkDescription, state, drinkAbv, drinkBrewer, drinkFeatures)
   }

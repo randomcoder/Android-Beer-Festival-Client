@@ -39,7 +39,7 @@ class QueryHelpersTest extends SimpleTestBase {
       Then("the response can be parsed into Xml")
       val responseXml = festivalsXml() { stream: InputStream => XML.load(stream) }
       And("has nodes for the festival ids")
-      val itemNodes = (responseXml \\ "element" \ "item")
+      val itemNodes = responseXml \\ "element" \ "item"
       /*val worcNode = itemNodes.filter(node => elementValue(node, "Id") == "WOR/2013")
     worcNode should not be ('empty)*/
       throw new Exception("Test not really complete")

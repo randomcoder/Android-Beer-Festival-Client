@@ -31,7 +31,7 @@ import uk.co.randomcoding.android.beerfestival.util.Convertors._
  * @param id The unique id of the brewer
  * @param name The brewer's name
  * @param location Where the brewer is located
- * @param drinkUids The `uids` of all the drinks brewed by this brewer
+ * @param description The brewer's description
  *
  * @author RandomCoder
  */

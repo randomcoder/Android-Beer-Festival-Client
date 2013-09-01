@@ -64,7 +64,7 @@ trait DbAccessTestData extends ShouldMatchers {
 
   implicit def stringToClassInputStream(in: String): InputStream = {
     val stream = getClass.getResourceAsStream(in)
-    stream should not be (null)
+    stream should not be null
     stream
   }
 
@@ -74,8 +74,8 @@ trait DbAccessTestData extends ShouldMatchers {
    * This can be used to load different data into the db access for each test
    */
   def initialiseDbAccess(drinkDbFileLoc: String, brewerDbFileLoc: String) {
-    val drinkSource = Source.fromInputStream(drinkDbFileLoc)
-    val brewerSource = Source.fromInputStream(brewerDbFileLoc)
+    /*val drinkSource = Source.fromInputStream(drinkDbFileLoc)
+    val brewerSource = Source.fromInputStream(brewerDbFileLoc)*/
 
     //InMemoryCamraDbAccess.init(drinkSource, brewerSource)
   }

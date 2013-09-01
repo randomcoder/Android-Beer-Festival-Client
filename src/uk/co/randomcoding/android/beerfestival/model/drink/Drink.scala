@@ -83,7 +83,7 @@ object Drink {
     val drinkType = drinkJsonMap("drinkType").toString
     val drinkName = drinkJsonMap("name").toString
     val description = drinkJsonMap("description").toString
-    val abv = drinkJsonMap("abv").toString.toString
+    val abv = drinkJsonMap("abv").toString
     val brewer = drinkJsonMap("brewer").toString
     val state = drinkJsonMap("state").toString
     val features = drinkJsonMap("features").asInstanceOf[List[String]]
