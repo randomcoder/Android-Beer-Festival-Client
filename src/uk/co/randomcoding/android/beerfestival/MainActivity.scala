@@ -57,15 +57,9 @@ class MainActivity extends Activity {
     reloadFestivalModel(worcesterId, fileList().find(_ == festivalXmlFile).isEmpty)
   }
 
-  override def onDestroy() {
-    super.onDestroy()
-  }
-
   def showAllDrinks(view: View) {
     val intent = new Intent(this, classOf[DisplayResultsActivity])
-    allDrinksIntentExtras foreach {
-      case (k, v) => intent.putExtra(k, v)
-    }
+    allDrinksIntentExtras foreach { case (k, v) => intent.putExtra(k, v) }
     startActivity(intent)
   }
 
@@ -101,60 +95,52 @@ class MainActivity extends Activity {
     startActivity(intent)
   }
 
-  /*def showAllBrewers(view: View) {
-    /*val intent = new Intent(this, classOf[DisplayBrewersActivity])
-    allDrinksIntentExtras foreach { case (k, v) => intent.putExtra(k, v) }
-    startActivity(intent)*/
-  }*/
-
-  /*private[this] def allBrewersIntentExtras: Map[String, String] = {
-    Map.empty
-  }*/
-
-  /*def showSearchDrinks(view: View) {
-    val intent = new Intent(this, classOf[SearchDrinkActivity])
-    startActivity(intent)
-  }
-
-  def showSearchBrewers(view: View) {
-    /*val intent = new Intent(this, classOf[SearchBrewerActivity])
-    startActivity(intent)*/
-  }*/
-
   def updateData(view: View) {
     reloadFestivalModel(worcesterId, true)
   }
 
-  /*def showWishList(view: View) {
-    // TODO: Create intent to switch to the wishlist view
-    // Not planned at this time
-  }*/
+  private[this] def fileTimestamp(fileName: String): Long = {
+    getFilesDir.listFiles().find(_.getName == fileName) match {
+      case Some(f) => f.lastModified()
+      case _ => -1L
+    }
+  }
 
   private[this] def reloadFestivalModel(festivalId: String, reloadData: Boolean) {
     val TAG = "MainActivityFestivalInitialise"
+    val festivalFileTimestamp = fileTimestamp(festivalXmlFile)
+
     if (reloadData) updateStoredData(festivalId)
 
     (reloadData, FestivalModel(festivalId)) match {
       case (true, _) | (_, None) => {
-        Log.i(TAG, s"Initialising festival model for $festivalId")
-
-        val festival = new FestivalXmlParser().parse(openFileInput(festivalXmlFile)).find(_.festivalId == festivalId).get
-        Log.d(TAG, s"Loaded Festival $festival")
-        val beersAtFestival = Drink.fromXml(openFileInput(beersXmlFile))
-        Log.d(TAG, s"Loaded ${beersAtFestival.size} Beers")
-        val brewersAtFestival = Brewer.fromXml(openFileInput(brewersXmlFile))
-        Log.d(TAG, s"Loaded ${brewersAtFestival.size} Brewers")
-        val cidersAtFestival = Drink.fromXml(openFileInput(cidersXmlFile))
-        Log.d(TAG, s"Loaded ${cidersAtFestival.size} Ciders")
-        val producersAtFestival = Brewer.fromXml(openFileInput(producersXmlFile))
-        Log.d(TAG, s"Loaded ${producersAtFestival.size} Producers")
-
-        // Initialise Model
-        FestivalModel.initialise(festival, beersAtFestival ++ cidersAtFestival, brewersAtFestival ++ producersAtFestival)
-        Log.i(TAG, s"Initialised Festival Model for ${festival.festivalId}")
+        fileTimestamp(festivalXmlFile) > festivalFileTimestamp match {
+          case true => updateModelFromFiles(festivalId)
+          case false => Log.i(TAG, "Festival Data file not updated. Not updating internal model")
+        }
       }
       case _ => // already initialised and not updated
     }
+  }
+
+  private[this] def updateModelFromFiles(festivalId: String): Unit = {
+    val TAG="MainActivityUpdateFromFiles"
+    Log.i(TAG, s"Initialising festival model for $festivalId")
+
+    val festival = new FestivalXmlParser().parse(openFileInput(festivalXmlFile)).find(_.festivalId == festivalId).get
+    Log.d(TAG, s"Loaded Festival $festival")
+    val beersAtFestival = Drink.fromXml(openFileInput(beersXmlFile))
+    Log.d(TAG, s"Loaded ${beersAtFestival.size} Beers")
+    val brewersAtFestival = Brewer.fromXml(openFileInput(brewersXmlFile))
+    Log.d(TAG, s"Loaded ${brewersAtFestival.size} Brewers")
+    val cidersAtFestival = Drink.fromXml(openFileInput(cidersXmlFile))
+    Log.d(TAG, s"Loaded ${cidersAtFestival.size} Ciders")
+    val producersAtFestival = Brewer.fromXml(openFileInput(producersXmlFile))
+    Log.d(TAG, s"Loaded ${producersAtFestival.size} Producers")
+
+    // Initialise Model
+    FestivalModel.initialise(festival, beersAtFestival ++ cidersAtFestival, brewersAtFestival ++ producersAtFestival)
+    Log.i(TAG, s"Initialised Festival Model for ${festival.festivalId}")
   }
 
   private[this] def updateStoredData(festivalId: String) {
@@ -186,7 +172,9 @@ class MainActivity extends Activity {
       Log.i(TAG, "Completed Updating Stored Xml Files")
     }
     catch {
-      case e: Exception => alert("Failed to Update Festival or Drink Data", e.getMessage)
+      case e: Exception => {
+        alert("Failed to Update Festival or Drink Data", e.getMessage).show()
+      }
     }
   }
 }
