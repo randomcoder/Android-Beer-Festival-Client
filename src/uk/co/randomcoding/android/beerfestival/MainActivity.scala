@@ -29,6 +29,7 @@ import uk.co.randomcoding.android.beerfestival.dialogue.AlertBuilder._
 import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
 import uk.co.randomcoding.android.beerfestival.model.drink.{Drink, DrinkType}
 import uk.co.randomcoding.android.beerfestival.model.festival.{FestivalModel, FestivalXmlParser}
+import uk.co.randomcoding.android.beerfestival.util.AndroidSystemHelpers._
 import uk.co.randomcoding.android.beerfestival.util.IntentExtras._
 import uk.co.randomcoding.android.beerfestival.util.query.QueryHelper._
 import uk.co.randomcoding.android.beerfestival.util.stream.StreamHelpers._
@@ -40,11 +41,14 @@ import uk.co.randomcoding.android.beerfestival.util.stream.StreamHelpers._
  */
 class MainActivity extends Activity {
 
+  // TODO: Move these into xml storage or util object
   private[this] val festivalXmlFile = "festivals.xml"
   private[this] val beersXmlFile = "beers.xml"
   private[this] val cidersXmlFile = "ciders.xml"
   private[this] val brewersXmlFile = "brewers.xml"
   private[this] val producersXmlFile = "producers.xml"
+
+  private[this] implicit val act: Activity = this
 
   // This is fixed for now, but will be derived from config at some point.
   private[this] final val worcesterId = "WOR/2013"
@@ -54,50 +58,30 @@ class MainActivity extends Activity {
     setContentView(R.layout.main)
     // Initialise Festival Data
     // Currently only uses Worcester (WOR/2013)
-    reloadFestivalModel(worcesterId, fileList().find(_ == festivalXmlFile).isEmpty)
+    //reloadFestivalModel(worcesterId, fileList().find(_ == festivalXmlFile).isEmpty)
   }
 
-  def showAllDrinks(view: View) {
-    val intent = new Intent(this, classOf[DisplayResultsActivity])
-    allDrinksIntentExtras foreach { case (k, v) => intent.putExtra(k, v) }
-    startActivity(intent)
-  }
-
-  private[this] def allDrinksIntentExtras: Map[String, String] = {
-    Map(FESTIVAL_ID_EXTRA -> worcesterId)
-  }
-
-  private[this] def drinkTypeSearchIntentExtras(drinkType: DrinkType.drinkType): Map[String, String] = {
-    Map(FESTIVAL_ID_EXTRA -> worcesterId, DRINK_TYPE_SEARCH_EXTRA -> drinkType.toString)
+  def showAllDrinks(view: View): Unit =  {
+    newActivityIfDataLoaded(classOf[DisplayResultsActivity], allDrinksIntentExtras)
   }
 
   def showAllBeers(view: View) {
-    val intent = new Intent(this, classOf[DisplayResultsActivity])
-    drinkTypeSearchIntentExtras(DrinkType.BEER) foreach {
-      case (k, v) => intent.putExtra(k, v)
-    }
-    startActivity(intent)
+    newActivityIfDataLoaded(classOf[DisplayResultsActivity], drinkTypeSearchIntentExtras(DrinkType.BEER))
   }
 
   def showAllCiders(view: View) {
-    val intent = new Intent(this, classOf[DisplayResultsActivity])
-    drinkTypeSearchIntentExtras(DrinkType.CIDER) foreach {
-      case (k, v) => intent.putExtra(k, v)
-    }
-    startActivity(intent)
+    newActivityIfDataLoaded(classOf[DisplayResultsActivity], drinkTypeSearchIntentExtras(DrinkType.BEER))
   }
 
   def showAllPerries(view: View) {
-    val intent = new Intent(this, classOf[DisplayResultsActivity])
-    drinkTypeSearchIntentExtras(DrinkType.PERRY) foreach {
-      case (k, v) => intent.putExtra(k, v)
-    }
-    startActivity(intent)
+    newActivityIfDataLoaded(classOf[DisplayResultsActivity], drinkTypeSearchIntentExtras(DrinkType.BEER))
   }
 
   def updateData(view: View) {
     reloadFestivalModel(worcesterId, true)
   }
+
+  private[this] def dataModelLoaded(festivalId: String = worcesterId) = FestivalModel(festivalId).isDefined
 
   private[this] def fileTimestamp(fileName: String): Long = {
     getFilesDir.listFiles().find(_.getName == fileName) match {
@@ -106,12 +90,33 @@ class MainActivity extends Activity {
     }
   }
 
+  private[this] def dataModelNotLoaded(): Unit = {
+    alert("Update of Data Required", "The data for the selected festival is not loaded. Please connect to the internet and update.")
+  }
+
+  private[this] def newActivity[T](activityClass: Class[T], intentExtras: Map[String, String]): Unit = {
+    val intent = new Intent(this, activityClass)
+    intentExtras.foreach{case (k, v) => intent.putExtra(k, v)}
+    startActivity(intent)
+  }
+
+  private[this] def newActivityIfDataLoaded[T](activityClass: Class[T], intentExtras: Map[String, String], festivalId: String = worcesterId): Unit = {
+    if (dataModelLoaded(festivalId)) newActivity(activityClass, intentExtras) else dataModelNotLoaded()
+  }
+
   private[this] def reloadFestivalModel(festivalId: String, reloadData: Boolean) {
     val TAG = "MainActivityFestivalInitialise"
+
+    if (reloadData) {
+      try {updateStoredData(festivalId)}
+      catch {
+        case e: Exception => {
+          alert("Failed to Update Festival or Drink Data", e.getMessage).show()
+        }
+      }
+    }
+
     val festivalFileTimestamp = fileTimestamp(festivalXmlFile)
-
-    if (reloadData) updateStoredData(festivalId)
-
     (reloadData, FestivalModel(festivalId)) match {
       case (true, _) | (_, None) => {
         fileTimestamp(festivalXmlFile) > festivalFileTimestamp match {
@@ -124,7 +129,7 @@ class MainActivity extends Activity {
   }
 
   private[this] def updateModelFromFiles(festivalId: String): Unit = {
-    val TAG="MainActivityUpdateFromFiles"
+    val TAG = "MainActivityUpdateFromFiles"
     Log.i(TAG, s"Initialising festival model for $festivalId")
 
     val festival = new FestivalXmlParser().parse(openFileInput(festivalXmlFile)).find(_.festivalId == festivalId).get
@@ -147,12 +152,17 @@ class MainActivity extends Activity {
     val TAG = "Main Activity Update Stored Data"
 
     val writeStream = (fileName: String, stream: InputStream) => {
-      copyStream(stream, openFileOutput(fileName, Context.MODE_PRIVATE))
+      try {copyStream(stream, openFileOutput(fileName, Context.MODE_PRIVATE))}
+      catch {
+        case e: Exception => {
+          Log.e(TAG, "Failed to write data to %s".format(fileName), e)
+          throw e
+        }
+      }
     }
 
-    implicit val act: Activity = this
-    try {
-      Log.i(TAG, "Updating Stored Xml Data Files")
+    if (isNetworkConnected(this)) {
+      Log.i(TAG, "Updating Stored Xml Data Files from online service")
 
       festivalsXml() { writeStream(festivalXmlFile, _) }
       Log.d(TAG, "Updated Festivals Data File")
@@ -171,10 +181,8 @@ class MainActivity extends Activity {
 
       Log.i(TAG, "Completed Updating Stored Xml Files")
     }
-    catch {
-      case e: Exception => {
-        alert("Failed to Update Festival or Drink Data", e.getMessage).show()
-      }
+    else {
+      alert("Internet Connection Required", "You need an active WiFi or Mobile Data connection to be able to update").show()
     }
   }
 }
