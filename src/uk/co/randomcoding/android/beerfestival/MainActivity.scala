@@ -91,7 +91,7 @@ class MainActivity extends Activity {
   }
 
   private[this] def dataModelNotLoaded(): Unit = {
-    alert("Update of Data Required", "The data for the selected festival is not loaded. Please connect to the internet and update.")
+    alert("Update of Data Required", "The data for the selected festival is not loaded. Please connect to the internet and update.").show()
   }
 
   private[this] def newActivity[T](activityClass: Class[T], intentExtras: Map[String, String]): Unit = {
