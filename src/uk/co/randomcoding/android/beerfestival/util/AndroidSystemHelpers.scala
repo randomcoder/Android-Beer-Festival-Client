@@ -33,7 +33,7 @@ object AndroidSystemHelpers {
   /**
    * Check to see whether the device is connected via wifi or mobile data
    *
-   * Required the `android.permission.ACCESS_NETWORK_STATE` permission
+   * Requires the `android.permission.ACCESS_NETWORK_STATE` permission
    *
    * @param context The activity context to use to check
    * @return `true` is there is an active wifi or mobile data connection, `false` otherwise
