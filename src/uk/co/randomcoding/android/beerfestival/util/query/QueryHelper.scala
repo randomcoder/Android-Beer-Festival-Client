@@ -21,10 +21,6 @@ package uk.co.randomcoding.android.beerfestival.util.query
 
 import java.io.{ BufferedInputStream, BufferedOutputStream, InputStream }
 import java.net.{ HttpURLConnection, URL }
-import uk.co.randomcoding.android.beerfestival.model.brewer.Brewer
-import uk.co.randomcoding.android.beerfestival.model.drink.Drink
-import uk.co.randomcoding.android.beerfestival.model.festival.Festival
-import android.util.Log
 
 /**
  * Helper object to perform queries to the main web service
@@ -48,7 +44,8 @@ object QueryHelper {
   }
 
   private[this] def queryWithFestival(queryType: String, festivalId: String = "WOR/2013"): String = {
-    s"""<object><element name="action" type="string" value="$queryType" /><element name="param" type="object"><element name="Festival" type="string" value=$festivalId" /></element></object>"""
+    "<object><element name=\"action\" type=\"string\" value=\"" + queryType + "\" />" +
+      "<element name=\"param\" type=\"object\"><element name=\"Festival\" type=\"string\" value=\"" + festivalId + "\" /></element></object>"
   }
 
   private[this] def doQuery[A](queryXml: String)(parseFunc: InputStream => A): A = {
